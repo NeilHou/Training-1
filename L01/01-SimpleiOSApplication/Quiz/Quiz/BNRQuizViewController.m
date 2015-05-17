@@ -52,6 +52,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     // Close #1
+    // Test
 }
 
 - (IBAction)showQuestionButtonPressed:(UIButton *)sender
