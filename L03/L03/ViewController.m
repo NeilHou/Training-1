@@ -54,7 +54,34 @@
 //    numberLabel.frame = viewFrame;
     
     // Scrollview
-    
+    for (int i = 0 ; i < 4; i++) {
+        // Init
+        LHUiview *lhView = [[LHUiview alloc] init];
+        CGFloat x, y, width, height;
+        
+        // Fixed size
+        width = 100;
+        height = 100;
+        
+        int mod1 = i % 2;
+        if (mod1 == 0) {
+            x = 30;
+        } else {
+            x = 30 + i * (width + 50);
+        }
+        
+        int mod2 = 
+        
+        // Variable
+        y = 30;
+        
+        
+        // Set frame
+        CGRect frame = CGRectMake(x, y, width, height);
+        lhView.frame = frame;
+        [self.scrollView addSubview:lhView];
+        
+    }
     
 
     
