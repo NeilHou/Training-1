@@ -14,6 +14,7 @@
 		02E8468C1B0988E600392307 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02E8468B1B0988E600392307 /* Images.xcassets */; };
 		02E8468F1B0988E600392307 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02E8468D1B0988E600392307 /* LaunchScreen.xib */; };
 		02E8469B1B0988E600392307 /* L03Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E8469A1B0988E600392307 /* L03Tests.m */; };
+		02E846A61B098AB300392307 /* LHUiview.m in Sources */ = {isa = PBXBuildFile; fileRef = 02E846A51B098AB300392307 /* LHUiview.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		02E846941B0988E600392307 /* L03Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = L03Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02E846991B0988E600392307 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02E8469A1B0988E600392307 /* L03Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = L03Tests.m; sourceTree = "<group>"; };
+		02E846A41B098AB300392307 /* LHUiview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LHUiview.h; sourceTree = "<group>"; };
+		02E846A51B098AB300392307 /* LHUiview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LHUiview.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				02E846831B0988E600392307 /* AppDelegate.m */,
 				02E846851B0988E600392307 /* ViewController.h */,
 				02E846861B0988E600392307 /* ViewController.m */,
+				02E846A41B098AB300392307 /* LHUiview.h */,
+				02E846A51B098AB300392307 /* LHUiview.m */,
 				02E846881B0988E600392307 /* Main.storyboard */,
 				02E8468B1B0988E600392307 /* Images.xcassets */,
 				02E8468D1B0988E600392307 /* LaunchScreen.xib */,
@@ -221,6 +226,7 @@
 			files = (
 				02E846871B0988E600392307 /* ViewController.m in Sources */,
 				02E846841B0988E600392307 /* AppDelegate.m in Sources */,
+				02E846A61B098AB300392307 /* LHUiview.m in Sources */,
 				02E846811B0988E600392307 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
