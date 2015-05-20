@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource>;
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) NSArray *studentsArray;
 
 @end
 
@@ -18,12 +19,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    CGRect frame = self.view.bounds;
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y + 40,
+                                                                   frame.size.width, frame.size.height - 40)];
+    [self.view addSubview:_tableView];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 
 }
 
+- (NSArray *)studentsArray {
+    if (!_studentsArray) {
+        _studentsArray = @[@"Wu yuke", @"Bao yuanshen", @"Yuan bo", @"Hou jianlei", @"Zhu jianbo"];
+    }
+    return  _studentsArray;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.studentsArray.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    NSString *string = self.studentsArray[indexPath.row];
+    cell.textLabel.text = string;
+    
+    return cell;
+}
 
 
 
