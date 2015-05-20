@@ -75,6 +75,18 @@
     
     cell.textLabel.text = [student1 description];
     
+    //设置字体大小
+//    cell.textLabel.font = [UIFont systemFontOfSize:30];
+    
+    //设置cell高度
+    self.tableView.rowHeight = 100;
+    
+    //设置accessorytype符号
+    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    
+    //设置字体颜色
+    cell.textLabel.textColor = [UIColor redColor];
+    
     return cell;
 }
 
