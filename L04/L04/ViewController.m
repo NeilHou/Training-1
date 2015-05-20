@@ -27,12 +27,17 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
 
 }
 
 - (NSArray *)studentsArray {
     if (!_studentsArray) {
-        _studentsArray = @[@"Wu yuke", @"Bao yuanshen", @"Yuan bo", @"Hou jianlei", @"Zhu jianbo"];
+        _studentsArray = @[@"Wu yuke", @"Bao yuanshen", @"Yuan bo", @"Hou jianlei", @"Zhu jianbo",
+                           @"Wu yuke", @"Bao yuanshen", @"Yuan bo", @"Hou jianlei", @"Zhu jianbo",
+                           @"Wu yuke", @"Bao yuanshen", @"Yuan bo", @"Hou jianlei", @"Zhu jianbo",
+                           @"Wu yuke", @"Bao yuanshen", @"Yuan bo", @"Hou jianlei", @"Zhu jianbo"];
     }
     return  _studentsArray;
 }
@@ -42,7 +47,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     NSString *string = self.studentsArray[indexPath.row];
     cell.textLabel.text = string;
     
