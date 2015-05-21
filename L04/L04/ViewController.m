@@ -44,6 +44,8 @@
             // 初始化 student
             Student *student = [Student new];
             
+            student.name = @"bo";
+            
             //TODO: 自定义学生变量 name age id
             
             
@@ -64,9 +66,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    NSString *string = self.studentsArray[indexPath.row];
-    cell.textLabel.text = string;
     
+    Student *student1 = self.studentsArray[indexPath.row];
+//    NSString *string = student1;
+    cell.textLabel.text = [student1 description];
+    cell.textLabel.font = [UIFont systemFontOfSize:59];
+    
+    self.tableView.rowHeight = 100;
+    
+    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+
+    cell.textLabel.textColor = [UIColor redColor];
+
     return cell;
 }
 

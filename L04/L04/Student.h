@@ -12,6 +12,6 @@
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *age;
-@property (strong, nonatomic) NSString *studentID;
+@property (strong, nonatomic) NSString *studentId;
 
 @end
