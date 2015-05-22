@@ -55,14 +55,6 @@
         for (int i =0; i < 5; i++) {
             // 初始化 student
             Student *student = [Student randomItem];
-            
-//            student.name =  @"朱剑波";
-//            student.age = @"24";
-//            student.studentId = @"100603170";
-//            student.studentClass = @"一年级";
-//            student.hobby = @"篮球";
-            //TODO: 自定义学生变量 name age id
-            
 
             // 添加到数组
             [array addObject:student];
@@ -86,11 +78,22 @@
     Student *student = self.studentsArray[indexPath.row];
     
     // 自定义cell 信息
-    cell.imageView.image = [UIImage imageNamed:@"student_01.jpg"];
+    cell.imageView.image = student.image;
+    
     cell.idLabel.text = student.studentId;
+    [cell.idLabel sizeToFit];
+    
     cell.nameLabel.text = student.name;
+    [cell.nameLabel sizeToFit];
+    
     cell.classLabel.text = student.studentClass;
+    [cell.classLabel sizeToFit];
+    
+    cell.ageLabel.text = student.age;
+    [cell.ageLabel sizeToFit];
+    
     cell.timeLabel.text = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];// stringWithFormat
+    [cell.timeLabel sizeToFit];
     
     //设置字体大小
 //    cell.textLabel.font = [UIFont systemFontOfSize:30];
