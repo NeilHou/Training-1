@@ -78,20 +78,21 @@
     Student *student = self.studentsArray[indexPath.row];
     
     // 自定义cell 信息
-    cell.imageView.image = student.image;
-    
+    //设置图片
+    cell.mugshotImageVIew.image = student.image;
+    //设置ID
     cell.idLabel.text = student.studentId;
     [cell.idLabel sizeToFit];
-    
+    //设置name
     cell.nameLabel.text = student.name;
     [cell.nameLabel sizeToFit];
-    
+    //设置class
     cell.classLabel.text = student.studentClass;
     [cell.classLabel sizeToFit];
-    
+    //设置age
     cell.ageLabel.text = student.age;
     [cell.ageLabel sizeToFit];
-    
+    //设置时间
     cell.timeLabel.text = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];// stringWithFormat
     [cell.timeLabel sizeToFit];
     

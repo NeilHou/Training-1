@@ -49,7 +49,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="dTB-op-B10" userLabel="mugshot">
-                        <rect key="frame" x="20" y="8" width="50" height="50"/>
+                        <rect key="frame" x="12" y="8" width="66" height="59"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
                 </subviews>
@@ -62,7 +62,7 @@
                 <outlet property="nameLabel" destination="b8A-lB-r2p" id="4oq-Aq-uBf"/>
                 <outlet property="timeLabel" destination="NC7-XE-TYc" id="cDi-9A-NP5"/>
             </connections>
-            <point key="canvasLocation" x="287" y="287"/>
+            <point key="canvasLocation" x="628" y="143"/>
         </tableViewCell>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
