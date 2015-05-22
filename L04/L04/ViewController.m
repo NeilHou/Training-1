@@ -42,13 +42,19 @@
         // 循环5次 生成5个student
         for (int i =0; i < 5; i++) {
             // 初始化 student
-            Student *student = [Student new];
+            Student *student = [Student randomItem];
             
+//            student.name =  @"朱剑波";
+//            student.age = @"24";
+//            student.studentId = @"100603170";
+//            student.studentClass = @"一年级";
+//            student.hobby = @"篮球";
             //TODO: 自定义学生变量 name age id
             
-            
+
             // 添加到数组
             [array addObject:student];
+       
         }
         
         _studentsArray = [array copy];
@@ -64,9 +70,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    NSString *string = self.studentsArray[indexPath.row];
-    cell.textLabel.text = string;
     
+    Student *student1 = self.studentsArray[indexPath.row];
+    
+    cell.textLabel.text = [student1 description];
+    
+    //设置字体大小
+//    cell.textLabel.font = [UIFont systemFontOfSize:30];
+    
+    //设置cell高度
+    self.tableView.rowHeight = 100;
+    
+    //设置accessorytype符号
+    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+    
+    //设置字体颜色
+    cell.textLabel.textColor = [UIColor redColor];
+    //sss
     return cell;
 }
 

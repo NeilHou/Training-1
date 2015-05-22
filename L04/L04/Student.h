@@ -1,17 +1,19 @@
 //
 //  Student.h
-//  L04
+//  L02
 //
-//  Created by Hanguang on 5/20/15.
-//  Copyright (c) 2015 Hanguang. All rights reserved.
+//  Created by MrMessy on 15/5/15.
+//  Copyright (c) 2015年 MrMessy. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
 @interface Student : NSObject
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *age;
+@property (nonatomic, strong) NSString *studentId;
+@property (nonatomic, strong) NSString *studentClass;
+@property (nonatomic, strong) NSString *hobby;
 
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *age;
-@property (strong, nonatomic) NSString *studentID;
-
++(instancetype)randomItem;
 @end

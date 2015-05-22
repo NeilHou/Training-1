@@ -14,7 +14,7 @@
 		027B9FC01B0C2B9000B58B52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027B9FBF1B0C2B9000B58B52 /* Images.xcassets */; };
 		027B9FC31B0C2B9000B58B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 027B9FC11B0C2B9000B58B52 /* LaunchScreen.xib */; };
 		027B9FCF1B0C2B9000B58B52 /* L04Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FCE1B0C2B9000B58B52 /* L04Tests.m */; };
-		027B9FDA1B0C39B600B58B52 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FD91B0C39B600B58B52 /* Student.m */; };
+		1F9F96D21B0C63A600619302 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F96D11B0C63A600619302 /* Student.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +41,8 @@
 		027B9FC81B0C2B9000B58B52 /* L04Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = L04Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		027B9FCD1B0C2B9000B58B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		027B9FCE1B0C2B9000B58B52 /* L04Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = L04Tests.m; sourceTree = "<group>"; };
-		027B9FD81B0C39B600B58B52 /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
-		027B9FD91B0C39B600B58B52 /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		1F9F96D01B0C63A600619302 /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		1F9F96D11B0C63A600619302 /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,12 +84,12 @@
 		027B9FB11B0C2B9000B58B52 /* L04 */ = {
 			isa = PBXGroup;
 			children = (
+				1F9F96D01B0C63A600619302 /* Student.h */,
+				1F9F96D11B0C63A600619302 /* Student.m */,
 				027B9FB61B0C2B9000B58B52 /* AppDelegate.h */,
 				027B9FB71B0C2B9000B58B52 /* AppDelegate.m */,
 				027B9FB91B0C2B9000B58B52 /* ViewController.h */,
 				027B9FBA1B0C2B9000B58B52 /* ViewController.m */,
-				027B9FD81B0C39B600B58B52 /* Student.h */,
-				027B9FD91B0C39B600B58B52 /* Student.m */,
 				027B9FBC1B0C2B9000B58B52 /* Main.storyboard */,
 				027B9FBF1B0C2B9000B58B52 /* Images.xcassets */,
 				027B9FC11B0C2B9000B58B52 /* LaunchScreen.xib */,
@@ -227,7 +227,7 @@
 				027B9FBB1B0C2B9000B58B52 /* ViewController.m in Sources */,
 				027B9FB81B0C2B9000B58B52 /* AppDelegate.m in Sources */,
 				027B9FB51B0C2B9000B58B52 /* main.m in Sources */,
-				027B9FDA1B0C39B600B58B52 /* Student.m in Sources */,
+				1F9F96D21B0C63A600619302 /* Student.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +422,7 @@
 				027B9FD41B0C2B9000B58B52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		027B9FD51B0C2B9000B58B52 /* Build configuration list for PBXNativeTarget "L04Tests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +431,7 @@
 				027B9FD71B0C2B9000B58B52 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
