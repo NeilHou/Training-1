@@ -61,11 +61,11 @@
     }
     return  _studentsArray;
 }
-
+//push
 
 #pragma mark - Tableview delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.studentsArray.count;
+    return [self.studentsArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
