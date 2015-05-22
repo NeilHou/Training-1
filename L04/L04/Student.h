@@ -10,6 +10,9 @@
 
 @interface Student : NSObject
 
++(instancetype)randomItem;
+
+
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *age;
 @property (strong, nonatomic) NSString *studentId;

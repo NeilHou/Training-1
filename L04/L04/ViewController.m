@@ -42,9 +42,8 @@
         // 循环5次 生成5个student
         for (int i =0; i < 5; i++) {
             // 初始化 student
-            Student *student = [Student new];
+            Student *student = [Student randomItem];
             
-            student.name = @"bo";
             
             //TODO: 自定义学生变量 name age id
             
