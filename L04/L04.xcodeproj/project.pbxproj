@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		025354541B0ED85000E49741 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 025354521B0ED85000E49741 /* StudentCell.m */; };
+		025354551B0ED85000E49741 /* StudentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 025354531B0ED85000E49741 /* StudentCell.xib */; };
+		0253545B1B0EDB5C00E49741 /* student_01.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 025354571B0EDB5C00E49741 /* student_01.JPG */; };
+		0253545C1B0EDB5C00E49741 /* student_02.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 025354581B0EDB5C00E49741 /* student_02.JPG */; };
+		0253545D1B0EDB5C00E49741 /* student_03.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 025354591B0EDB5C00E49741 /* student_03.JPG */; };
+		0253545E1B0EDB5C00E49741 /* student_04.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0253545A1B0EDB5C00E49741 /* student_04.JPG */; };
 		027B9FB51B0C2B9000B58B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FB41B0C2B9000B58B52 /* main.m */; };
 		027B9FB81B0C2B9000B58B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FB71B0C2B9000B58B52 /* AppDelegate.m */; };
 		027B9FBB1B0C2B9000B58B52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FBA1B0C2B9000B58B52 /* ViewController.m */; };
@@ -28,6 +34,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		025354511B0ED85000E49741 /* StudentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentCell.h; sourceTree = "<group>"; };
+		025354521B0ED85000E49741 /* StudentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentCell.m; sourceTree = "<group>"; };
+		025354531B0ED85000E49741 /* StudentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentCell.xib; sourceTree = "<group>"; };
+		025354571B0EDB5C00E49741 /* student_01.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_01.JPG; sourceTree = "<group>"; };
+		025354581B0EDB5C00E49741 /* student_02.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_02.JPG; sourceTree = "<group>"; };
+		025354591B0EDB5C00E49741 /* student_03.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_03.JPG; sourceTree = "<group>"; };
+		0253545A1B0EDB5C00E49741 /* student_04.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_04.JPG; sourceTree = "<group>"; };
 		027B9FAF1B0C2B9000B58B52 /* L04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = L04.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		027B9FB31B0C2B9000B58B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		027B9FB41B0C2B9000B58B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,6 +76,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		025354501B0ED82A00E49741 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F9F96D01B0C63A600619302 /* Student.h */,
+				1F9F96D11B0C63A600619302 /* Student.m */,
+				025354511B0ED85000E49741 /* StudentCell.h */,
+				025354521B0ED85000E49741 /* StudentCell.m */,
+				025354531B0ED85000E49741 /* StudentCell.xib */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		025354561B0EDAFA00E49741 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				025354571B0EDB5C00E49741 /* student_01.JPG */,
+				025354581B0EDB5C00E49741 /* student_02.JPG */,
+				025354591B0EDB5C00E49741 /* student_03.JPG */,
+				0253545A1B0EDB5C00E49741 /* student_04.JPG */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		027B9FA61B0C2B9000B58B52 = {
 			isa = PBXGroup;
 			children = (
@@ -84,8 +120,8 @@
 		027B9FB11B0C2B9000B58B52 /* L04 */ = {
 			isa = PBXGroup;
 			children = (
-				1F9F96D01B0C63A600619302 /* Student.h */,
-				1F9F96D11B0C63A600619302 /* Student.m */,
+				025354561B0EDAFA00E49741 /* Images */,
+				025354501B0ED82A00E49741 /* Model */,
 				027B9FB61B0C2B9000B58B52 /* AppDelegate.h */,
 				027B9FB71B0C2B9000B58B52 /* AppDelegate.m */,
 				027B9FB91B0C2B9000B58B52 /* ViewController.h */,
@@ -204,9 +240,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0253545D1B0EDB5C00E49741 /* student_03.JPG in Resources */,
+				0253545C1B0EDB5C00E49741 /* student_02.JPG in Resources */,
 				027B9FBE1B0C2B9000B58B52 /* Main.storyboard in Resources */,
 				027B9FC31B0C2B9000B58B52 /* LaunchScreen.xib in Resources */,
 				027B9FC01B0C2B9000B58B52 /* Images.xcassets in Resources */,
+				0253545B1B0EDB5C00E49741 /* student_01.JPG in Resources */,
+				0253545E1B0EDB5C00E49741 /* student_04.JPG in Resources */,
+				025354551B0ED85000E49741 /* StudentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				027B9FBB1B0C2B9000B58B52 /* ViewController.m in Sources */,
+				025354541B0ED85000E49741 /* StudentCell.m in Sources */,
 				027B9FB81B0C2B9000B58B52 /* AppDelegate.m in Sources */,
 				027B9FB51B0C2B9000B58B52 /* main.m in Sources */,
 				1F9F96D21B0C63A600619302 /* Student.m in Sources */,

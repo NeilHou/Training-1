@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "Student.h"
+#import "StudentCell.h"
 //ssssss
 //test2
 
@@ -31,8 +32,10 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.rowHeight = 100;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    [self.tableView registerClass:[StudentCell class] forCellReuseIdentifier:@"StudentCell"];
 
 }
 
@@ -71,27 +74,35 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    StudentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StudentCell" forIndexPath:indexPath];
+    Student *student = self.studentsArray[indexPath.row];
     
-    Student *student1 = self.studentsArray[indexPath.row];
-    
-    cell.textLabel.text = [student1 description];
+    // 自定义cell 信息
+    cell.imageView.image = [UIImage imageNamed:@"student_01.jpg"];
+    cell.idLabel.text = student.studentId;
+    cell.nameLabel.text = student.name;
+    cell.classLabel.text = student.studentClass;
+    cell.timeLabel.text = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];// stringWithFormat
     
     //设置字体大小
 //    cell.textLabel.font = [UIFont systemFontOfSize:30];
     
     //设置cell高度
-    self.tableView.rowHeight = 100;
-    
-    //设置accessorytype符号
-    cell.accessoryType = UITableViewCellAccessoryDetailButton;
-    
-    //设置字体颜色
-    cell.textLabel.textColor = [UIColor redColor];
-    //sss
+//
+//    
+//    //设置accessorytype符号
+//    cell.accessoryType = UITableViewCellAccessoryDetailButton;
+//    
+//    //设置字体颜色
+//    cell.textLabel.textColor = [UIColor redColor];
+//    //sss
     return cell;
 }
 
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return 44.f;
+//}
 
 
 - (void)didReceiveMemoryWarning {
