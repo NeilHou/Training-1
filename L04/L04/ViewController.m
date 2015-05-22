@@ -34,8 +34,15 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 100;
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
-    [self.tableView registerClass:[StudentCell class] forCellReuseIdentifier:@"StudentCell"];
+    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    
+    // Load the NIB file
+    UINib *nib = [UINib nibWithNibName:@"StudentCell" bundle:nil];
+    
+    // Register this NIB, which contains the cell
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"StudentCell"];
+
+    //[self.tableView registerClass:[StudentCell class] forCellReuseIdentifier:@"StudentCell"];
 
 }
 
