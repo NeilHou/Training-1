@@ -44,9 +44,7 @@
             // 初始化 student
             Student *student = [Student randomItem];
             
-            
-            //TODO: 自定义学生变量 name age id
-            
+    
             
             // 添加到数组
             [array addObject:student];
