@@ -17,5 +17,7 @@
 @property (nonatomic, strong) NSString *hobby;
 @property (nonatomic, retain) UIImage *image;
 
-+(instancetype)randomItem;
+//+(instancetype)randomItem;
+
++ (instancetype) studentsCard:(int) value;
 @end

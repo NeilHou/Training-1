@@ -10,17 +10,17 @@
 
 @implementation Student
 
-- (NSString *)description
-{
-    NSString *descriptionString =
-    [[NSString alloc] initWithFormat:@"%@(%@) 学号:%@ 年级:%@ %@",
-     self.name,
-     self.age,
-     self.studentId,
-     self.studentClass,
-     self.hobby];
-    return descriptionString;
-}
+//- (NSString *)description
+//{
+//    NSString *descriptionString =
+//    [[NSString alloc] initWithFormat:@"%@(%@) 学号:%@ 年级:%@ %@",
+//     self.name,
+//     self.age,
+//     self.studentId,
+//     self.studentClass,
+//     self.hobby];
+//    return descriptionString;
+//}
 
 //+(instancetype)randomItem{
 //    
@@ -59,4 +59,22 @@
 //
 //    return jb;
 //}
+
++ (instancetype) studentsCard:(int) value{
+    
+    NSArray *nameNumber = @[@"鲍远申",@"袁波",@"侯建磊",@"朱剑波"];
+    NSArray *randomAge = @[@"23",@"24",@"25",@"23"];
+    NSArray *randomId = @[@"1006030",@"1006040",@"1006050",@"1006060"];
+    NSArray *classNumber = @[@"一年级",@"二年级",@"三年级",@"四年级"];
+    NSArray *studentImage = @[@"student_01.JPG",@"student_02.JPG",@"student_03.JPG",@"student_04.JPG"];
+    
+    Student *student = [[Student alloc] init];
+    student.name = nameNumber[value];
+    student.age = randomAge[value];
+    student.studentId = randomId[value];
+    student.studentClass = classNumber[value];
+    student.image = [UIImage imageNamed:studentImage[value]];
+    return student;
+
+}
 @end

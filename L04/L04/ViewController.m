@@ -54,24 +54,11 @@
         // 循环5次 生成5个student
         for (int i =0; i < 4; i++) {
             // 初始化 student
-            NSArray *nameNumber = @[@"鲍远申",@"袁波",@"侯建磊",@"朱剑波"];
-            NSArray *randomAge = @[@"23",@"24",@"25",@"23"];
-            NSArray *randomId = @[@"1006030",@"1006040",@"1006050",@"1006060"];
-            NSArray *classNumber = @[@"一年级",@"二年级",@"三年级",@"四年级"];
-            NSArray *studentImage = @[@"student_01.JPG",@"student_02.JPG",@"student_03.JPG",@"student_04.JPG"];
-            
-            Student *student = [[Student alloc] init];
-            student.name = nameNumber[i];
-            student.age = randomAge[i];
-            student.studentId = randomId[i];
-            student.studentClass = classNumber[i];
-            student.image = [UIImage imageNamed:studentImage[i]];
+            Student *student = [Student studentsCard:i];
 
             // 添加到数组
             [array addObject:student];
-       
         }
-        
         _studentsArray = [array copy];
     }
     return  _studentsArray;
@@ -108,18 +95,7 @@
     cell.timeLabel.text = [NSString stringWithFormat:@"%@",[NSDate date]];// stringWithFormat
     [cell.timeLabel sizeToFit];
     
-    //设置字体大小[
-//    cell.textLabel.font = [UIFont systemFontOfSize:30];
     
-    //设置cell高度
-//
-//    
-//    //设置accessorytype符号
-//    cell.accessoryType = UITableViewCellAccessoryDetailButton;
-//    
-//    //设置字体颜色
-//    cell.textLabel.textColor = [UIColor redColor];
-//    //sss
     return cell;
 }
 
