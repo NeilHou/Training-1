@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Student.h"
 #import "StudentCell.h"
+#import "DetailViewController.h"
 //ssssss
 //test2
 
@@ -24,10 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    CGRect frame = self.view.bounds;
+//    CGRect frame = self.view.bounds;
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y + 40,
-                                                                   frame.size.width, frame.size.height - 40)];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_tableView];
     
     self.tableView.delegate = self;
@@ -99,14 +99,17 @@
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 44.f;
-//}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+    
+    Student *selectedStudent = self.studentsArray[indexPath.row];
+    
+    detailViewController.student = selectedStudent;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+
 
 @end
