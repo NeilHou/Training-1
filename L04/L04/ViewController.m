@@ -92,7 +92,11 @@
     cell.idLabel.text = student.studentId;
     cell.nameLabel.text = student.name;
     cell.classLabel.text = student.studentClass;
-    cell.timeLabel.text = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];// stringWithFormat
+//    cell.timeLabel.text = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];// stringWithFormat
+    cell.ageLabel.text = student.age;
+    cell.timeLabel.text =[NSString stringWithFormat:@"%@",[NSDate date]];
+    
+  
     
     //设置字体大小
 //    cell.textLabel.font = [UIFont systemFontOfSize:30];
