@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Student : NSObject
 @property (nonatomic, strong) NSString *name;
@@ -14,6 +15,6 @@
 @property (nonatomic, strong) NSString *studentId;
 @property (nonatomic, strong) NSString *studentClass;
 @property (nonatomic, strong) NSString *hobby;
-
+@property (nonatomic) UIImage *image;
 +(instancetype)randomItem;
 @end

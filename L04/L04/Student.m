@@ -7,6 +7,7 @@
 //
 
 #import "Student.h"
+#import <UIKit/UIKit.h>
 
 @implementation Student
 
@@ -29,7 +30,10 @@
     NSArray *randomId = @[@"1006030",@"1006040",@"1006050"];
     NSArray *classNumber = @[@"一年级",@"二年级",@"三年级"];
     NSArray *hobbyNumber = @[@"篮球",@"足球",@"网球"];
+    NSArray *imageArray = @[@"student_01.jpg",@"student_02.jpg",@"student_03.jpg",@"student_04.jpg"];
     
+    
+    NSInteger imageIndex = arc4random() % [imageArray count];
     NSInteger nameIndex = arc4random() % [nameNumber count];
     NSInteger ageIndex = arc4random() % [randomAge count];
     NSInteger idIndex = arc4random() % [randomId count];
@@ -46,7 +50,12 @@
     
     NSString *randomHobbyNumber = [NSString stringWithFormat:@"%@",hobbyNumber[hobbyIndex]];
     
+    NSString *randomImage = [NSString stringWithFormat:@"%@",imageArray[imageIndex]];
+    
+    
+    
     Student *jb = [[Student alloc]init];
+    jb.image = [UIImage imageNamed:randomImage];
     jb.name = randomNameNumber;
     jb.age = randomAgeNumber;
     jb.studentId = randomIdNumber;

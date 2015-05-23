@@ -9,8 +9,8 @@
 #import "ViewController.h"
 #import "Student.h"
 #import "StudentCell.h"
-//ssssss
-//test2
+#import <UIKit/UIKit.h>
+
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>;
 @property (strong, nonatomic) UITableView *tableView;
@@ -85,8 +85,10 @@
     StudentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StudentCell" forIndexPath:indexPath];
     Student *student = self.studentsArray[indexPath.row];
     
+    
+    
     // 自定义cell 信息
-    cell.imageView.image = [UIImage imageNamed:@"student_01.jpg"];
+    cell.mugshotImageVIew.image = student.image;
     cell.idLabel.text = student.studentId;
     cell.nameLabel.text = student.name;
     cell.classLabel.text = student.studentClass;
