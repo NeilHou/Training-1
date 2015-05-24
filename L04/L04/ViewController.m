@@ -26,6 +26,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 //    CGRect frame = self.view.bounds;
+    self.navigationController.navigationBarHidden = YES;
+    //self.navigationItem.title = @"老师好";
+    
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"学生"
+                                                                       style:UIBarButtonItemStylePlain
+                                                                      target:self action:@selector(showInfo)];
+    self.navigationItem.rightBarButtonItem = rightBarButton;
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_tableView];
@@ -50,6 +57,13 @@
     [super viewWillAppear:animated];
     [self.tableView reloadData];
     
+}
+
+
+#pragma mark - Button methods
+
+- (void)showInfo {
+    NSLog(@"我了个去啊");
 }
 
 #pragma mark - Getter
@@ -111,6 +125,7 @@
     Student *selectedStudent = self.studentsArray[indexPath.row];
     
     detailViewController.student = selectedStudent;
+    
     
     [self.navigationController pushViewController:detailViewController animated:YES];
 

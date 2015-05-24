@@ -28,7 +28,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    self.navigationController.navigationBarHidden = NO;
     Student *student = self.student;
     
     self.nameLabel.text = student.name;
@@ -54,6 +54,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     NSLog(@"Student age: %@", self.student.age);
+    self.navigationController.navigationBarHidden = YES;
 }
 
 @end
