@@ -46,6 +46,12 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
+    
+}
+
 #pragma mark - Getter
 - (NSArray *)studentsArray {
     if (!_studentsArray) {
@@ -95,7 +101,7 @@
     cell.timeLabel.text = [NSString stringWithFormat:@"%@",[NSDate date]];// stringWithFormat
     [cell.timeLabel sizeToFit];
     
-    
+    NSLog(@"Student age: %@", student.age);
     return cell;
 }
 

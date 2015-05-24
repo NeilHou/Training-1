@@ -22,6 +22,10 @@
 
 @implementation DetailViewController
 
+- (void)viewDidLoad {
+    self.student.age = @"100";
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -45,6 +49,11 @@
     self.image.image = student.image;
     
 
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    NSLog(@"Student age: %@", self.student.age);
 }
 
 @end
