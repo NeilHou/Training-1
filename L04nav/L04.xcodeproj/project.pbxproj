@@ -23,6 +23,7 @@
 		1F9F96D21B0C63A600619302 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F96D11B0C63A600619302 /* Student.m */; };
 		1FF9CDB11B1054DB00C325C3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9CDAF1B1054DB00C325C3 /* DetailViewController.m */; };
 		1FF9CDB21B1054DB00C325C3 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF9CDB01B1054DB00C325C3 /* DetailViewController.xib */; };
+		80103A4C1B11FA7B009BEB7D /* student_05.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 80103A4B1B11FA7A009BEB7D /* student_05.JPG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		1FF9CDAE1B1054DB00C325C3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		1FF9CDAF1B1054DB00C325C3 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		1FF9CDB01B1054DB00C325C3 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		80103A4B1B11FA7A009BEB7D /* student_05.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_05.JPG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		025354561B0EDAFA00E49741 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				80103A4B1B11FA7A009BEB7D /* student_05.JPG */,
 				025354571B0EDB5C00E49741 /* student_01.JPG */,
 				025354581B0EDB5C00E49741 /* student_02.JPG */,
 				025354591B0EDB5C00E49741 /* student_03.JPG */,
@@ -250,6 +253,7 @@
 			files = (
 				0253545D1B0EDB5C00E49741 /* student_03.JPG in Resources */,
 				0253545C1B0EDB5C00E49741 /* student_02.JPG in Resources */,
+				80103A4C1B11FA7B009BEB7D /* student_05.JPG in Resources */,
 				027B9FBE1B0C2B9000B58B52 /* Main.storyboard in Resources */,
 				027B9FC31B0C2B9000B58B52 /* LaunchScreen.xib in Resources */,
 				1FF9CDB21B1054DB00C325C3 /* DetailViewController.xib in Resources */,

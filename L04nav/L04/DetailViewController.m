@@ -23,7 +23,15 @@
 @implementation DetailViewController
 
 - (void)viewDidLoad {
-    self.student.age = @"100";
+    //change name & age &image in detailviewcontroller
+    NSString *cage = @"20";
+    self.student.age = cage;
+    
+    NSString *cname = @"我是谁";
+    self.student.name = cname;
+    
+    self.student.image =[UIImage imageNamed:@"student_05.JPG"];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -49,6 +57,8 @@
     self.image.image = student.image;
     
     self.navigationItem.title =[NSString stringWithString:student.name];
+    
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

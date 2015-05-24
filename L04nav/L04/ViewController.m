@@ -57,6 +57,10 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"StudentCell"];
 
     //[self.tableView registerClass:[StudentCell class] forCellReuseIdentifier:@"StudentCell"];
+    
+    
+    //修复导航栏遮挡问题。
+    self.navigationController.navigationBar.translucent = NO;
 
 }
 
@@ -64,6 +68,7 @@
     [super viewWillAppear:animated];
     [self.tableView reloadData];
     self.navigationController.navigationBarHidden = NO;
+    
 }
 
 
