@@ -21,6 +21,9 @@
 		027B9FC31B0C2B9000B58B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 027B9FC11B0C2B9000B58B52 /* LaunchScreen.xib */; };
 		027B9FCF1B0C2B9000B58B52 /* L04Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FCE1B0C2B9000B58B52 /* L04Tests.m */; };
 		1F9F96D21B0C63A600619302 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F96D11B0C63A600619302 /* Student.m */; };
+		80103A451B116831009BEB7D /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 80103A441B116831009BEB7D /* Teacher.m */; };
+		80103A491B116860009BEB7D /* TeacherCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 80103A471B116860009BEB7D /* TeacherCellTableViewCell.m */; };
+		80103A4A1B116860009BEB7D /* TeacherCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80103A481B116860009BEB7D /* TeacherCellTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,11 @@
 		027B9FCE1B0C2B9000B58B52 /* L04Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = L04Tests.m; sourceTree = "<group>"; };
 		1F9F96D01B0C63A600619302 /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
 		1F9F96D11B0C63A600619302 /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		80103A431B116831009BEB7D /* Teacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.h; sourceTree = "<group>"; };
+		80103A441B116831009BEB7D /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
+		80103A461B116860009BEB7D /* TeacherCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherCellTableViewCell.h; sourceTree = "<group>"; };
+		80103A471B116860009BEB7D /* TeacherCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherCellTableViewCell.m; sourceTree = "<group>"; };
+		80103A481B116860009BEB7D /* TeacherCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeacherCellTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +92,11 @@
 				025354511B0ED85000E49741 /* StudentCell.h */,
 				025354521B0ED85000E49741 /* StudentCell.m */,
 				025354531B0ED85000E49741 /* StudentCell.xib */,
+				80103A431B116831009BEB7D /* Teacher.h */,
+				80103A441B116831009BEB7D /* Teacher.m */,
+				80103A461B116860009BEB7D /* TeacherCellTableViewCell.h */,
+				80103A471B116860009BEB7D /* TeacherCellTableViewCell.m */,
+				80103A481B116860009BEB7D /* TeacherCellTableViewCell.xib */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -242,6 +255,7 @@
 			files = (
 				0253545D1B0EDB5C00E49741 /* student_03.JPG in Resources */,
 				0253545C1B0EDB5C00E49741 /* student_02.JPG in Resources */,
+				80103A4A1B116860009BEB7D /* TeacherCellTableViewCell.xib in Resources */,
 				027B9FBE1B0C2B9000B58B52 /* Main.storyboard in Resources */,
 				027B9FC31B0C2B9000B58B52 /* LaunchScreen.xib in Resources */,
 				027B9FC01B0C2B9000B58B52 /* Images.xcassets in Resources */,
@@ -265,7 +279,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80103A451B116831009BEB7D /* Teacher.m in Sources */,
 				027B9FBB1B0C2B9000B58B52 /* ViewController.m in Sources */,
+				80103A491B116860009BEB7D /* TeacherCellTableViewCell.m in Sources */,
 				025354541B0ED85000E49741 /* StudentCell.m in Sources */,
 				027B9FB81B0C2B9000B58B52 /* AppDelegate.m in Sources */,
 				027B9FB51B0C2B9000B58B52 /* main.m in Sources */,
