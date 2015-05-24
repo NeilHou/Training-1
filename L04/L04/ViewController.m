@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Student.h"
 #import "StudentCell.h"
+#import "DetailViewController.h"
 //ssssss
 //test2
 
@@ -24,10 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    CGRect frame = self.view.bounds;
+//    CGRect frame = self.view.bounds;
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y + 40,
-                                                                   frame.size.width, frame.size.height - 40)];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:_tableView];
     
     self.tableView.delegate = self;
@@ -52,23 +52,13 @@
         // 生成可变数组
         NSMutableArray *array = [NSMutableArray array];
         // 循环5次 生成5个student
-        for (int i =0; i < 5; i++) {
+        for (int i =0; i < 4; i++) {
             // 初始化 student
-            Student *student = [Student randomItem];
-            
-//            student.name =  @"朱剑波";
-//            student.age = @"24";
-//            student.studentId = @"100603170";
-//            student.studentClass = @"一年级";
-//            student.hobby = @"篮球";
-            //TODO: 自定义学生变量 name age id
-            
+            Student *student = [Student studentsCard:i];
 
             // 添加到数组
             [array addObject:student];
-       
         }
-        
         _studentsArray = [array copy];
     }
     return  _studentsArray;
@@ -86,35 +76,40 @@
     Student *student = self.studentsArray[indexPath.row];
     
     // 自定义cell 信息
-    cell.imageView.image = [UIImage imageNamed:@"student_01.jpg"];
-    cell.idLabel.text = student.studentId;
+    //设置name
     cell.nameLabel.text = student.name;
+    [cell.nameLabel sizeToFit];
+    //设置age
+    cell.ageLabel.text = student.age;
+    [cell.ageLabel sizeToFit];
+    //设置ID
+    cell.idLabel.text = student.studentId;
+    [cell.idLabel sizeToFit];
+    //设置class
     cell.classLabel.text = student.studentClass;
-    cell.timeLabel.text = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];// stringWithFormat
+    [cell.classLabel sizeToFit];
+     //设置图片
+    cell.mugshotImageVIew.image = student.image;
+    //设置时间
+//  cell.timeLabel.text = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];
+    cell.timeLabel.text = [NSString stringWithFormat:@"%@",[NSDate date]];// stringWithFormat
+    [cell.timeLabel sizeToFit];
     
-    //设置字体大小
-//    cell.textLabel.font = [UIFont systemFontOfSize:30];
     
-    //设置cell高度
-//
-//    
-//    //设置accessorytype符号
-//    cell.accessoryType = UITableViewCellAccessoryDetailButton;
-//    
-//    //设置字体颜色
-//    cell.textLabel.textColor = [UIColor redColor];
-//    //sss
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 44.f;
-//}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+    
+    Student *selectedStudent = self.studentsArray[indexPath.row];
+    
+    detailViewController.student = selectedStudent;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+
 
 @end
