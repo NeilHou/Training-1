@@ -89,69 +89,72 @@
 }
 
 #pragma mark - Getter
-- (NSArray *)studentsArray {
-    if (!_studentsArray) {
-        // 生成可变数组
-        NSMutableArray *array = [NSMutableArray array];
-        // 循环5次 生成5个student
-        for (int i =0; i < 4; i++) {
-            // 初始化 student
-            Student *student = [Student studentsCard:i];
-
-            // 添加到数组
-            [array addObject:student];
-        }
-        _studentsArray = [array copy];
-    }
-    return  _studentsArray;
-}
-//push
+//- (NSArray *)studentsArray {
+//    if (!_studentsArray) {
+//        // 生成可变数组
+//        NSMutableArray *array = [NSMutableArray array];
+//        // 循环5次 生成5个student
+//        for (int i =0; i < 4; i++) {
+//            // 初始化 student
+//            Student *student = [Student studentsCard:i];
+//
+//            // 添加到数组
+//            [array addObject:student];
+//        }
+//        _studentsArray = [array copy];
+//    }
+//    return  _studentsArray;
+//}
 
 #pragma mark - Tableview delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.studentsArray count];
+    //更改section的数量
+    //return [self.studentsArray count];
+    return self.jsonArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     StudentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"StudentCell" forIndexPath:indexPath];
-    Student *student = self.studentsArray[indexPath.row];
+//    Student *student = self.studentsArray[indexPath.row];
+//    ViewController *jsonItem = self.jsonArray[indexPath.row];
+    NSDictionary *dict = self.jsonArray[indexPath.row];
     
-    // 自定义cell 信息
+    // 自定义cell 信息，改为从服务器抓取
     //设置name
-    cell.nameLabel.text = student.name;
+    cell.nameLabel.text =[NSString stringWithFormat:@"%@", dict[@"username"]];
     [cell.nameLabel sizeToFit];
     //设置age
-    cell.ageLabel.text = student.age;
+    cell.ageLabel.text = [NSString stringWithFormat:@"%@",dict[@"avg_rating"]];
     [cell.ageLabel sizeToFit];
     //设置ID
-    cell.idLabel.text = student.studentId;
+    cell.idLabel.text = [NSString stringWithFormat:@"%@",dict[@"id"]];
     [cell.idLabel sizeToFit];
     //设置class
-    cell.classLabel.text = student.studentClass;
+    cell.classLabel.text = [NSString stringWithFormat:@"%@",dict[@"note"]];
     [cell.classLabel sizeToFit];
      //设置图片
-    cell.mugshotImageVIew.image = student.image;
+//    cell.mugshotImageVIew.image = student.image;
     //设置时间
 //  cell.timeLabel.text = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];
     cell.timeLabel.text = [NSString stringWithFormat:@"%@",[NSDate date]];// stringWithFormat
     [cell.timeLabel sizeToFit];
     
-    NSLog(@"Student age: %@", student.age);
+    
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    DetailViewController *detailViewController = [[DetailViewController alloc] init];
-    
-    Student *selectedStudent = self.studentsArray[indexPath.row];
-    
-    detailViewController.student = selectedStudent;
-    
-    
-    [self.navigationController pushViewController:detailViewController animated:YES];
-
-}
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+//    
+//    Student *selectedStudent = self.studentsArray[indexPath.row];
+//    
+//    detailViewController.student = selectedStudent;
+//    
+//    
+//    [self.navigationController pushViewController:detailViewController animated:YES];
+//
+//}
 
 
 
