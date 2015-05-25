@@ -10,12 +10,13 @@
 #import "Student.h"
 #import "StudentCell.h"
 #import "DetailViewController.h"
-//ssssss
-//test2
+#import "AFNetworking.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray *studentsArray;
+//建一个接受json数据的集合
+@property (strong, nonatomic) NSArray *jsonArray;
 
 @end
 
@@ -51,6 +52,27 @@
 
     //[self.tableView registerClass:[StudentCell class] forCellReuseIdentifier:@"StudentCell"];
 
+    [self loadReviews];
+}
+
+//写一个读取网络内容的方法
+- (void) loadReviews
+{
+    //初始化jsonArray
+    self.jsonArray = [NSArray new];
+    AFHTTPRequestOperationManager *manager= [AFHTTPRequestOperationManager manager];
+    NSString *URL = @"http://api.staging.kangyu.co/v2/hospitals/206/reviews";
+    
+    [manager GET:URL parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if (responseObject) {
+            self.jsonArray = responseObject;
+        }
+        //抓取信息后刷新
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog (@"网页内容抓取失败");
+    }];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
