@@ -22,8 +22,38 @@
 
 @implementation DetailViewController
 
+- (IBAction)Back:(UIButton *)sender {
+    NSLog(@"教练，我想回到上一层");
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void)viewDidLoad {
-    self.student.age = @"100";
+    //将title赋值为学生名字
+    Student *student = self.student;
+    self.student.age = @"520";
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationItem.title = student.name;
+    
+    //创建left button
+    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithTitle:@"换个颜色" style:UIBarButtonItemStylePlain target:self action: @selector  (changeTextColor)];
+    
+    self.navigationItem.leftBarButtonItem = leftbutton;
+    //开启左划返回
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    //同时添加返回键
+    self.navigationItem.leftItemsSupplementBackButton = YES;
+}
+
+- (void)changeTextColor
+{
+    float red = (arc4random() % 100) / 100.0;
+    float green = (arc4random() % 100) / 100.0;
+    float blue = (arc4random() % 100) / 100.0;
+    
+    self.nameLabel.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:0.8];
+    self.ageLabel.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:0.8];
+    self.classLabel.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:0.8];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
