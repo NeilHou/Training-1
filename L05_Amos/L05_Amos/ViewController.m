@@ -1,0 +1,55 @@
+//
+//  ViewController.m
+//  L05_Amos
+//
+//  Created by Amos Wu on 15/6/1.
+//  Copyright (c) 2015年 Amos Wu. All rights reserved.
+//
+
+#import "ViewController.h"
+#import "YKMovieCell.h"
+
+@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
+
+@property (nonatomic, strong) UITableView *tableView;
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view, typically from a nib.
+    
+    CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + 20, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+    [self.view addSubview:_tableView];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight = 165;
+    
+    UINib *nib = [UINib nibWithNibName:@"YKMovieCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"YKMovieCell"];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - TableView methed
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    YKMovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YKMovieCell" forIndexPath:indexPath];
+    
+    return cell;
+}
+
+@end

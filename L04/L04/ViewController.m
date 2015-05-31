@@ -122,7 +122,11 @@
     
     // 自定义cell 信息，改为从服务器抓取
     //设置name
-    cell.nameLabel.text =[NSString stringWithFormat:@"%@", dict[@"username"]];
+    NSString *nameString = dict[@"username"];
+    if ([nameString isEqual:[NSNull null]] || (!nameString.length)) {
+        nameString = @"NOsee";
+    }
+    cell.nameLabel.text =nameString;
     [cell.nameLabel sizeToFit];
     //设置age
     cell.ageLabel.text = [NSString stringWithFormat:@"%@",dict[@"avg_rating"]];
@@ -147,9 +151,11 @@
 //-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 //    DetailViewController *detailViewController = [[DetailViewController alloc] init];
 //    
-//    Student *selectedStudent = self.studentsArray[indexPath.row];
+//    ViewController *selectedStudent = self.jsonArray[indexPath.row];
 //    
-//    detailViewController.student = selectedStudent;
+//    detailViewController *jsonItem = [detailViewController new];
+//    
+//     = self.jsonArray[indexPath.row];
 //    
 //    
 //    [self.navigationController pushViewController:detailViewController animated:YES];
