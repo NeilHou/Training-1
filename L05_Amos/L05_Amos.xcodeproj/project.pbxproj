@@ -18,6 +18,8 @@
 		B0AC30C61B1B744C00DBA9FF /* YKMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0AC30C21B1B744C00DBA9FF /* YKMovieCell.xib */; };
 		B0AC30C71B1B744C00DBA9FF /* YKMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AC30C41B1B744C00DBA9FF /* YKMovie.m */; };
 		B0AC30C91B1B745D00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0AC30C81B1B745D00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */; };
+		B0AC30CF1B1B767300DBA9FF /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AC30CD1B1B767300DBA9FF /* YKDetailViewController.m */; };
+		B0AC30D01B1B767300DBA9FF /* YKDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0AC30CE1B1B767300DBA9FF /* YKDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,9 @@
 		B0AC30C31B1B744C00DBA9FF /* YKMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMovie.h; sourceTree = "<group>"; };
 		B0AC30C41B1B744C00DBA9FF /* YKMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMovie.m; sourceTree = "<group>"; };
 		B0AC30C81B1B745D00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rd_rs_8434eb3a154dd28c145289eab077ce34.jpg; sourceTree = "<group>"; };
+		B0AC30CC1B1B767300DBA9FF /* YKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailViewController.h; sourceTree = "<group>"; };
+		B0AC30CD1B1B767300DBA9FF /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
+		B0AC30CE1B1B767300DBA9FF /* YKDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YKDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +106,7 @@
 				B0AC30A71B1B742B00DBA9FF /* Images.xcassets */,
 				B0AC30C81B1B745D00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */,
 				B0AC30A91B1B742B00DBA9FF /* LaunchScreen.xib */,
-				B0AC30C01B1B744C00DBA9FF /* YKMovieCell.h */,
-				B0AC30C11B1B744C00DBA9FF /* YKMovieCell.m */,
-				B0AC30C21B1B744C00DBA9FF /* YKMovieCell.xib */,
+				B0AC30CB1B1B764800DBA9FF /* Model */,
 				B0AC309A1B1B742B00DBA9FF /* Supporting Files */,
 			);
 			path = L05_Amos;
@@ -133,6 +136,19 @@
 				B0AC30B51B1B742B00DBA9FF /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B0AC30CB1B1B764800DBA9FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B0AC30C01B1B744C00DBA9FF /* YKMovieCell.h */,
+				B0AC30C11B1B744C00DBA9FF /* YKMovieCell.m */,
+				B0AC30C21B1B744C00DBA9FF /* YKMovieCell.xib */,
+				B0AC30CC1B1B767300DBA9FF /* YKDetailViewController.h */,
+				B0AC30CD1B1B767300DBA9FF /* YKDetailViewController.m */,
+				B0AC30CE1B1B767300DBA9FF /* YKDetailViewController.xib */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0AC30C61B1B744C00DBA9FF /* YKMovieCell.xib in Resources */,
+				B0AC30D01B1B767300DBA9FF /* YKDetailViewController.xib in Resources */,
 				B0AC30A61B1B742B00DBA9FF /* Main.storyboard in Resources */,
 				B0AC30AB1B1B742B00DBA9FF /* LaunchScreen.xib in Resources */,
 				B0AC30C91B1B745D00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */,
@@ -242,6 +259,7 @@
 				B0AC30A31B1B742B00DBA9FF /* ViewController.m in Sources */,
 				B0AC30A01B1B742B00DBA9FF /* AppDelegate.m in Sources */,
 				B0AC309D1B1B742B00DBA9FF /* main.m in Sources */,
+				B0AC30CF1B1B767300DBA9FF /* YKDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

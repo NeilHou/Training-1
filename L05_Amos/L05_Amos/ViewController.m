@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "YKMovieCell.h"
+#import "YKDetailViewController.h"
 
 @interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -21,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + 20, self.view.bounds.size.width, self.view.bounds.size.height);
+    CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     
@@ -31,6 +32,9 @@
     
     UINib *nib = [UINib nibWithNibName:@"YKMovieCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"YKMovieCell"];
+    
+    self.navigationItem.title = @"电影列表";
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,8 +52,20 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YKMovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YKMovieCell" forIndexPath:indexPath];
-    
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    YKDetailViewController *detailViewController = [[YKDetailViewController alloc] init];
+    
+//    Student *selectedStudent = self.studentsArray[indexPath.row];
+//    
+//    detailViewController.student = selectedStudent;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
 }
 
 @end
