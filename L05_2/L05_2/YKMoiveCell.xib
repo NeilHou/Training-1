@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -13,11 +14,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rd_rs_8434eb3a154dd28c145289eab077ce34.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4ZZ-sf-ypz" userLabel="Images">
-                        <rect key="frame" x="102" y="1" width="115" height="165"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rd_rs_8434eb3a154dd28c145289eab077ce34.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4ZZ-sf-ypz" userLabel="Images">
+                        <rect key="frame" x="0.0" y="0.0" width="115" height="165"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="115" id="A2W-OW-dxE"/>
+                            <constraint firstAttribute="height" constant="165" id="HgC-1R-MTb"/>
+                        </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AW0-Kn-W9y">
-                        <rect key="frame" x="57" y="1" width="206" height="164"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AW0-Kn-W9y">
+                        <rect key="frame" x="114" y="1" width="206" height="164"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="titleLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3h-hI-EII">
                                 <rect key="frame" x="8" y="4" width="189" height="28"/>
@@ -100,8 +105,25 @@
                         </subviews>
                     </view>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="4ZZ-sf-ypz" secondAttribute="bottom" constant="-7.5" id="3Yf-am-rLL"/>
+                    <constraint firstItem="4ZZ-sf-ypz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Jae-8Z-Pr2"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="AW0-Kn-W9y" secondAttribute="bottom" constant="-7.5" id="L5C-VR-WdU"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="AW0-Kn-W9y" secondAttribute="trailing" constant="-8" id="g8j-IE-Iqw"/>
+                    <constraint firstItem="4ZZ-sf-ypz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="hOO-uY-ug5"/>
+                    <constraint firstItem="AW0-Kn-W9y" firstAttribute="leading" secondItem="4ZZ-sf-ypz" secondAttribute="trailing" constant="-1" id="iOd-Ld-PPW"/>
+                    <constraint firstItem="AW0-Kn-W9y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-7" id="mav-MK-mG3"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="castsLabel" destination="TpV-pP-BgW" id="SLS-gt-Z2Z"/>
+                <outlet property="directorsLabel" destination="yAc-Ts-Fwi" id="ds5-IR-VuC"/>
+                <outlet property="durationsLabel" destination="W0V-Ot-lpj" id="goA-lc-0AF"/>
+                <outlet property="images" destination="4ZZ-sf-ypz" id="hse-AY-eSj"/>
+                <outlet property="original_titleLabel" destination="h8D-3a-gdG" id="brh-8v-B9e"/>
+                <outlet property="pubdatesLabel" destination="qgG-Kx-b4k" id="prn-6Z-STi"/>
+                <outlet property="ratingLabel" destination="z5k-Xc-dJd" id="K9m-M1-CMi"/>
+                <outlet property="rating_countLabel" destination="hdj-4Y-2wx" id="YfB-X7-plB"/>
                 <outlet property="titleLabel" destination="g3h-hI-EII" id="jiw-20-aAD"/>
             </connections>
         </tableViewCell>
