@@ -112,7 +112,7 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="4ZZ-sf-ypz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="3" id="Bxv-sb-41u"/>
+                    <constraint firstItem="4ZZ-sf-ypz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Bxv-sb-41u"/>
                     <constraint firstAttribute="bottomMargin" secondItem="AW0-Kn-W9y" secondAttribute="bottom" constant="-7.5" id="L5C-VR-WdU"/>
                     <constraint firstAttribute="trailingMargin" secondItem="AW0-Kn-W9y" secondAttribute="trailing" constant="-8" id="g8j-IE-Iqw"/>
                     <constraint firstAttribute="centerY" secondItem="4ZZ-sf-ypz" secondAttribute="centerY" id="lWc-lK-Q4y"/>
