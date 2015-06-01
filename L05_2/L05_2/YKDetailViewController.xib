@@ -6,17 +6,17 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YKDetailViewController">
             <connections>
-                <outlet property="castsLabel" destination="rVc-y9-pfY" id="9lk-iV-l2k"/>
-                <outlet property="directorsLabel" destination="lMc-Q2-iE0" id="tZT-KW-BOH"/>
-                <outlet property="durationsLabel" destination="gHy-SN-cjB" id="KxM-Io-1k2"/>
-                <outlet property="images" destination="jtw-Ic-AUe" id="hZD-un-3At"/>
-                <outlet property="overviewLabel" destination="cBx-QV-pJu" id="QS4-Z3-vDR"/>
-                <outlet property="popularityLabel" destination="G9r-Tn-R4V" id="V9F-Id-krK"/>
-                <outlet property="release_dateLabel" destination="eBe-qk-I0J" id="mGR-1A-hem"/>
-                <outlet property="titleLabel" destination="ljV-Bf-42K" id="2ac-jC-1Sm"/>
+                <outlet property="castsLabel" destination="rVc-y9-pfY" id="X8X-UB-Xut"/>
+                <outlet property="directorsLabel" destination="lMc-Q2-iE0" id="aVI-Wz-oLl"/>
+                <outlet property="durationsLabel" destination="gHy-SN-cjB" id="Ekr-iV-Vh1"/>
+                <outlet property="images" destination="jtw-Ic-AUe" id="29E-Gf-o8W"/>
+                <outlet property="overviewLabel" destination="cBx-QV-pJu" id="9Uc-SB-64y"/>
+                <outlet property="popularityLabel" destination="G9r-Tn-R4V" id="Ihz-dP-9eN"/>
+                <outlet property="release_dateLabel" destination="eBe-qk-I0J" id="C5T-cI-2Yi"/>
+                <outlet property="titleLabel" destination="ljV-Bf-42K" id="ZGY-3V-gOQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="votingLabel" destination="Vf9-cy-h9t" id="fyX-29-Ux0"/>
-                <outlet property="voting_countLabel" destination="7hQ-h8-hEm" id="d8b-EQ-JPg"/>
+                <outlet property="votingLabel" destination="Vf9-cy-h9t" id="IVM-Fg-ews"/>
+                <outlet property="voting_countLabel" destination="7hQ-h8-hEm" id="inP-uH-uCF"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
