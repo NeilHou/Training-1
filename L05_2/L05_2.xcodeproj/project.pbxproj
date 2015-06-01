@@ -20,6 +20,7 @@
 		B0AC31141B1C058F00DBA9FF /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AC31121B1C058F00DBA9FF /* YKDetailViewController.m */; };
 		B0AC31151B1C058F00DBA9FF /* YKDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0AC31131B1C058F00DBA9FF /* YKDetailViewController.xib */; };
 		B0AC31171B1C06EF00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0AC31161B1C06EF00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */; };
+		B0DF24301B1C853B00359E95 /* YKMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF242F1B1C853B00359E95 /* YKMovie.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		B0AC31121B1C058F00DBA9FF /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
 		B0AC31131B1C058F00DBA9FF /* YKDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YKDetailViewController.xib; sourceTree = "<group>"; };
 		B0AC31161B1C06EF00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rd_rs_8434eb3a154dd28c145289eab077ce34.jpg; sourceTree = "<group>"; };
+		B0DF242E1B1C853B00359E95 /* YKMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMovie.h; sourceTree = "<group>"; };
+		B0DF242F1B1C853B00359E95 /* YKMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMovie.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,8 @@
 		B0AC30E51B1C055500DBA9FF /* L05_2 */ = {
 			isa = PBXGroup;
 			children = (
+				B0DF242E1B1C853B00359E95 /* YKMovie.h */,
+				B0DF242F1B1C853B00359E95 /* YKMovie.m */,
 				B0AC30EA1B1C055500DBA9FF /* AppDelegate.h */,
 				B0AC30EB1B1C055500DBA9FF /* AppDelegate.m */,
 				B0AC30ED1B1C055500DBA9FF /* ViewController.h */,
@@ -310,6 +315,7 @@
 			files = (
 				B0AC310F1B1C057500DBA9FF /* YKMoiveCell.m in Sources */,
 				B0AC30EF1B1C055500DBA9FF /* ViewController.m in Sources */,
+				B0DF24301B1C853B00359E95 /* YKMovie.m in Sources */,
 				B0AC30EC1B1C055500DBA9FF /* AppDelegate.m in Sources */,
 				B0AC30E91B1C055500DBA9FF /* main.m in Sources */,
 				B0AC31141B1C058F00DBA9FF /* YKDetailViewController.m in Sources */,
