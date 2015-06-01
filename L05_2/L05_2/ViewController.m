@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *jsonArray;
+@property (nonatomic, strong) NSDictionary *dict;
 
 @end
 
@@ -46,15 +47,25 @@
     NSString *URL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
     
     [manager GET:URL parameters:nil
-         success:^(AFHTTPRequestOperation *operation, id responseObject) {
-    if (responseObject) {
-            self.jsonArray = responseObject;
-    }
+         success:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        NSLog(@"%@", responseObject);
+        
+    if (responseObject)
+      {
+          NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
+          self.jsonArray = dict[@"results"];
+      }
     [self.tableView reloadData];
     }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"数据抓取失败！");
-    }];
+      }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,12 +77,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.jsonArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YKMoiveCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
+    
+    self.dict = self.jsonArray[indexPath.row];
+    
+    //设置cell的label信息
+    cell.titleLabel.text = [NSString stringWithFormat:@"%@", _dict[@"title"]];
+    cell.images.image = [UIImage imageNamed:_dict[@"backdrop_path"]];
+    
+    
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
