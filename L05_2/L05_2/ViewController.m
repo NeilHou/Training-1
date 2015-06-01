@@ -88,7 +88,12 @@
     
     //设置cell的label信息
     cell.titleLabel.text = [NSString stringWithFormat:@"%@", _dict[@"title"]];
-    cell.images.image = [UIImage imageNamed:_dict[@"backdrop_path"]];
+    
+    //获取图片内容
+    NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w342%@", _dict[@"poster_path"]];
+    NSURL *imgURL = [NSURL URLWithString:imgURLString];
+    NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:imgURL];
+    cell.images.image = [UIImage imageWithData:imgData];
     
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

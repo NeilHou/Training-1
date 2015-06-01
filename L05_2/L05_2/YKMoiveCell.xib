@@ -14,15 +14,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rd_rs_8434eb3a154dd28c145289eab077ce34.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4ZZ-sf-ypz" userLabel="Images">
-                        <rect key="frame" x="0.0" y="0.0" width="115" height="165"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="115" id="A2W-OW-dxE"/>
-                            <constraint firstAttribute="height" constant="165" id="HgC-1R-MTb"/>
-                        </constraints>
-                    </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AW0-Kn-W9y">
-                        <rect key="frame" x="114" y="1" width="206" height="164"/>
+                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AW0-Kn-W9y">
+                        <rect key="frame" x="122" y="1" width="198" height="164"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="titleLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g3h-hI-EII">
                                 <rect key="frame" x="8" y="4" width="189" height="28"/>
@@ -110,14 +103,20 @@
                             </label>
                         </subviews>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="rd_rs_8434eb3a154dd28c145289eab077ce34.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="4ZZ-sf-ypz" userLabel="Images">
+                        <rect key="frame" x="8" y="3" width="114" height="157.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="114" id="6gu-bW-Xms"/>
+                            <constraint firstAttribute="height" constant="157.5" id="OGE-ac-cB8"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="4ZZ-sf-ypz" secondAttribute="bottom" constant="-7.5" id="3Yf-am-rLL"/>
-                    <constraint firstItem="4ZZ-sf-ypz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="Jae-8Z-Pr2"/>
+                    <constraint firstItem="4ZZ-sf-ypz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="3" id="Bxv-sb-41u"/>
                     <constraint firstAttribute="bottomMargin" secondItem="AW0-Kn-W9y" secondAttribute="bottom" constant="-7.5" id="L5C-VR-WdU"/>
                     <constraint firstAttribute="trailingMargin" secondItem="AW0-Kn-W9y" secondAttribute="trailing" constant="-8" id="g8j-IE-Iqw"/>
-                    <constraint firstItem="4ZZ-sf-ypz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="hOO-uY-ug5"/>
-                    <constraint firstItem="AW0-Kn-W9y" firstAttribute="leading" secondItem="4ZZ-sf-ypz" secondAttribute="trailing" constant="-1" id="iOd-Ld-PPW"/>
+                    <constraint firstAttribute="centerY" secondItem="4ZZ-sf-ypz" secondAttribute="centerY" id="lWc-lK-Q4y"/>
+                    <constraint firstItem="AW0-Kn-W9y" firstAttribute="leading" secondItem="4ZZ-sf-ypz" secondAttribute="trailing" constant="5" id="m2V-ei-mKx"/>
                     <constraint firstItem="AW0-Kn-W9y" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-7" id="mav-MK-mG3"/>
                 </constraints>
             </tableViewCellContentView>
