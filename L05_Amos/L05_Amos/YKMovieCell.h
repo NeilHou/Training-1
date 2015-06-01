@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface YKMovieCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *original_titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *directorsLabel;

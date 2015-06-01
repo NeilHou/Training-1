@@ -1,16 +1,16 @@
 //
 //  ViewController.m
-//  L05_Amos
+//  L05_2
 //
 //  Created by Amos Wu on 15/6/1.
 //  Copyright (c) 2015年 Amos Wu. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "YKMovieCell.h"
+#import "YKMoiveCell.h"
 #import "YKDetailViewController.h"
 
-@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -21,7 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
     CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
@@ -30,12 +29,11 @@
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 165;
     
-    UINib *nib = [UINib nibWithNibName:@"YKMovieCell" bundle:nil];
+    UINib *nib = [UINib nibWithNibName:@"YKMoiveCell" bundle:nil];
     
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"YKMovieCell"];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"YKMoiveCell"];
     
     self.navigationItem.title = @"电影列表";
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +50,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    YKMovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YKMovieCell" forIndexPath:indexPath];
+    YKMoiveCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
@@ -61,9 +59,9 @@
     
     YKDetailViewController *detailViewController = [[YKDetailViewController alloc] init];
     
-//    Student *selectedStudent = self.studentsArray[indexPath.row];
-//    
-//    detailViewController.student = selectedStudent;
+    //    Student *selectedStudent = self.studentsArray[indexPath.row];
+    //
+    //    detailViewController.student = selectedStudent;
     
     [self.navigationController pushViewController:detailViewController animated:YES];
     

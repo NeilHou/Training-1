@@ -20,6 +20,7 @@
 		B0AC30C91B1B745D00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0AC30C81B1B745D00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */; };
 		B0AC30CF1B1B767300DBA9FF /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AC30CD1B1B767300DBA9FF /* YKDetailViewController.m */; };
 		B0AC30D01B1B767300DBA9FF /* YKDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0AC30CE1B1B767300DBA9FF /* YKDetailViewController.xib */; };
+		B0AC30D91B1C03AA00DBA9FF /* YKMovieCelln.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0AC30D81B1C03AA00DBA9FF /* YKMovieCelln.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		B0AC30CC1B1B767300DBA9FF /* YKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailViewController.h; sourceTree = "<group>"; };
 		B0AC30CD1B1B767300DBA9FF /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
 		B0AC30CE1B1B767300DBA9FF /* YKDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YKDetailViewController.xib; sourceTree = "<group>"; };
+		B0AC30D81B1C03AA00DBA9FF /* YKMovieCelln.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YKMovieCelln.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				B0AC30C01B1B744C00DBA9FF /* YKMovieCell.h */,
 				B0AC30C11B1B744C00DBA9FF /* YKMovieCell.m */,
 				B0AC30C21B1B744C00DBA9FF /* YKMovieCell.xib */,
+				B0AC30D81B1C03AA00DBA9FF /* YKMovieCelln.xib */,
 				B0AC30CC1B1B767300DBA9FF /* YKDetailViewController.h */,
 				B0AC30CD1B1B767300DBA9FF /* YKDetailViewController.m */,
 				B0AC30CE1B1B767300DBA9FF /* YKDetailViewController.xib */,
@@ -231,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0AC30D91B1C03AA00DBA9FF /* YKMovieCelln.xib in Resources */,
 				B0AC30C61B1B744C00DBA9FF /* YKMovieCell.xib in Resources */,
 				B0AC30D01B1B767300DBA9FF /* YKDetailViewController.xib in Resources */,
 				B0AC30A61B1B742B00DBA9FF /* Main.storyboard in Resources */,
@@ -454,6 +458,7 @@
 				B0AC30BC1B1B742B00DBA9FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B0AC30BD1B1B742B00DBA9FF /* Build configuration list for PBXNativeTarget "L05_AmosTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +467,7 @@
 				B0AC30BF1B1B742B00DBA9FF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
