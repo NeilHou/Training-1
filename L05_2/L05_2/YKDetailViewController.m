@@ -7,6 +7,7 @@
 //
 
 #import "YKDetailViewController.h"
+#import "YKMovie.h"
 
 @interface YKDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *images;

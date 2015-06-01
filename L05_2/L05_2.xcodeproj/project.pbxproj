@@ -121,6 +121,7 @@
 				B0AC30F31B1C055500DBA9FF /* Images.xcassets */,
 				B0AC30F51B1C055500DBA9FF /* LaunchScreen.xib */,
 				B0AC31181B1C0A3300DBA9FF /* Model */,
+				B0DF24311B1C886800359E95 /* Images */,
 				B0AC30E61B1C055500DBA9FF /* Supporting Files */,
 			);
 			path = L05_2;
@@ -155,7 +156,6 @@
 		B0AC31181B1C0A3300DBA9FF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B0AC31161B1C06EF00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */,
 				B0AC310C1B1C057500DBA9FF /* YKMoiveCell.h */,
 				B0AC310D1B1C057500DBA9FF /* YKMoiveCell.m */,
 				B0AC310E1B1C057500DBA9FF /* YKMoiveCell.xib */,
@@ -164,6 +164,14 @@
 				B0AC31131B1C058F00DBA9FF /* YKDetailViewController.xib */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		B0DF24311B1C886800359E95 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B0AC31161B1C06EF00DBA9FF /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		BC7ABDC76FC35ADAAC5EDD16 /* Pods */ = {

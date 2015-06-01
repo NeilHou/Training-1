@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YKMovie;
 
 @interface YKDetailViewController : UIViewController
+
+@property (nonatomic, strong) YKMovie *movie;
 
 @end

@@ -12,14 +12,18 @@
 @interface YKMovie : NSObject
 
 @property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) NSString *postPath;
+
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSNumber *popularity;
 @property (strong, nonatomic) NSString *directors;
 @property (strong, nonatomic) NSString *casts;
 @property (strong, nonatomic) NSDate *durations;
-@property (strong, nonatomic) NSDate *release_date;
-@property (strong, nonatomic) NSNumber *voting;
+@property (strong, nonatomic) NSString *release_date;
+@property (assign, nonatomic) float *voting;
 @property (strong, nonatomic) NSString *voting_count;
 @property (strong, nonatomic) NSString *overview;
+
+- (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
 @end
