@@ -9,10 +9,12 @@
 #import "ViewController.h"
 #import "YKMoiveCell.h"
 #import "YKDetailViewController.h"
+#import "AFNetworking.h"
 
 @interface ViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray *jsonArray;
 
 @end
 
@@ -34,6 +36,25 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:@"YKMoiveCell"];
     
     self.navigationItem.title = @"电影列表";
+    [self loadReviews];
+}
+
+- (void)loadReviews
+{
+    self.jsonArray = [NSArray new];
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSString *URL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
+    
+    [manager GET:URL parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    if (responseObject) {
+            self.jsonArray = responseObject;
+    }
+    [self.tableView reloadData];
+    }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"数据抓取失败！");
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

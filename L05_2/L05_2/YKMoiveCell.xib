@@ -30,8 +30,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="original_titleLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8D-3a-gdG">
-                                <rect key="frame" x="8" y="31" width="189" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="热度：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lz8-mm-PZG">
+                                <rect key="frame" x="8" y="34" width="45" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="42.182665" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8D-3a-gdG" userLabel="popularity">
+                                <rect key="frame" x="52" y="31" width="145" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -78,7 +84,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mainland_pubdate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgG-Kx-b4k">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="release_date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgG-Kx-b4k">
                                 <rect key="frame" x="77" y="118" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -90,14 +96,14 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5k-Xc-dJd">
-                                <rect key="frame" x="50" y="138" width="43" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8.9" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z5k-Xc-dJd" userLabel="vote">
+                                <rect key="frame" x="50" y="138" width="28" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.1215530449" blue="0.064894617419999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ratings_count" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdj-4Y-2wx">
-                                <rect key="frame" x="92" y="138" width="88" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(23510人投票)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdj-4Y-2wx" userLabel="voting_count">
+                                <rect key="frame" x="77" y="138" width="120" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -120,11 +126,11 @@
                 <outlet property="directorsLabel" destination="yAc-Ts-Fwi" id="ds5-IR-VuC"/>
                 <outlet property="durationsLabel" destination="W0V-Ot-lpj" id="goA-lc-0AF"/>
                 <outlet property="images" destination="4ZZ-sf-ypz" id="hse-AY-eSj"/>
-                <outlet property="original_titleLabel" destination="h8D-3a-gdG" id="brh-8v-B9e"/>
-                <outlet property="pubdatesLabel" destination="qgG-Kx-b4k" id="prn-6Z-STi"/>
-                <outlet property="ratingLabel" destination="z5k-Xc-dJd" id="K9m-M1-CMi"/>
-                <outlet property="rating_countLabel" destination="hdj-4Y-2wx" id="YfB-X7-plB"/>
+                <outlet property="popularityLabel" destination="h8D-3a-gdG" id="4AB-Uj-9ai"/>
+                <outlet property="release_dateLabel" destination="qgG-Kx-b4k" id="Mm5-7p-SWr"/>
                 <outlet property="titleLabel" destination="g3h-hI-EII" id="jiw-20-aAD"/>
+                <outlet property="votingLabel" destination="z5k-Xc-dJd" id="Wfs-Ur-HcY"/>
+                <outlet property="voting_countLabel" destination="hdj-4Y-2wx" id="pRV-44-WQ9"/>
             </connections>
         </tableViewCell>
     </objects>
