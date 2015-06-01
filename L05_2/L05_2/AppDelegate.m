@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "YKDetailViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,9 @@
     ViewController *tableViewController = [[ViewController alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
+    
+    self.scrollView = [[UIScrollView alloc] initWithFrame:self.window.bounds];
+    [self.window addSubview:self.scrollView];
     
     self.window.rootViewController = navController;
     self.window.backgroundColor = [UIColor whiteColor];

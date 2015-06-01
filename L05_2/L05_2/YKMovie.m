@@ -7,8 +7,39 @@
 //
 
 #import "YKMovie.h"
+#import "AFNetworking.h"
+
+@interface YKMovie()
+
+@property (nonatomic)NSMutableArray *movieItems;
+@property (nonatomic, strong) NSArray *jsonArray;
+
+@end
 
 @implementation YKMovie
+
+- (instancetype)initPrivate
+{
+    self = [super init];
+    if (self){
+        _movieItems = [NSMutableArray new];
+    }
+    return self;
+}
+
++ (instancetype)sharedStore
+{
+    static YKMovie *sharedStore = nil;
+    if (!sharedStore){
+        sharedStore = [[self alloc] initPrivate];
+    }
+    return sharedStore;
+}
+
+- (NSArray *)moviesArray
+{
+    return [self.moviesArray copy];
+}
 
 - (instancetype)initWithAttributes:(NSDictionary *)attributes
 {

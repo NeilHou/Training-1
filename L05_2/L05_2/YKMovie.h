@@ -11,6 +11,8 @@
 
 @interface YKMovie : NSObject
 
+@property (strong, nonatomic) NSArray *moviesArray;
+
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSString *postPath;
 
@@ -24,6 +26,8 @@
 @property (strong, nonatomic) NSString *voting_count;
 @property (strong, nonatomic) NSString *overview;
 
++ (instancetype)sharedStore;
+- (YKMovie *)createItem;
 - (instancetype)initWithAttributes:(NSDictionary *)attributes;
 
 @end
