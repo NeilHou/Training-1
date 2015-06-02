@@ -10,12 +10,14 @@
 #import "YKMoiveCell.h"
 #import "YKDetailViewController.h"
 #import "AFNetworking.h"
+#import "YKMovie.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource>;
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *jsonArray;
-@property (nonatomic, strong) NSDictionary *dict;
+@property (nonatomic, strong) NSDictionary *detailDict;
+//@property (nonatomic, strong) NSMutableArray *detaildataArray;
 
 @end
 
@@ -36,10 +38,11 @@
     self.tableView.rowHeight = 165;
     
     UINib *nib = [UINib nibWithNibName:@"YKMoiveCell" bundle:nil];
-    
     [self.tableView registerNib:nib forCellReuseIdentifier:@"YKMoiveCell"];
     
     self.navigationItem.title = @"电影列表";
+    
+    _detaildataArray = [NSMutableArray array];
     [self loadReviews];
 }
 
@@ -52,12 +55,27 @@
     [manager GET:URL parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
-         NSLog(@"%@", responseObject);
+         NSLog(@"数据抓取成功");
          
          if (responseObject)
          {
              NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
              self.jsonArray = dict[@"results"];
+             
+             for (NSDictionary *dict in self.jsonArray) {
+
+                 YKMovie *movie = [YKMovie new];
+             
+                 movie.postPath = dict[@"poster_path"];
+                 movie.title = dict[@"title"];
+                 movie.popularity = dict[@"popularity"];
+                 movie.release_date = dict[@"release_date"];
+                 movie.voting = dict[@"vote_average"];
+                 movie.voting_count = dict[@"vote_count"];
+                 movie.overview = dict[@"overview"];
+                 
+                 [_detaildataArray addObject:movie];
+             }
          }
          [self.tableView reloadData];
      }
@@ -66,10 +84,10 @@
          }];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.tableView reloadData];
-}
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [self.tableView reloadData];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -79,24 +97,30 @@
 #pragma mark - Tableview delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.jsonArray.count;
+    return _detaildataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     YKMoiveCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
     
-    self.dict = self.jsonArray[indexPath.row];
-    
-    //设置cell的label信息
-    cell.titleLabel.text = [NSString stringWithFormat:@"%@", _dict[@"title"]];
+    YKMovie *movie = _detaildataArray[indexPath.row];
+
+    cell.titleLabel.text = movie.title;
     
     //获取图片内容
-    NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w342%@", _dict[@"poster_path"]];
+    NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w342%@", movie.postPath];
     NSURL *imgURL = [NSURL URLWithString:imgURLString];
     NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:imgURL];
     cell.images.image = [UIImage imageWithData:imgData];
     
+    cell.release_dateLabel.text = movie.release_date;
+    
+    cell.popularityLabel.text = [NSString stringWithFormat:@"%@", movie.popularity];
+    NSLog(@"pop搞定");
+    cell.voting_countLabel.text = [NSString stringWithFormat:@"%@",movie.voting_count];
+    cell.votingLabel.text = [NSString stringWithFormat:@"%@",movie.voting];
+    NSLog(@"vote搞定");
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -109,6 +133,8 @@
     //    Student *selectedStudent = self.studentsArray[indexPath.row];
     //
     //    detailViewController.student = selectedStudent;
+    
+    
     
     [self.navigationController pushViewController:detailViewController animated:YES];
     

@@ -18,11 +18,11 @@
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSNumber *popularity;
-@property (strong, nonatomic) NSString *directors;
-@property (strong, nonatomic) NSString *casts;
-@property (strong, nonatomic) NSDate *durations;
+@property (strong, nonatomic) NSString *directors; //douban only
+@property (strong, nonatomic) NSString *casts; //douban only
+@property (strong, nonatomic) NSDate *durations; //douban only
 @property (strong, nonatomic) NSString *release_date;
-@property (assign, nonatomic) float *voting;
+@property (assign, nonatomic) NSString *voting;
 @property (strong, nonatomic) NSString *voting_count;
 @property (strong, nonatomic) NSString *overview;
 
