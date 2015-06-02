@@ -22,8 +22,8 @@
 @property (strong, nonatomic) NSString *casts; //douban only
 @property (strong, nonatomic) NSDate *durations; //douban only
 @property (strong, nonatomic) NSString *release_date;
-@property (assign, nonatomic) NSString *voting;
-@property (strong, nonatomic) NSString *voting_count;
+@property (assign, nonatomic) NSNumber *voting;
+@property (strong, nonatomic) NSNumber *voting_count;
 @property (strong, nonatomic) NSString *overview;
 
 @end

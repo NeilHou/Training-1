@@ -117,10 +117,9 @@
     cell.release_dateLabel.text = movie.release_date;
     
     cell.popularityLabel.text = [NSString stringWithFormat:@"%@", movie.popularity];
-    NSLog(@"pop搞定");
-    cell.voting_countLabel.text = [NSString stringWithFormat:@"%@",movie.voting_count];
+    cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评论)",movie.voting_count];
     cell.votingLabel.text = [NSString stringWithFormat:@"%@",movie.voting];
-    NSLog(@"vote搞定");
+    NSLog(@"cell数据载入");
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
