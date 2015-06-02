@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		025354541B0ED85000E49741 /* StudentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 025354521B0ED85000E49741 /* StudentCell.m */; };
-		025354551B0ED85000E49741 /* StudentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 025354531B0ED85000E49741 /* StudentCell.xib */; };
-		0253545B1B0EDB5C00E49741 /* student_01.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 025354571B0EDB5C00E49741 /* student_01.JPG */; };
-		0253545C1B0EDB5C00E49741 /* student_02.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 025354581B0EDB5C00E49741 /* student_02.JPG */; };
-		0253545D1B0EDB5C00E49741 /* student_03.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 025354591B0EDB5C00E49741 /* student_03.JPG */; };
-		0253545E1B0EDB5C00E49741 /* student_04.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0253545A1B0EDB5C00E49741 /* student_04.JPG */; };
 		027B9FB51B0C2B9000B58B52 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FB41B0C2B9000B58B52 /* main.m */; };
 		027B9FB81B0C2B9000B58B52 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FB71B0C2B9000B58B52 /* AppDelegate.m */; };
 		027B9FBB1B0C2B9000B58B52 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FBA1B0C2B9000B58B52 /* ViewController.m */; };
@@ -20,10 +14,13 @@
 		027B9FC01B0C2B9000B58B52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 027B9FBF1B0C2B9000B58B52 /* Images.xcassets */; };
 		027B9FC31B0C2B9000B58B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 027B9FC11B0C2B9000B58B52 /* LaunchScreen.xib */; };
 		027B9FCF1B0C2B9000B58B52 /* L04Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FCE1B0C2B9000B58B52 /* L04Tests.m */; };
-		1F9F96D21B0C63A600619302 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F96D11B0C63A600619302 /* Student.m */; };
-		1FF9CDB11B1054DB00C325C3 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9CDAF1B1054DB00C325C3 /* DetailViewController.m */; };
-		1FF9CDB21B1054DB00C325C3 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF9CDB01B1054DB00C325C3 /* DetailViewController.xib */; };
 		7AC0240DAD726C0CE1DA1C23 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 184551B1DA6E5964E391BF5E /* libPods.a */; };
+		B0DF25181B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */; };
+		B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */; };
+		B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DF251B1B1D2FF600359E95 /* YKDetailViewController.xib */; };
+		B0DF25211B1D2FF600359E95 /* YKMoiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF251C1B1D2FF600359E95 /* YKMoiveCell.m */; };
+		B0DF25221B1D2FF600359E95 /* YKMoiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DF251D1B1D2FF600359E95 /* YKMoiveCell.xib */; };
+		B0DF252A1B1D305400359E95 /* YKMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF25291B1D305400359E95 /* YKMovie.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +34,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		025354511B0ED85000E49741 /* StudentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentCell.h; sourceTree = "<group>"; };
-		025354521B0ED85000E49741 /* StudentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentCell.m; sourceTree = "<group>"; };
-		025354531B0ED85000E49741 /* StudentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StudentCell.xib; sourceTree = "<group>"; };
-		025354571B0EDB5C00E49741 /* student_01.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_01.JPG; sourceTree = "<group>"; };
-		025354581B0EDB5C00E49741 /* student_02.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_02.JPG; sourceTree = "<group>"; };
-		025354591B0EDB5C00E49741 /* student_03.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_03.JPG; sourceTree = "<group>"; };
-		0253545A1B0EDB5C00E49741 /* student_04.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = student_04.JPG; sourceTree = "<group>"; };
 		027B9FAF1B0C2B9000B58B52 /* L04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = L04.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		027B9FB31B0C2B9000B58B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		027B9FB41B0C2B9000B58B52 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -58,13 +48,17 @@
 		027B9FCD1B0C2B9000B58B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		027B9FCE1B0C2B9000B58B52 /* L04Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = L04Tests.m; sourceTree = "<group>"; };
 		184551B1DA6E5964E391BF5E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F9F96D01B0C63A600619302 /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
-		1F9F96D11B0C63A600619302 /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
-		1FF9CDAE1B1054DB00C325C3 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		1FF9CDAF1B1054DB00C325C3 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		1FF9CDB01B1054DB00C325C3 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		5F6BA63A78668641672A2AC2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		963CE80AB0B0B20ED3E8195E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rd_rs_8434eb3a154dd28c145289eab077ce34.jpg; sourceTree = "<group>"; };
+		B0DF25191B1D2FF600359E95 /* YKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailViewController.h; sourceTree = "<group>"; };
+		B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
+		B0DF251B1B1D2FF600359E95 /* YKDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YKDetailViewController.xib; sourceTree = "<group>"; };
+		B0DF251C1B1D2FF600359E95 /* YKMoiveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMoiveCell.m; sourceTree = "<group>"; };
+		B0DF251D1B1D2FF600359E95 /* YKMoiveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YKMoiveCell.xib; sourceTree = "<group>"; };
+		B0DF25271B1D304500359E95 /* YKMoiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMoiveCell.h; sourceTree = "<group>"; };
+		B0DF25281B1D305400359E95 /* YKMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMovie.h; sourceTree = "<group>"; };
+		B0DF25291B1D305400359E95 /* YKMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMovie.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,11 +83,12 @@
 		025354501B0ED82A00E49741 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1F9F96D01B0C63A600619302 /* Student.h */,
-				1F9F96D11B0C63A600619302 /* Student.m */,
-				025354511B0ED85000E49741 /* StudentCell.h */,
-				025354521B0ED85000E49741 /* StudentCell.m */,
-				025354531B0ED85000E49741 /* StudentCell.xib */,
+				B0DF25191B1D2FF600359E95 /* YKDetailViewController.h */,
+				B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */,
+				B0DF251B1B1D2FF600359E95 /* YKDetailViewController.xib */,
+				B0DF25271B1D304500359E95 /* YKMoiveCell.h */,
+				B0DF251C1B1D2FF600359E95 /* YKMoiveCell.m */,
+				B0DF251D1B1D2FF600359E95 /* YKMoiveCell.xib */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -101,10 +96,7 @@
 		025354561B0EDAFA00E49741 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				025354571B0EDB5C00E49741 /* student_01.JPG */,
-				025354581B0EDB5C00E49741 /* student_02.JPG */,
-				025354591B0EDB5C00E49741 /* student_03.JPG */,
-				0253545A1B0EDB5C00E49741 /* student_04.JPG */,
+				B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -132,18 +124,17 @@
 		027B9FB11B0C2B9000B58B52 /* L04 */ = {
 			isa = PBXGroup;
 			children = (
-				025354561B0EDAFA00E49741 /* Images */,
-				025354501B0ED82A00E49741 /* Model */,
+				B0DF25281B1D305400359E95 /* YKMovie.h */,
+				B0DF25291B1D305400359E95 /* YKMovie.m */,
 				027B9FB61B0C2B9000B58B52 /* AppDelegate.h */,
 				027B9FB71B0C2B9000B58B52 /* AppDelegate.m */,
 				027B9FB91B0C2B9000B58B52 /* ViewController.h */,
 				027B9FBA1B0C2B9000B58B52 /* ViewController.m */,
-				1FF9CDAE1B1054DB00C325C3 /* DetailViewController.h */,
-				1FF9CDAF1B1054DB00C325C3 /* DetailViewController.m */,
-				1FF9CDB01B1054DB00C325C3 /* DetailViewController.xib */,
 				027B9FBC1B0C2B9000B58B52 /* Main.storyboard */,
 				027B9FBF1B0C2B9000B58B52 /* Images.xcassets */,
 				027B9FC11B0C2B9000B58B52 /* LaunchScreen.xib */,
+				025354501B0ED82A00E49741 /* Model */,
+				025354561B0EDAFA00E49741 /* Images */,
 				027B9FB21B0C2B9000B58B52 /* Supporting Files */,
 			);
 			path = L04;
@@ -274,15 +265,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0253545D1B0EDB5C00E49741 /* student_03.JPG in Resources */,
-				0253545C1B0EDB5C00E49741 /* student_02.JPG in Resources */,
 				027B9FBE1B0C2B9000B58B52 /* Main.storyboard in Resources */,
+				B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */,
+				B0DF25221B1D2FF600359E95 /* YKMoiveCell.xib in Resources */,
+				B0DF25181B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */,
 				027B9FC31B0C2B9000B58B52 /* LaunchScreen.xib in Resources */,
-				1FF9CDB21B1054DB00C325C3 /* DetailViewController.xib in Resources */,
 				027B9FC01B0C2B9000B58B52 /* Images.xcassets in Resources */,
-				0253545B1B0EDB5C00E49741 /* student_01.JPG in Resources */,
-				0253545E1B0EDB5C00E49741 /* student_04.JPG in Resources */,
-				025354551B0ED85000E49741 /* StudentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,11 +322,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				027B9FBB1B0C2B9000B58B52 /* ViewController.m in Sources */,
-				025354541B0ED85000E49741 /* StudentCell.m in Sources */,
+				B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */,
+				B0DF252A1B1D305400359E95 /* YKMovie.m in Sources */,
 				027B9FB81B0C2B9000B58B52 /* AppDelegate.m in Sources */,
+				B0DF25211B1D2FF600359E95 /* YKMoiveCell.m in Sources */,
 				027B9FB51B0C2B9000B58B52 /* main.m in Sources */,
-				1F9F96D21B0C63A600619302 /* Student.m in Sources */,
-				1FF9CDB11B1054DB00C325C3 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

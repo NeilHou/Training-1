@@ -1,14 +1,14 @@
 //
-//  StudentCell.m
-//  L04
+//  YKMoiveCell.m
+//  L05_2
 //
-//  Created by Hanguang on 5/22/15.
-//  Copyright (c) 2015 Hanguang. All rights reserved.
+//  Created by Amos Wu on 15/6/1.
+//  Copyright (c) 2015年 Amos Wu. All rights reserved.
 //
 
-#import "StudentCell.h"
+#import "YKMoiveCell.h"
 
-@implementation StudentCell
+@implementation YKMoiveCell
 
 - (void)awakeFromNib {
     // Initialization code
