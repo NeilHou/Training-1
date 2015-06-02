@@ -21,6 +21,7 @@
 		B0DF25211B1D2FF600359E95 /* YKMoiveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF251C1B1D2FF600359E95 /* YKMoiveCell.m */; };
 		B0DF25221B1D2FF600359E95 /* YKMoiveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DF251D1B1D2FF600359E95 /* YKMoiveCell.xib */; };
 		B0DF252A1B1D305400359E95 /* YKMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF25291B1D305400359E95 /* YKMovie.m */; };
+		B0DF252D1B1D822500359E95 /* ClickImage.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF252C1B1D822500359E95 /* ClickImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		B0DF25271B1D304500359E95 /* YKMoiveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMoiveCell.h; sourceTree = "<group>"; };
 		B0DF25281B1D305400359E95 /* YKMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMovie.h; sourceTree = "<group>"; };
 		B0DF25291B1D305400359E95 /* YKMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMovie.m; sourceTree = "<group>"; };
+		B0DF252B1B1D822500359E95 /* ClickImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClickImage.h; sourceTree = "<group>"; };
+		B0DF252C1B1D822500359E95 /* ClickImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClickImage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				B0DF25271B1D304500359E95 /* YKMoiveCell.h */,
 				B0DF251C1B1D2FF600359E95 /* YKMoiveCell.m */,
 				B0DF251D1B1D2FF600359E95 /* YKMoiveCell.xib */,
+				B0DF252B1B1D822500359E95 /* ClickImage.h */,
+				B0DF252C1B1D822500359E95 /* ClickImage.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -325,6 +330,7 @@
 				B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */,
 				B0DF252A1B1D305400359E95 /* YKMovie.m in Sources */,
 				027B9FB81B0C2B9000B58B52 /* AppDelegate.m in Sources */,
+				B0DF252D1B1D822500359E95 /* ClickImage.m in Sources */,
 				B0DF25211B1D2FF600359E95 /* YKMoiveCell.m in Sources */,
 				027B9FB51B0C2B9000B58B52 /* main.m in Sources */,
 			);
