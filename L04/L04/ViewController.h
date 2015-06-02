@@ -11,6 +11,7 @@
 @interface ViewController : UIViewController
 {
     NSMutableArray *_detaildataArray;
+    NSMutableArray *_searchDataArray;
 }
 
 @end
