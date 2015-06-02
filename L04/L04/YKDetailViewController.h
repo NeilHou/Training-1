@@ -11,6 +11,6 @@
 
 @interface YKDetailViewController : UIViewController
 
-@property (nonatomic, strong) YKMovie *movie;
+@property(nonatomic, strong) YKMovie *movie;
 
 @end

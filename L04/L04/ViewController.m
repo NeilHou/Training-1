@@ -74,8 +74,15 @@
                  movie.voting_count = dict[@"vote_count"];
                  movie.overview = dict[@"overview"];
                  
+                 //获取图片内容
+                 NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w342%@", movie.postPath];
+                 NSURL *imgURL = [NSURL URLWithString:imgURLString];
+                 NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:imgURL];
+                 movie.image = [UIImage imageWithData:imgData];
+                 
                  [_detaildataArray addObject:movie];
              }
+             NSLog(@"数据缓存成功");
          }
          [self.tableView reloadData];
      }
@@ -109,10 +116,10 @@
     cell.titleLabel.text = movie.title;
     
     //获取图片内容
-    NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w342%@", movie.postPath];
-    NSURL *imgURL = [NSURL URLWithString:imgURLString];
-    NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:imgURL];
-    cell.images.image = [UIImage imageWithData:imgData];
+//    NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w342%@", movie.postPath];
+//    NSURL *imgURL = [NSURL URLWithString:imgURLString];
+//    NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:imgURL];
+    cell.images.image = movie.image;
     
     cell.release_dateLabel.text = movie.release_date;
     
@@ -129,11 +136,8 @@
     
     YKDetailViewController *detailViewController = [[YKDetailViewController alloc] init];
     
-    //    Student *selectedStudent = self.studentsArray[indexPath.row];
-    //
-    //    detailViewController.student = selectedStudent;
-    
-    
+    YKMovie *selectedMovie = _detaildataArray[indexPath.row];
+    detailViewController.movie = selectedMovie;
     
     [self.navigationController pushViewController:detailViewController animated:YES];
     

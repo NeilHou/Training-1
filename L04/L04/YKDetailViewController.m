@@ -8,19 +8,19 @@
 
 #import "YKDetailViewController.h"
 #import "YKMovie.h"
+#import "ViewController.h"
 
 @interface YKDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *images;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *popularityLabel;
-@property (weak, nonatomic) IBOutlet UILabel *directorsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *castsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *durationsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *directorsLabel; //douban only
+@property (weak, nonatomic) IBOutlet UILabel *castsLabel; //douban only
+@property (weak, nonatomic) IBOutlet UILabel *durationsLabel; //douban only
 @property (weak, nonatomic) IBOutlet UILabel *release_dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *votingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *voting_countLabel;
 @property (weak, nonatomic) IBOutlet UITextView *overviewTextView;
-
 
 @end
 
@@ -40,6 +40,21 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    YKMovie *movie = self.movie;
+    
+    self.titleLabel.text = movie.title;
+    self.popularityLabel.text = [NSString stringWithFormat:@"%@", movie.popularity];
+    self.release_dateLabel.text = movie.release_date;
+    self.votingLabel.text = [NSString stringWithFormat:@"%@", movie.voting];
+    self.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评论)", movie.voting_count];
+    self.overviewTextView.text = movie.overview;
+    self.images.image = movie.image;
 }
 
 - (void)didReceiveMemoryWarning {
