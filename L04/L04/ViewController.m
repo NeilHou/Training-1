@@ -110,13 +110,18 @@ bool isSearch;
                  [manager GET:URL parameters:nil
                       success:^(AFHTTPRequestOperation *operation, id responseObject)
                   {
-                      NSLog(@"Detail数据抓取成功！");
                       if (responseObject)
                       {
                           NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
                           movie.revenue = dict[@"revenue"];
                           movie.runTime = dict[@"runtime"];
-                          movie.tagline = dict[@"tagline"];
+                          
+                          NSDictionary *dit = dict;
+                          NSString *string = dit[@"tagline"];
+                          if ([string isEqual:[NSNull null]] || !string.length) {
+                              string = @"去看就是了，木有宣传！";
+                          }
+                          movie.tagline = string;
                       }
                   }
                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -210,12 +215,16 @@ bool isSearch;
         
         cell.titleLabel.text = movie.title;
         cell.images.image = movie.cellImage;
+        cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
         
         cell.release_dateLabel.text = movie.release_date;
         
         cell.popularityLabel.text = [NSString stringWithFormat:@"%@", movie.popularity];
         cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评论)",movie.voting_count];
-        cell.votingLabel.text = [NSString stringWithFormat:@"%@",movie.voting];
+        
+        NSNumberFormatter *numFormatter = [NSNumberFormatter new];
+        numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        cell.votingLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.voting]];
         NSLog(@"cell数据载入");
     }
     else{
@@ -224,12 +233,16 @@ bool isSearch;
         
         cell.titleLabel.text = movie.title;
         cell.images.image = movie.cellImage;
+        cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
         
         cell.release_dateLabel.text = movie.release_date;
         
         cell.popularityLabel.text = [NSString stringWithFormat:@"%@", movie.popularity];
         cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评论)",movie.voting_count];
-        cell.votingLabel.text = [NSString stringWithFormat:@"%@",movie.voting];
+        
+        NSNumberFormatter *numFormatter = [NSNumberFormatter new];
+        numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        cell.votingLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.voting]];
         NSLog(@"cell数据载入");
     }
     
@@ -351,12 +364,33 @@ bool isSearch;
                  
                  YKMovie *movie = [YKMovie new];
                  
-                 NSDictionary *dit = dict;
-                 NSString *titleString = dit[@"title"];
-                 if ([titleString isEqual:[NSNull null]] || !titleString.length) {
-                     titleString = @"木有数据";
-                 }
-                 movie.title = titleString;
+                 //获取ID值，在跳转后获取详细信息
+                 movie.movieId = dict[@"id"];
+                 
+                 NSString *URL = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@?api_key=e55425032d3d0f371fc776f302e7c09b",movie.movieId];
+                 
+                 [manager GET:URL parameters:nil
+                      success:^(AFHTTPRequestOperation *operation, id responseObject)
+                  {
+                      if (responseObject)
+                      {
+                          NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
+                          movie.revenue = dict[@"revenue"];
+                          movie.runTime = dict[@"runtime"];
+                          
+                          NSDictionary *dit = dict;
+                          NSString *string = dit[@"tagline"];
+                          if ([string isEqual:[NSNull null]] || !string.length) {
+                              string = @"这么老的片子，木有宣传！";
+                          }
+                          movie.tagline = string;
+                      }
+                  }
+                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          NSLog(@"Detail数据抓取失败！");
+                      }];
+
+                 movie.title = dict[@"title"];
                  
                  movie.popularity = dict[@"popularity"];
                  movie.release_date = dict[@"release_date"];

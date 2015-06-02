@@ -123,10 +123,10 @@
             <connections>
                 <outlet property="castsLabel" destination="TpV-pP-BgW" id="SLS-gt-Z2Z"/>
                 <outlet property="directorsLabel" destination="yAc-Ts-Fwi" id="ds5-IR-VuC"/>
-                <outlet property="durationsLabel" destination="W0V-Ot-lpj" id="goA-lc-0AF"/>
                 <outlet property="images" destination="4ZZ-sf-ypz" id="hse-AY-eSj"/>
                 <outlet property="popularityLabel" destination="h8D-3a-gdG" id="4AB-Uj-9ai"/>
                 <outlet property="release_dateLabel" destination="qgG-Kx-b4k" id="Mm5-7p-SWr"/>
+                <outlet property="runtimeLabel" destination="W0V-Ot-lpj" id="iyc-DS-FtC"/>
                 <outlet property="titleLabel" destination="g3h-hI-EII" id="jiw-20-aAD"/>
                 <outlet property="votingLabel" destination="z5k-Xc-dJd" id="Wfs-Ur-HcY"/>
                 <outlet property="voting_countLabel" destination="hdj-4Y-2wx" id="pRV-44-WQ9"/>

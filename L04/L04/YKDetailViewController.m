@@ -60,7 +60,11 @@
     self.overviewTextView.text = movie.overview;
     self.images.image = movie.detailImage;
     
-    self.revenueLabel.text = [NSString stringWithFormat:@"$%@", movie.revenue];
+    //满千使用逗号
+    NSNumberFormatter *numFormatter = [NSNumberFormatter new];
+    numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    self.revenueLabel.text = [NSString stringWithFormat:@"$%@", [numFormatter stringFromNumber:movie.revenue]];
     self.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
     self.taglineLabel.text = movie.tagline;
 }
