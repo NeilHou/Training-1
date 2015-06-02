@@ -14,6 +14,4 @@
 @property(nonatomic, strong) YKMovie *movie;
 @property(nonatomic, strong) UIScrollView *scrollView;
 
-+(void)showImage:(UIImageView*)avatarImageView;
-
 @end

@@ -6,13 +6,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YKDetailViewController">
             <connections>
-                <outlet property="castsLabel" destination="rVc-y9-pfY" id="X8X-UB-Xut"/>
-                <outlet property="directorsLabel" destination="lMc-Q2-iE0" id="aVI-Wz-oLl"/>
-                <outlet property="durationsLabel" destination="gHy-SN-cjB" id="Ekr-iV-Vh1"/>
                 <outlet property="images" destination="jtw-Ic-AUe" id="29E-Gf-o8W"/>
                 <outlet property="overviewTextView" destination="Kec-Hs-Egg" id="h0q-ym-jYw"/>
                 <outlet property="popularityLabel" destination="G9r-Tn-R4V" id="Ihz-dP-9eN"/>
                 <outlet property="release_dateLabel" destination="eBe-qk-I0J" id="C5T-cI-2Yi"/>
+                <outlet property="revenueLabel" destination="lMc-Q2-iE0" id="QWX-hO-BPU"/>
+                <outlet property="runtimeLabel" destination="gHy-SN-cjB" id="eQ0-MA-t7f"/>
+                <outlet property="taglineLabel" destination="M2E-o0-auK" id="gEU-E1-lNQ"/>
                 <outlet property="titleLabel" destination="ljV-Bf-42K" id="ZGY-3V-gOQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="votingLabel" destination="Vf9-cy-h9t" id="IVM-Fg-ews"/>
@@ -45,50 +45,66 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="导演：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mu-EZ-KrI">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="票房：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Mu-EZ-KrI">
                             <rect key="frame" x="8" y="62" width="45" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="directors" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMc-Q2-iE0">
-                            <rect key="frame" x="52" y="62" width="145" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$121000000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMc-Q2-iE0">
+                            <rect key="frame" x="52" y="62" width="96" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="主演：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfY-aS-1mh">
-                            <rect key="frame" x="8" y="82" width="45" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主演：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfY-aS-1mh">
+                            <rect key="frame" x="156" y="62" width="45" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="45" id="rIi-CS-6Ou"/>
+                                <constraint firstAttribute="height" constant="21" id="tGa-RF-CEu"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="casts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVc-y9-pfY">
-                            <rect key="frame" x="52" y="82" width="229" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="casts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVc-y9-pfY">
+                            <rect key="frame" x="200" y="62" width="107" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="107" id="5pr-0U-syq"/>
+                                <constraint firstAttribute="height" constant="21" id="jfR-Sc-Kdn"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="片长：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBd-cq-N5R">
-                            <rect key="frame" x="8" y="102" width="45" height="21"/>
+                            <rect key="frame" x="8" y="82" width="45" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="未知" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHy-SN-cjB" userLabel="durations">
-                            <rect key="frame" x="52" y="102" width="145" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="265分钟" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHy-SN-cjB" userLabel="durations">
+                            <rect key="frame" x="52" y="82" width="66" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="上映日期：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eG-jd-vha">
-                            <rect key="frame" x="8" y="122" width="70" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上映日期：" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eG-jd-vha">
+                            <rect key="frame" x="131" y="82" width="70" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="NHh-eH-Kpf"/>
+                                <constraint firstAttribute="height" constant="21" id="TMp-pu-OVC"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="mainland_pubdate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBe-qk-I0J" userLabel="relaase_date">
-                            <rect key="frame" x="77" y="122" width="204" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015-05-15" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBe-qk-I0J" userLabel="relaase_date">
+                            <rect key="frame" x="200" y="82" width="107" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="KlT-bh-c8p"/>
+                                <constraint firstAttribute="width" constant="107" id="lJ3-nP-eOi"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -114,22 +130,23 @@
                             <color key="textColor" red="1" green="0.1215530449" blue="0.064894617419999995" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="影片简介：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUB-81-uHe">
-                            <rect key="frame" x="8" y="146" width="70" height="21"/>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kec-Hs-Egg" userLabel="overview">
+                            <rect key="frame" x="8" y="170" width="304" height="71"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <mutableString key="text">An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order. There's Max, a man of action and a man of few words, who seeks peace of mind following the loss of his wife and child in the aftermath of the chaos. And Furiosa, a woman of action and a woman who believes her path to survival may be achieved if she can make it across the desert back to her childhood homeland.</mutableString>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="影片简介：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUB-81-uHe">
+                            <rect key="frame" x="8" y="150" width="70" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="7zH-Hs-9gd"/>
+                                <constraint firstAttribute="width" constant="70" id="Ob0-Os-rFv"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kec-Hs-Egg" userLabel="overview">
-                            <rect key="frame" x="8" y="162" width="304" height="124"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="304" id="KZ3-Qf-RFy"/>
-                            </constraints>
-                            <string key="text">An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken, and most everyone is crazed fighting for the necessities of life. Within this world exist two rebels on the run who just might be able to restore order. There's Max, a man of action and a man of few words, who seeks peace of mind following the loss of his wife and child in the aftermath of the chaos. And Furiosa, a woman of action and a woman who believes her path to survival may be achieved if she can make it across the desert back to her childhood homeland.</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(21,000人评价)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hQ-h8-hEm" userLabel="voting_count">
                             <rect key="frame" x="217" y="33" width="90" height="15"/>
                             <constraints>
@@ -139,20 +156,42 @@
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" text="An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M2E-o0-auK" userLabel="overview">
+                            <rect key="frame" x="8" y="102" width="304" height="49"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="49" id="QdH-zg-mNp"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="Kec-Hs-Egg" firstAttribute="leading" secondItem="ABW-GH-3KI" secondAttribute="leading" constant="8" id="BLu-i3-3u7"/>
+                        <constraint firstItem="LUB-81-uHe" firstAttribute="top" secondItem="M2E-o0-auK" secondAttribute="bottom" constant="-1" id="2i7-9Q-Zio"/>
+                        <constraint firstItem="LUB-81-uHe" firstAttribute="leading" secondItem="ABW-GH-3KI" secondAttribute="leading" constant="8" id="BUm-5i-PIK"/>
+                        <constraint firstAttribute="bottom" secondItem="Kec-Hs-Egg" secondAttribute="bottom" constant="10" id="BfT-jg-7v2"/>
+                        <constraint firstAttribute="trailing" secondItem="rVc-y9-pfY" secondAttribute="trailing" constant="13" id="GYl-WC-hnJ"/>
                         <constraint firstAttribute="trailing" secondItem="IKR-8o-MrB" secondAttribute="trailing" constant="44" id="Gmg-Y2-8ha"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vf9-cy-h9t" secondAttribute="trailing" constant="8" id="IXT-Uf-Maz"/>
-                        <constraint firstAttribute="trailing" secondItem="Kec-Hs-Egg" secondAttribute="trailing" constant="8" id="NCe-Mr-wYR"/>
+                        <constraint firstAttribute="trailing" secondItem="M2E-o0-auK" secondAttribute="trailing" constant="8" id="IjP-vs-kHS"/>
+                        <constraint firstItem="Kec-Hs-Egg" firstAttribute="leading" secondItem="ABW-GH-3KI" secondAttribute="leading" constant="8" id="NTe-aU-7hk"/>
+                        <constraint firstAttribute="trailing" secondItem="eBe-qk-I0J" secondAttribute="trailing" constant="13" id="Qdi-f8-TXX"/>
                         <constraint firstItem="7hQ-h8-hEm" firstAttribute="top" secondItem="ABW-GH-3KI" secondAttribute="top" constant="33" id="Tio-EE-Nf1"/>
+                        <constraint firstAttribute="trailing" secondItem="1eG-jd-vha" secondAttribute="trailing" constant="119" id="TvZ-eu-nii"/>
                         <constraint firstAttribute="trailing" secondItem="Vf9-cy-h9t" secondAttribute="trailing" constant="13" id="Ut2-Rz-sZY"/>
-                        <constraint firstItem="Kec-Hs-Egg" firstAttribute="top" secondItem="ABW-GH-3KI" secondAttribute="top" constant="162" id="ZYc-2E-RFh"/>
-                        <constraint firstAttribute="bottom" secondItem="Kec-Hs-Egg" secondAttribute="bottom" constant="5" id="agb-5y-MgI"/>
+                        <constraint firstAttribute="trailing" secondItem="Kec-Hs-Egg" secondAttribute="trailing" constant="8" id="Zf2-jI-Gwr"/>
+                        <constraint firstAttribute="trailing" secondItem="gfY-aS-1mh" secondAttribute="trailing" constant="119" id="ZoK-AS-0Nh"/>
+                        <constraint firstItem="gfY-aS-1mh" firstAttribute="top" secondItem="ABW-GH-3KI" secondAttribute="top" constant="62" id="gx5-YS-qVy"/>
+                        <constraint firstItem="eBe-qk-I0J" firstAttribute="top" secondItem="7hQ-h8-hEm" secondAttribute="bottom" constant="34" id="l8R-Xe-PAf"/>
+                        <constraint firstItem="Kec-Hs-Egg" firstAttribute="top" secondItem="LUB-81-uHe" secondAttribute="bottom" constant="-1" id="lqS-50-fcv"/>
                         <constraint firstItem="Vf9-cy-h9t" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ABW-GH-3KI" secondAttribute="top" constant="13" id="pb4-c2-RnT"/>
                         <constraint firstAttribute="trailing" secondItem="7hQ-h8-hEm" secondAttribute="trailing" constant="13" id="q85-yS-7cq"/>
+                        <constraint firstItem="M2E-o0-auK" firstAttribute="leading" secondItem="ABW-GH-3KI" secondAttribute="leading" constant="8" id="ryg-Jp-MLC"/>
+                        <constraint firstItem="rVc-y9-pfY" firstAttribute="top" secondItem="7hQ-h8-hEm" secondAttribute="bottom" constant="14" id="t91-nq-l3w"/>
+                        <constraint firstItem="M2E-o0-auK" firstAttribute="top" secondItem="ABW-GH-3KI" secondAttribute="top" constant="112" id="vRF-gl-fVq"/>
                         <constraint firstItem="IKR-8o-MrB" firstAttribute="top" secondItem="ABW-GH-3KI" secondAttribute="top" constant="13" id="yX6-gD-uLk"/>
+                        <constraint firstItem="1eG-jd-vha" firstAttribute="top" secondItem="ABW-GH-3KI" secondAttribute="top" constant="82" id="zFL-q8-E9a"/>
                         <constraint firstItem="Vf9-cy-h9t" firstAttribute="top" secondItem="ABW-GH-3KI" secondAttribute="top" constant="13" id="zGf-qN-hs6"/>
                     </constraints>
                 </view>
@@ -171,10 +210,6 @@
                         <constraint firstAttribute="height" constant="262" id="XbY-hi-OCj"/>
                         <constraint firstAttribute="centerX" secondItem="jtw-Ic-AUe" secondAttribute="centerX" id="o93-Ig-9E1"/>
                     </constraints>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="5ln-SF-msc" appends="YES" id="Nsi-FS-Ma7"/>
-                        <outletCollection property="gestureRecognizers" destination="5ln-SF-msc" appends="YES" id="qxb-Vu-aia"/>
-                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -191,11 +226,6 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="406" y="342"/>
         </view>
-        <tapGestureRecognizer id="5ln-SF-msc">
-            <connections>
-                <action selector="showAvatar:" destination="-1" id="KP6-ik-qDs"/>
-            </connections>
-        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="rd_rs_8434eb3a154dd28c145289eab077ce34.jpg" width="500" height="671"/>

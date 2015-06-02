@@ -11,19 +11,24 @@
 
 @interface YKMovie : NSObject
 
-@property (strong, nonatomic) NSArray *moviesArray;
+@property (strong, nonatomic) NSNumber *movieId;
 
-@property (strong, nonatomic) UIImage *image;
+@property (strong, nonatomic) UIImage *cellImage;
+@property (strong, nonatomic) UIImage *detailImage;
 @property (strong, nonatomic) NSString *postPath;
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSNumber *popularity;
-@property (strong, nonatomic) NSString *directors; //douban only
-@property (strong, nonatomic) NSString *casts; //douban only
-@property (strong, nonatomic) NSDate *durations; //douban only
 @property (strong, nonatomic) NSString *release_date;
 @property (assign, nonatomic) NSNumber *voting;
 @property (strong, nonatomic) NSNumber *voting_count;
 @property (strong, nonatomic) NSString *overview;
+
+//detail独有属性
+//@property (strong, nonatomic) NSString *directors; //douban only
+//@property (strong, nonatomic) NSString *casts; //douban only
+@property (strong, nonatomic) NSNumber *runTime; //douban only
+@property (strong, nonatomic) NSNumber *revenue;
+@property (strong, nonatomic) NSString *tagline;
 
 @end

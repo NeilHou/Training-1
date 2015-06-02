@@ -10,18 +10,19 @@
 #import "YKMovie.h"
 #import "ViewController.h"
 #import "ClickImage.h"
+#import "AFNetworking.h"
 
 @interface YKDetailViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet ClickImage *images;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *popularityLabel;
-@property (weak, nonatomic) IBOutlet UILabel *directorsLabel; //douban only
-@property (weak, nonatomic) IBOutlet UILabel *castsLabel; //douban only
-@property (weak, nonatomic) IBOutlet UILabel *durationsLabel; //douban only
 @property (weak, nonatomic) IBOutlet UILabel *release_dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *votingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *voting_countLabel;
 @property (weak, nonatomic) IBOutlet UITextView *overviewTextView;
+@property (weak, nonatomic) IBOutlet UILabel *revenueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *runtimeLabel;
+@property (weak, nonatomic) IBOutlet UITextView *taglineLabel;
 
 //@property (strong, nonatomic) YKDetailViewController *detailViewController;
 
@@ -42,16 +43,7 @@
     self.images.canClick = YES;
     
     [self.navigationController setNavigationBarHidden:NO];
-//    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc]
-//                                   initWithTitle:@"换个颜色" style:
-//                                   UIBarButtonItemStylePlain target:self
-//                                   action: @selector  (changeTextColor)];
-    
-    // Do any additional setup after loading the view from its nib.
-}
 
-- (IBAction)showAvatar:(UITapGestureRecognizer*)sender {
-    [YKDetailViewController showImage:(UIImageView*)sender.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -66,7 +58,11 @@
     self.votingLabel.text = [NSString stringWithFormat:@"%@", movie.voting];
     self.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评论)", movie.voting_count];
     self.overviewTextView.text = movie.overview;
-    self.images.image = movie.image;
+    self.images.image = movie.detailImage;
+    
+    self.revenueLabel.text = [NSString stringWithFormat:@"$%@", movie.revenue];
+    self.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
+    self.taglineLabel.text = movie.tagline;
 }
 
 - (void)didReceiveMemoryWarning {
