@@ -12,9 +12,10 @@
 #import "AFNetworking.h"
 #import "YKMovie.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource>;
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>;
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic,retain) UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray *jsonArray;
 @property (nonatomic, strong) NSDictionary *detailDict;
 //@property (nonatomic, strong) NSMutableArray *detaildataArray;
@@ -24,7 +25,6 @@
 @implementation ViewController
 
 #pragma mark - View life cycle
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +44,14 @@
     
     _detaildataArray = [NSMutableArray array];
     [self loadReviews];
+    
+    //实现搜索功能
+    _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
+    _searchBar.placeholder = @"Amos说请输入电影名称";   //设置占位符
+    _searchBar.delegate = self;   //设置控件代理
+    [self.searchBar sizeToFit];
+    self.tableView.tableHeaderView = self.searchBar;
+    [self.tableView setContentOffset:CGPointMake(0.0,44.0) animated:YES]; //设置启动时搜索栏隐藏
 }
 
 - (void)loadReviews
