@@ -10,7 +10,7 @@
 #import "YKMovie.h"
 #import "ViewController.h"
 
-@interface YKDetailViewController ()
+@interface YKDetailViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *images;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *popularityLabel;
@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *voting_countLabel;
 @property (weak, nonatomic) IBOutlet UITextView *overviewTextView;
 
+//@property (strong, nonatomic) YKDetailViewController *detailViewController;
+
 @end
 
 @implementation YKDetailViewController
@@ -30,14 +32,29 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         
+        // Custom initialization
+//        self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+//        [self.view addSubview:self.scrollView];
+//        
+//        self.scrollView.delegate = self;
+//        
+//        self.detailViewController = [[YKDetailViewController alloc] initWithNibName:@"YKDetailViewController" bundle:nil];
+//        [self.scrollView addSubview:self.detailViewController.view];
+//        
+//        CGRect scRect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height + 30);
+//        self.scrollView.contentSize = scRect.size;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:NO];
+//    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc]
+//                                   initWithTitle:@"换个颜色" style:
+//                                   UIBarButtonItemStylePlain target:self
+//                                   action: @selector  (changeTextColor)];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -47,7 +64,7 @@
     [super viewWillAppear:animated];
     
     YKMovie *movie = self.movie;
-    
+    self.navigationItem.title = movie.title;
     self.titleLabel.text = movie.title;
     self.popularityLabel.text = [NSString stringWithFormat:@"%@", movie.popularity];
     self.release_dateLabel.text = movie.release_date;

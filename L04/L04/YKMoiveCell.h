@@ -18,5 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *release_dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *votingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *voting_countLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *movieUIActivityIndicatorView;
 
 @end

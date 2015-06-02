@@ -51,6 +51,8 @@
     self.jsonArray = [NSArray new];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString *URL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
+//    YKMoiveCell *movieCell = [YKMoiveCell new];
+//    [movieCell.movieUIActivityIndicatorView setHidesWhenStopped:YES];
     
     [manager GET:URL parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -59,6 +61,8 @@
          
          if (responseObject)
          {
+//             [movieCell.movieUIActivityIndicatorView startAnimating];
+             
              NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
              self.jsonArray = dict[@"results"];
              
@@ -82,6 +86,7 @@
                  
                  [_detaildataArray addObject:movie];
              }
+//             [movieCell.movieUIActivityIndicatorView stopAnimating];
              NSLog(@"数据缓存成功");
          }
          [self.tableView reloadData];
@@ -114,11 +119,6 @@
     YKMovie *movie = _detaildataArray[indexPath.row];
 
     cell.titleLabel.text = movie.title;
-    
-    //获取图片内容
-//    NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w342%@", movie.postPath];
-//    NSURL *imgURL = [NSURL URLWithString:imgURLString];
-//    NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:imgURL];
     cell.images.image = movie.image;
     
     cell.release_dateLabel.text = movie.release_date;
