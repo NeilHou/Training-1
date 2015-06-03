@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DrawerController.h"
+#import "YKJsonData.h"
 
 @interface ViewController : UIViewController<DrawerControllerChild, DrawerControllerPresenting>
 {
@@ -15,8 +16,11 @@
     NSMutableArray *_searchDataArray;
 }
 
-@property(nonatomic, weak) DrawerController *drawer;
+@property (nonatomic, weak) DrawerController *drawer;
+
 @property (nonatomic, strong) NSArray *menus;
+@property (nonatomic, strong) YKJsonData *jsonInit;
+
 
 @end
 

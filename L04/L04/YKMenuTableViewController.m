@@ -11,7 +11,7 @@
 
 static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewControllerCellReuseId";
 
-@interface YKMenuTableViewController ()
+@interface YKMenuTableViewController ()<UITabBarControllerDelegate, UITableViewDataSource>
 
 @property(nonatomic, assign) NSInteger previousRow;
 
@@ -19,14 +19,14 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 
 @implementation YKMenuTableViewController
 
-- (id)initWithMenus:(NSArray *)menus
-{
-    self = [super initWithStyle:UITableViewStyleGrouped];
-    if (self) {
-        _menus = menus;
-    }
-    return self;
-}
+//- (id)initWithMenus:(NSArray *)menus
+//{
+//    self = [super initWithStyle:UITableViewStyleGrouped];
+//    if (self) {
+//        _menus = menus;
+//    }
+//    return self;
+//}
 
 - (NSArray *)menus
 {
@@ -43,12 +43,29 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);//不知道为什么，并不能控制tableview的位置
+    CGRect frame = self.view.bounds;
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y + 90, frame.size.width, frame.size.height) style:UITableViewStyleGrouped];
     
-    self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:YKMunuViewControllerCellReuseId];
 }
+
+#pragma mark - Configuring the view’s layout behavior
+//该方法可以隐藏信号栏
+
+//- (UIStatusBarStyle)preferredStatusBarStyle
+//{
+//    // Even if this view controller hides the status bar, implementing this method is still needed to match the center view controller's
+//    // status bar style to avoid a flicker when the drawer is dragged and then left to open.
+//    return UIStatusBarStyleLightContent;
+//}
+//
+//- (BOOL)prefersStatusBarHidden
+//{
+//    return YES;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -87,6 +104,9 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
         [self.drawer close];
     }
     else {
+        
+        
+        
         [self.drawer close];
     }
     self.previousRow = indexPath.row;

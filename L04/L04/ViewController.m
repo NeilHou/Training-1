@@ -50,13 +50,11 @@ bool isSearch;
     
 #pragma mark - 设置navigationItem相关属性
     self.navigationItem.title = self.menus[0];
-    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc]
-                                       initWithTitle:@"主页" style:
-                                       UIBarButtonItemStylePlain target:self
-                                       action: @selector (returnToHome)];
-    self.navigationItem.rightBarButtonItem = rightbutton;
-    
     UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
+    UIImage *homeIcon = [UIImage imageNamed:@"home-25.png"];
+    
+    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithImage:homeIcon style:UIBarButtonItemStylePlain target:self action:@selector(returnToHome)];
+    self.navigationItem.rightBarButtonItem = rightbutton;
 
     UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithImage:muneIcon style:UIBarButtonItemStylePlain target:self action:@selector(openDrawer:)];
     self.navigationItem.leftBarButtonItem = leftbutton;
@@ -75,6 +73,7 @@ bool isSearch;
     [self.tableView setContentOffset:CGPointMake(0.0,44.0) animated:YES]; //设置启动时搜索栏隐藏
 }
 
+#pragma mark - Open drawer button
 - (void)openDrawer:(id)sender
 {
     [self.drawer open];
@@ -90,6 +89,7 @@ bool isSearch;
     self.navigationItem.title = self.menus[0];
 }
 
+#pragma mark - 抓取review的json数据的方法
 - (void)loadReviews
 {
     self.jsonArray = [NSArray new];

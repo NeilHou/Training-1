@@ -21,6 +21,8 @@
 		B04A389A1B1E9D1200E8FB0D /* YKMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38991B1E9D1200E8FB0D /* YKMenuTableViewController.m */; };
 		B04A389F1B1ED0A200E8FB0D /* menu-24.png in Resources */ = {isa = PBXBuildFile; fileRef = B04A389E1B1ED0A200E8FB0D /* menu-24.png */; };
 		B04A38A11B1F041400E8FB0D /* home-25.png in Resources */ = {isa = PBXBuildFile; fileRef = B04A38A01B1F041400E8FB0D /* home-25.png */; };
+		B04A38A31B1F113200E8FB0D /* home-50.png in Resources */ = {isa = PBXBuildFile; fileRef = B04A38A21B1F113200E8FB0D /* home-50.png */; };
+		B04A38A61B1F1DE200E8FB0D /* YKJsonData.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38A51B1F1DE200E8FB0D /* YKJsonData.m */; };
 		B0DF25181B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */; };
 		B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */; };
 		B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DF251B1B1D2FF600359E95 /* YKDetailViewController.xib */; };
@@ -66,6 +68,9 @@
 		B04A38991B1E9D1200E8FB0D /* YKMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMenuTableViewController.m; sourceTree = "<group>"; };
 		B04A389E1B1ED0A200E8FB0D /* menu-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-24.png"; sourceTree = "<group>"; };
 		B04A38A01B1F041400E8FB0D /* home-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-25.png"; sourceTree = "<group>"; };
+		B04A38A21B1F113200E8FB0D /* home-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-50.png"; sourceTree = "<group>"; };
+		B04A38A41B1F1DE200E8FB0D /* YKJsonData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKJsonData.h; sourceTree = "<group>"; };
+		B04A38A51B1F1DE200E8FB0D /* YKJsonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKJsonData.m; sourceTree = "<group>"; };
 		B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rd_rs_8434eb3a154dd28c145289eab077ce34.jpg; sourceTree = "<group>"; };
 		B0DF25191B1D2FF600359E95 /* YKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailViewController.h; sourceTree = "<group>"; };
 		B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
@@ -107,6 +112,8 @@
 				B0DF25271B1D304500359E95 /* YKMoiveCell.h */,
 				B0DF251C1B1D2FF600359E95 /* YKMoiveCell.m */,
 				B0DF251D1B1D2FF600359E95 /* YKMoiveCell.xib */,
+				B04A38A41B1F1DE200E8FB0D /* YKJsonData.h */,
+				B04A38A51B1F1DE200E8FB0D /* YKJsonData.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -115,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				B04A389E1B1ED0A200E8FB0D /* menu-24.png */,
+				B04A38A21B1F113200E8FB0D /* home-50.png */,
 				B04A38A01B1F041400E8FB0D /* home-25.png */,
 				B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */,
 			);
@@ -311,6 +319,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04A38A31B1F113200E8FB0D /* home-50.png in Resources */,
 				027B9FBE1B0C2B9000B58B52 /* Main.storyboard in Resources */,
 				B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */,
 				B0DF25221B1D2FF600359E95 /* YKMoiveCell.xib in Resources */,
@@ -380,6 +389,7 @@
 				B04A38941B1E9B5200E8FB0D /* DrawerController.m in Sources */,
 				B04A389A1B1E9D1200E8FB0D /* YKMenuTableViewController.m in Sources */,
 				B04A388F1B1E09A000E8FB0D /* NullSafe.m in Sources */,
+				B04A38A61B1F1DE200E8FB0D /* YKJsonData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
