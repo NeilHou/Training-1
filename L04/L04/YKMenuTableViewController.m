@@ -44,6 +44,10 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
+    
+    self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:YKMunuViewControllerCellReuseId];
 }
 
@@ -70,6 +74,7 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKMunuViewControllerCellReuseId forIndexPath:indexPath];
 
     cell.textLabel.text = _menus[indexPath.row];
+    cell.backgroundColor = [UIColor whiteColor];
     
     return cell;
     
@@ -83,17 +88,7 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
         [self.drawer close];
     }
     else {
-        // Reload the current center view controller and update its background color
-        typeof(self) __weak weakSelf = self;
-        [self.drawer reloadCenterViewControllerUsingBlock:^(){
-            NSParameterAssert(weakSelf.menus);
-            weakSelf.drawer.centerViewController.view.backgroundColor = weakSelf.colors[indexPath.row];
-        }];
-        
-        //        // Replace the current center view controller with a new one
-        //        ICSPlainColorViewController *center = [[ICSPlainColorViewController alloc] init];
-        //        center.view.backgroundColor = [UIColor redColor];
-        //        [self.drawer replaceCenterViewControllerWithViewController:center];
+        [self.drawer close];
     }
     self.previousRow = indexPath.row;
 }

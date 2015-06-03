@@ -25,7 +25,7 @@
 #import "DrawerController.h"
 #import "DropShadowView.h"
 
-static const CGFloat kDrawerControllerDrawerDepth = 260.0f;
+static const CGFloat kDrawerControllerDrawerDepth = 140.0f;
 static const CGFloat kDrawerControllerLeftViewInitialOffset = -60.0f;
 static const NSTimeInterval kDrawerControllerAnimationDuration = 0.5;
 static const CGFloat kDrawerControllerOpeningAnimationSpringDamping = 0.7f;

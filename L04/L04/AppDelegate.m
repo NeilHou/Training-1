@@ -9,8 +9,13 @@
 #import "AppDelegate.h"
 #import "ViewController.h"
 #import "YKDetailViewController.h"
+#import "DrawerController.h"
+#import "YKMenuTableViewController.h"
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) UINavigationController *navController;
+@property (nonatomic, strong) UIViewController *vc;
 
 @end
 
@@ -18,12 +23,18 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    ViewController *tableViewController = [[ViewController alloc] init];
     
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor clearColor];
+    
+    ViewController *tableViewController = [[ViewController alloc] init];
+    YKMenuTableViewController *menusVC = [YKMenuTableViewController new];
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
     
-    self.window.rootViewController = navController;
+    DrawerController *drawer = [[DrawerController alloc] initWithLeftViewController:menusVC centerViewController:navController];
+    
+//    [drawer addChildViewController:navController];
+    self.window.rootViewController = drawer;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     

@@ -55,7 +55,7 @@
     self.popularityLabel.text = [NSString stringWithFormat:@"%@", movie.popularity];
     self.release_dateLabel.text = movie.release_date;
     self.votingLabel.text = [NSString stringWithFormat:@"%@", movie.voting];
-    self.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评论)", movie.voting_count];
+    self.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评价)", movie.voting_count];
     self.overviewTextView.text = movie.overview;
     self.images.image = movie.detailImage;
     

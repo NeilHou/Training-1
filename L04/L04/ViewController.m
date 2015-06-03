@@ -54,6 +54,8 @@ bool isSearch;
                                        action: @selector (returnToHome)];
     self.navigationItem.rightBarButtonItem = rightbutton;
     
+    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithTitle:@"列表" style:UIBarButtonItemStylePlain target:self action: @selector(openDrawer:)];
+    self.navigationItem.leftBarButtonItem = leftbutton;
     
     _detaildataArray = [NSMutableArray array];
     _searchDataArray = [NSMutableArray array];
@@ -67,6 +69,11 @@ bool isSearch;
 //    [self.searchBar becomeFirstResponder];
     self.tableView.tableHeaderView = self.searchBar;
     [self.tableView setContentOffset:CGPointMake(0.0,44.0) animated:YES]; //设置启动时搜索栏隐藏
+}
+
+- (void)openDrawer:(id)sender
+{
+    [self.drawer open];
 }
 
 - (void)returnToHome
@@ -239,7 +246,7 @@ bool isSearch;
         cell.release_dateLabel.text = movie.release_date;
         
         cell.popularityLabel.text = [NSString stringWithFormat:@"%@", movie.popularity];
-        cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评论)",movie.voting_count];
+        cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评价)",movie.voting_count];
         
         NSNumberFormatter *numFormatter = [NSNumberFormatter new];
         numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -307,7 +314,7 @@ bool isSearch;
 //    [self filterBySubstring:searchBar.text];
 
     [self searchfromjson:searchBar.text];
-    self.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果", searchBar.text];
+    self.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", searchBar.text, (unsigned long)_searchDataArray.count];
     NSLog(@"%@", searchBar.text);
 }
 

@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DrawerController.h"
 
 @interface ViewController : UIViewController
 {
     NSMutableArray *_detaildataArray;
     NSMutableArray *_searchDataArray;
 }
+
+@property(nonatomic, weak) DrawerController *drawer;
 
 @end
 
