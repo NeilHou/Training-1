@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DrawerController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<DrawerControllerChild, DrawerControllerPresenting>
 {
     NSMutableArray *_detaildataArray;
     NSMutableArray *_searchDataArray;

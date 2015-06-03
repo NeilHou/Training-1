@@ -128,6 +128,7 @@ bool isSearch;
                           }
                           movie.tagline = string;
                       }
+                      [self.tableView reloadData];
                   }
                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                           NSLog(@"Detail数据抓取失败！");
@@ -155,17 +156,16 @@ bool isSearch;
                      dispatch_async(dispatch_get_main_queue(), ^{
                          movie.cellImage = image;
                      });
+                     [self.tableView reloadData];
                  });
                  
                  //异步处理detailImage
                  NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w500%@",movie.postPath];
                  NSURL *detailURL = [NSURL URLWithString:detailImgURLString];
-                 
-                 //异步抓取图片到imgData
+
                  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                      NSMutableData *imgData2 = [NSMutableData dataWithContentsOfURL:detailURL];
-                     
-                     //从imgData赋值到image
+
                      UIImage *image2 = [UIImage imageWithData:imgData2];
                      dispatch_async(dispatch_get_main_queue(), ^{
                          movie.detailImage = image2;
@@ -182,6 +182,11 @@ bool isSearch;
              NSLog(@"数据抓取失败！");
          }];
 }
+
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [self.tableView reloadData];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -314,7 +319,6 @@ bool isSearch;
 //    [self filterBySubstring:searchBar.text];
 
     [self searchfromjson:searchBar.text];
-    self.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", searchBar.text, (unsigned long)_searchDataArray.count];
     NSLog(@"%@", searchBar.text);
 }
 
@@ -396,6 +400,7 @@ bool isSearch;
                           }
                           movie.tagline = string;
                       }
+                      [self.tableView reloadData];
                   }
                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                           NSLog(@"Detail数据抓取失败！");
@@ -425,6 +430,7 @@ bool isSearch;
                      dispatch_async(dispatch_get_main_queue(), ^{
                          movie.cellImage = image;
                      });
+                     [self.tableView reloadData];
                  });
                  
                  //异步处理detailImage
@@ -446,12 +452,12 @@ bool isSearch;
              }
              //             [movieCell.movieUIActivityIndicatorView stopAnimating];
              NSLog(@"搜索数据缓存成功");
+             self.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", _searchBar.text, (unsigned long)_searchDataArray.count];
          }
          [self.tableView reloadData];
      }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"搜索数据抓取失败！");
          }];
-    
 }
 @end
