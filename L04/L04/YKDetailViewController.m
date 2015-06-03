@@ -23,8 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *revenueLabel;
 @property (weak, nonatomic) IBOutlet UILabel *runtimeLabel;
 @property (weak, nonatomic) IBOutlet UITextView *taglineLabel;
-
-//@property (strong, nonatomic) YKDetailViewController *detailViewController;
+@property (weak, nonatomic) IBOutlet UILabel *budgetLabel;
 
 @end
 
@@ -63,8 +62,9 @@
     //满千使用逗号
     NSNumberFormatter *numFormatter = [NSNumberFormatter new];
     numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    
     self.revenueLabel.text = [NSString stringWithFormat:@"$%@", [numFormatter stringFromNumber:movie.revenue]];
+    self.budgetLabel.text = [NSString stringWithFormat:@"$%@", [numFormatter stringFromNumber:movie.budget]];
+    
     self.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
     self.taglineLabel.text = movie.tagline;
 }

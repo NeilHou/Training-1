@@ -12,8 +12,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *images;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *popularityLabel;
-@property (weak, nonatomic) IBOutlet UILabel *directorsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *castsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *revenueLabel;
+@property (weak, nonatomic) IBOutlet UILabel *budgetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *runtimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *release_dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *votingLabel;

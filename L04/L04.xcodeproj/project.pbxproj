@@ -16,6 +16,9 @@
 		027B9FCF1B0C2B9000B58B52 /* L04Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FCE1B0C2B9000B58B52 /* L04Tests.m */; };
 		7AC0240DAD726C0CE1DA1C23 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 184551B1DA6E5964E391BF5E /* libPods.a */; };
 		B04A388F1B1E09A000E8FB0D /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A388E1B1E09A000E8FB0D /* NullSafe.m */; };
+		B04A38941B1E9B5200E8FB0D /* DrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38911B1E9B5200E8FB0D /* DrawerController.m */; };
+		B04A38951B1E9B5200E8FB0D /* DropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38931B1E9B5200E8FB0D /* DropShadowView.m */; };
+		B04A389A1B1E9D1200E8FB0D /* YKMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38991B1E9D1200E8FB0D /* YKMenuTableViewController.m */; };
 		B0DF25181B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */; };
 		B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */; };
 		B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DF251B1B1D2FF600359E95 /* YKDetailViewController.xib */; };
@@ -53,6 +56,12 @@
 		5F6BA63A78668641672A2AC2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		963CE80AB0B0B20ED3E8195E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		B04A388E1B1E09A000E8FB0D /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		B04A38901B1E9B5200E8FB0D /* DrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerController.h; sourceTree = "<group>"; };
+		B04A38911B1E9B5200E8FB0D /* DrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerController.m; sourceTree = "<group>"; };
+		B04A38921B1E9B5200E8FB0D /* DropShadowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropShadowView.h; sourceTree = "<group>"; };
+		B04A38931B1E9B5200E8FB0D /* DropShadowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropShadowView.m; sourceTree = "<group>"; };
+		B04A38981B1E9D1200E8FB0D /* YKMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKMenuTableViewController.h; sourceTree = "<group>"; };
+		B04A38991B1E9D1200E8FB0D /* YKMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMenuTableViewController.m; sourceTree = "<group>"; };
 		B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rd_rs_8434eb3a154dd28c145289eab077ce34.jpg; sourceTree = "<group>"; };
 		B0DF25191B1D2FF600359E95 /* YKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailViewController.h; sourceTree = "<group>"; };
 		B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
@@ -94,9 +103,6 @@
 				B0DF25271B1D304500359E95 /* YKMoiveCell.h */,
 				B0DF251C1B1D2FF600359E95 /* YKMoiveCell.m */,
 				B0DF251D1B1D2FF600359E95 /* YKMoiveCell.xib */,
-				B0DF252B1B1D822500359E95 /* ClickImage.h */,
-				B0DF252C1B1D822500359E95 /* ClickImage.m */,
-				B04A388E1B1E09A000E8FB0D /* NullSafe.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -136,12 +142,12 @@
 				B0DF25291B1D305400359E95 /* YKMovie.m */,
 				027B9FB61B0C2B9000B58B52 /* AppDelegate.h */,
 				027B9FB71B0C2B9000B58B52 /* AppDelegate.m */,
-				027B9FB91B0C2B9000B58B52 /* ViewController.h */,
-				027B9FBA1B0C2B9000B58B52 /* ViewController.m */,
 				027B9FBC1B0C2B9000B58B52 /* Main.storyboard */,
 				027B9FBF1B0C2B9000B58B52 /* Images.xcassets */,
 				027B9FC11B0C2B9000B58B52 /* LaunchScreen.xib */,
+				B04A38971B1E9CEB00E8FB0D /* ViewController */,
 				025354501B0ED82A00E49741 /* Model */,
+				B04A38961B1E9B5A00E8FB0D /* DrawerController */,
 				025354561B0EDAFA00E49741 /* Images */,
 				027B9FB21B0C2B9000B58B52 /* Supporting Files */,
 			);
@@ -151,6 +157,9 @@
 		027B9FB21B0C2B9000B58B52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B0DF252B1B1D822500359E95 /* ClickImage.h */,
+				B0DF252C1B1D822500359E95 /* ClickImage.m */,
+				B04A388E1B1E09A000E8FB0D /* NullSafe.m */,
 				027B9FB31B0C2B9000B58B52 /* Info.plist */,
 				027B9FB41B0C2B9000B58B52 /* main.m */,
 			);
@@ -181,6 +190,28 @@
 				963CE80AB0B0B20ED3E8195E /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B04A38961B1E9B5A00E8FB0D /* DrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				B04A38901B1E9B5200E8FB0D /* DrawerController.h */,
+				B04A38911B1E9B5200E8FB0D /* DrawerController.m */,
+				B04A38921B1E9B5200E8FB0D /* DropShadowView.h */,
+				B04A38931B1E9B5200E8FB0D /* DropShadowView.m */,
+			);
+			name = DrawerController;
+			sourceTree = "<group>";
+		};
+		B04A38971B1E9CEB00E8FB0D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				027B9FB91B0C2B9000B58B52 /* ViewController.h */,
+				027B9FBA1B0C2B9000B58B52 /* ViewController.m */,
+				B04A38981B1E9D1200E8FB0D /* YKMenuTableViewController.h */,
+				B04A38991B1E9D1200E8FB0D /* YKMenuTableViewController.m */,
+			);
+			name = ViewController;
 			sourceTree = "<group>";
 		};
 		DB165588AC8490D65AB10952 /* Frameworks */ = {
@@ -237,8 +268,9 @@
 		027B9FA71B0C2B9000B58B52 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = YK;
 				LastUpgradeCheck = 0630;
-				ORGANIZATIONNAME = Hanguang;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					027B9FAE1B0C2B9000B58B52 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -330,12 +362,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				027B9FBB1B0C2B9000B58B52 /* ViewController.m in Sources */,
+				B04A38951B1E9B5200E8FB0D /* DropShadowView.m in Sources */,
 				B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */,
 				B0DF252A1B1D305400359E95 /* YKMovie.m in Sources */,
 				027B9FB81B0C2B9000B58B52 /* AppDelegate.m in Sources */,
 				B0DF252D1B1D822500359E95 /* ClickImage.m in Sources */,
 				B0DF25211B1D2FF600359E95 /* YKMoiveCell.m in Sources */,
 				027B9FB51B0C2B9000B58B52 /* main.m in Sources */,
+				B04A38941B1E9B5200E8FB0D /* DrawerController.m in Sources */,
+				B04A389A1B1E9D1200E8FB0D /* YKMenuTableViewController.m in Sources */,
 				B04A388F1B1E09A000E8FB0D /* NullSafe.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

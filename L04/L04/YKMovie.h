@@ -30,5 +30,6 @@
 @property (strong, nonatomic) NSNumber *runTime; //douban only
 @property (strong, nonatomic) NSNumber *revenue;
 @property (strong, nonatomic) NSString *tagline;
+@property (strong, nonatomic) NSNumber *budget;
 
 @end

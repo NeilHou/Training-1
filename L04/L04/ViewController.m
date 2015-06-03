@@ -35,6 +35,7 @@ bool isSearch;
     
     // Do any additional setup after loading the view, typically from a nib.
     CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
+    
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     [self.view addSubview:_tableView];
     
@@ -47,11 +48,11 @@ bool isSearch;
     
     //设置navigationItem相关属性
     self.navigationItem.title = @"正在上映";
-    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc]
+    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc]
                                        initWithTitle:@"主页" style:
                                        UIBarButtonItemStylePlain target:self
                                        action: @selector (returnToHome)];
-    self.navigationItem.leftBarButtonItem = leftbutton;
+    self.navigationItem.rightBarButtonItem = rightbutton;
     
     
     _detaildataArray = [NSMutableArray array];
@@ -83,8 +84,6 @@ bool isSearch;
     self.jsonArray = [NSArray new];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString *URL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
-//    YKMoiveCell *movieCell = [YKMoiveCell new];
-//    [movieCell.movieUIActivityIndicatorView setHidesWhenStopped:YES];
     
     [manager GET:URL parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -93,8 +92,6 @@ bool isSearch;
          
          if (responseObject)
          {
-//             [movieCell.movieUIActivityIndicatorView startAnimating];
-             
              NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
              self.jsonArray = dict[@"results"];
              
@@ -115,6 +112,7 @@ bool isSearch;
                           NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
                           movie.revenue = dict[@"revenue"];
                           movie.runTime = dict[@"runtime"];
+                          movie.budget = dict[@"budget"];
                           
                           NSDictionary *dit = dict;
                           NSString *string = dit[@"tagline"];
@@ -169,7 +167,6 @@ bool isSearch;
                  
                  [_detaildataArray addObject:movie];
              }
-//             [movieCell.movieUIActivityIndicatorView stopAnimating];
              NSLog(@"首页数据缓存成功");
          }
          [self.tableView reloadData];
@@ -183,6 +180,8 @@ bool isSearch;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - requiest json data method
 
 #pragma mark - Tableview delegates
 
@@ -225,6 +224,8 @@ bool isSearch;
         NSNumberFormatter *numFormatter = [NSNumberFormatter new];
         numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
         cell.votingLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.voting]];
+        cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
+        cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
         NSLog(@"cell数据载入");
     }
     else{
@@ -243,6 +244,8 @@ bool isSearch;
         NSNumberFormatter *numFormatter = [NSNumberFormatter new];
         numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
         cell.votingLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.voting]];
+        cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
+        cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
         NSLog(@"cell数据载入");
     }
     
@@ -377,6 +380,7 @@ bool isSearch;
                           NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
                           movie.revenue = dict[@"revenue"];
                           movie.runTime = dict[@"runtime"];
+                          movie.budget = dict[@"budget"];
                           
                           NSDictionary *dit = dict;
                           NSString *string = dit[@"tagline"];
