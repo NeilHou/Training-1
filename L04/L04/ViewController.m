@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray *jsonArray;
 @property (nonatomic, strong) NSArray *searchJsonArray;
 @property (nonatomic, strong) NSDictionary *detailDict;
+@property (nonatomic, strong) YKMoiveCell *cell;
 //@property (nonatomic, strong) NSMutableArray *detaildataArray;
 
 @end
@@ -271,6 +272,12 @@ bool isSearch;
     return cell;
 }
 
+//移除单元格选中时的高亮状态的方法
+- (void)delectCell:(id)sender
+{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     YKDetailViewController *detailViewController = [[YKDetailViewController alloc] init];
@@ -289,6 +296,8 @@ bool isSearch;
     
         [self.navigationController pushViewController:detailViewController animated:YES];
     }
+    
+    [self performSelector:@selector(delectCell:) withObject:nil afterDelay:0.5];
 }
 
 #pragma mark - UISearchBarDelegate
