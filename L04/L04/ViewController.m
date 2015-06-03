@@ -54,7 +54,14 @@ bool isSearch;
                                        action: @selector (returnToHome)];
     self.navigationItem.rightBarButtonItem = rightbutton;
     
-    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithTitle:@"列表" style:UIBarButtonItemStylePlain target:self action: @selector(openDrawer:)];
+    UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
+    
+//    self.openDrawerButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    self.openDrawerButton.frame = CGRectMake(10.0f, 20.0f, 24.0f, 24.0f);
+//    [self.openDrawerButton setImage:muneIcon forState:UIControlStateNormal];
+//    [self.openDrawerButton addTarget:self action:@selector(openDrawer:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithImage:muneIcon style:UIBarButtonItemStylePlain target:self action:@selector(openDrawer:)];
     self.navigationItem.leftBarButtonItem = leftbutton;
     
     _detaildataArray = [NSMutableArray array];
