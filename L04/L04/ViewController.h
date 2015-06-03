@@ -16,6 +16,7 @@
 }
 
 @property(nonatomic, weak) DrawerController *drawer;
+@property (nonatomic, strong) NSArray *menus;
 
 @end
 

@@ -11,6 +11,7 @@
 #import "YKDetailViewController.h"
 #import "AFNetworking.h"
 #import "YKMovie.h"
+#import "YKMenuTableViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>;
 
@@ -19,8 +20,6 @@
 @property (nonatomic, strong) NSArray *jsonArray;
 @property (nonatomic, strong) NSArray *searchJsonArray;
 @property (nonatomic, strong) NSDictionary *detailDict;
-@property (nonatomic, strong) YKMoiveCell *cell;
-//@property (nonatomic, strong) NSMutableArray *detaildataArray;
 
 @end
 
@@ -47,8 +46,10 @@ bool isSearch;
     UINib *nib = [UINib nibWithNibName:@"YKMoiveCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"YKMoiveCell"];
     
-    //设置navigationItem相关属性
-    self.navigationItem.title = @"正在上映";
+    self.menus = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", nil];
+    
+#pragma mark - 设置navigationItem相关属性
+    self.navigationItem.title = self.menus[0];
     UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc]
                                        initWithTitle:@"主页" style:
                                        UIBarButtonItemStylePlain target:self
@@ -56,12 +57,7 @@ bool isSearch;
     self.navigationItem.rightBarButtonItem = rightbutton;
     
     UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
-    
-//    self.openDrawerButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    self.openDrawerButton.frame = CGRectMake(10.0f, 20.0f, 24.0f, 24.0f);
-//    [self.openDrawerButton setImage:muneIcon forState:UIControlStateNormal];
-//    [self.openDrawerButton addTarget:self action:@selector(openDrawer:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithImage:muneIcon style:UIBarButtonItemStylePlain target:self action:@selector(openDrawer:)];
     self.navigationItem.leftBarButtonItem = leftbutton;
     
@@ -91,7 +87,7 @@ bool isSearch;
     [_searchBar resignFirstResponder];
     [self.tableView setContentOffset:CGPointMake(0.0,-(20.0)) animated:YES]; //cancelhou搜索栏隐藏
     [self.tableView reloadData];
-    self.navigationItem.title = @"正在上映";
+    self.navigationItem.title = self.menus[0];
 }
 
 - (void)loadReviews
@@ -201,8 +197,6 @@ bool isSearch;
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - requiest json data method
-
 #pragma mark - Tableview delegates
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -243,9 +237,11 @@ bool isSearch;
         
         NSNumberFormatter *numFormatter = [NSNumberFormatter new];
         numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-        cell.votingLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.voting]];
         cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
         cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
+        
+        double d = [movie.voting doubleValue];
+        cell.votingLabel.text = [NSString stringWithFormat:@"%.2g", d];
         NSLog(@"cell数据载入");
     }
     else{
@@ -263,9 +259,11 @@ bool isSearch;
         
         NSNumberFormatter *numFormatter = [NSNumberFormatter new];
         numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-        cell.votingLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.voting]];
         cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
         cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
+        
+        double d = [movie.voting doubleValue];
+        cell.votingLabel.text = [NSString stringWithFormat:@"%.2g", d];
         NSLog(@"cell数据载入");
     }
     

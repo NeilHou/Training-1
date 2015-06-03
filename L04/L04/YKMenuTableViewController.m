@@ -13,7 +13,6 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 
 @interface YKMenuTableViewController ()
 
-@property (nonatomic, strong) NSArray *menus;
 @property(nonatomic, assign) NSInteger previousRow;
 
 @end
@@ -31,8 +30,8 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 
 - (NSArray *)menus
 {
+//    ViewController *vc = self.vc;
     if (!_menus) {
-        
         _menus = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", nil];
 //        _menus = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"menusArray" ofType:@"plist"]];
     }
@@ -44,7 +43,7 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
+    CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);//不知道为什么，并不能控制tableview的位置
     
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
     
