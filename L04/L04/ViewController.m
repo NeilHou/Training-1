@@ -233,7 +233,7 @@ bool isSearch;
         YKMovie *movie = _detaildataArray[indexPath.row];
         [self loadTheCellData:movie];
     }
-    
+
     return _cell;
 }
 
@@ -253,7 +253,11 @@ bool isSearch;
     _cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
     
     double dVoting = [movie.voting doubleValue];
+    if (dVoting < 0.5f) {
+        _cell.votingLabel.text = @"0";
+    }else{
     _cell.votingLabel.text = [NSString stringWithFormat:@"%.2g", dVoting];
+    }
     
     double dPopularity = [movie.popularity doubleValue];
     if (dPopularity > 10.0f) {
@@ -444,6 +448,7 @@ bool isSearch;
              //             [movieCell.movieUIActivityIndicatorView stopAnimating];
              NSLog(@"搜索数据缓存成功");
              self.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", _searchBar.text, (unsigned long)_searchDataArray.count];
+
          }
          [self.tableView reloadData];
      }

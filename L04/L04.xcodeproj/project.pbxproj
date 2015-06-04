@@ -23,6 +23,7 @@
 		B04A38A11B1F041400E8FB0D /* home-25.png in Resources */ = {isa = PBXBuildFile; fileRef = B04A38A01B1F041400E8FB0D /* home-25.png */; };
 		B04A38A31B1F113200E8FB0D /* home-50.png in Resources */ = {isa = PBXBuildFile; fileRef = B04A38A21B1F113200E8FB0D /* home-50.png */; };
 		B04A38A61B1F1DE200E8FB0D /* YKJsonData.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38A51B1F1DE200E8FB0D /* YKJsonData.m */; };
+		B04A38A91B2029A800E8FB0D /* HTCopyableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38A81B2029A800E8FB0D /* HTCopyableLabel.m */; };
 		B0DF25181B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */; };
 		B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */; };
 		B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DF251B1B1D2FF600359E95 /* YKDetailViewController.xib */; };
@@ -71,6 +72,8 @@
 		B04A38A21B1F113200E8FB0D /* home-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-50.png"; sourceTree = "<group>"; };
 		B04A38A41B1F1DE200E8FB0D /* YKJsonData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKJsonData.h; sourceTree = "<group>"; };
 		B04A38A51B1F1DE200E8FB0D /* YKJsonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKJsonData.m; sourceTree = "<group>"; };
+		B04A38A71B2029A800E8FB0D /* HTCopyableLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTCopyableLabel.h; sourceTree = "<group>"; };
+		B04A38A81B2029A800E8FB0D /* HTCopyableLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTCopyableLabel.m; sourceTree = "<group>"; };
 		B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rd_rs_8434eb3a154dd28c145289eab077ce34.jpg; sourceTree = "<group>"; };
 		B0DF25191B1D2FF600359E95 /* YKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailViewController.h; sourceTree = "<group>"; };
 		B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
@@ -174,6 +177,8 @@
 				B0DF252B1B1D822500359E95 /* ClickImage.h */,
 				B0DF252C1B1D822500359E95 /* ClickImage.m */,
 				B04A388E1B1E09A000E8FB0D /* NullSafe.m */,
+				B04A38A71B2029A800E8FB0D /* HTCopyableLabel.h */,
+				B04A38A81B2029A800E8FB0D /* HTCopyableLabel.m */,
 				027B9FB31B0C2B9000B58B52 /* Info.plist */,
 				027B9FB41B0C2B9000B58B52 /* main.m */,
 			);
@@ -382,6 +387,7 @@
 				B04A38951B1E9B5200E8FB0D /* DropShadowView.m in Sources */,
 				B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */,
 				B0DF252A1B1D305400359E95 /* YKMovie.m in Sources */,
+				B04A38A91B2029A800E8FB0D /* HTCopyableLabel.m in Sources */,
 				027B9FB81B0C2B9000B58B52 /* AppDelegate.m in Sources */,
 				B0DF252D1B1D822500359E95 /* ClickImage.m in Sources */,
 				B0DF25211B1D2FF600359E95 /* YKMoiveCell.m in Sources */,
