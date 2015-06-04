@@ -19,14 +19,14 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 
 @implementation YKMenuTableViewController
 
-//- (id)initWithMenus:(NSArray *)menus
-//{
-//    self = [super initWithStyle:UITableViewStyleGrouped];
-//    if (self) {
-//        _menus = menus;
-//    }
-//    return self;
-//}
+- (id)initWithMenus:(NSArray *)menus
+{
+    self = [super initWithStyle:UITableViewStyleGrouped];
+    if (self) {
+        _menus = menus;
+    }
+    return self;
+}
 
 - (NSArray *)menus
 {

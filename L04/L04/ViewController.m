@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSArray *jsonArray;
 @property (nonatomic, strong) NSArray *searchJsonArray;
 @property (nonatomic, strong) NSDictionary *detailDict;
+@property (nonatomic, strong) YKMoiveCell *cell;
 
 @end
 
@@ -216,58 +217,54 @@ bool isSearch;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    YKMoiveCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
+    _cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
     
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    _cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     // 如果处于搜索状态
     if(isSearch)
     {
         // 使用searchData作为表格显示的数据
         YKMovie *movie = _searchDataArray[indexPath.row];
-        
-        cell.titleLabel.text = movie.title;
-        cell.images.image = movie.cellImage;
-        cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
-        
-        cell.release_dateLabel.text = movie.release_date;
-        
-        cell.popularityLabel.text = [NSString stringWithFormat:@"%@", movie.popularity];
-        cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评论)",movie.voting_count];
-        
-        NSNumberFormatter *numFormatter = [NSNumberFormatter new];
-        numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-        cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
-        cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
-        
-        double d = [movie.voting doubleValue];
-        cell.votingLabel.text = [NSString stringWithFormat:@"%.2g", d];
-        NSLog(@"cell数据载入");
+        [self loadTheCellData:movie];
     }
     else{
         // 否则使用原始的tableData作为表格显示的数据
         YKMovie *movie = _detaildataArray[indexPath.row];
-        
-        cell.titleLabel.text = movie.title;
-        cell.images.image = movie.cellImage;
-        cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
-        
-        cell.release_dateLabel.text = movie.release_date;
-        
-        cell.popularityLabel.text = [NSString stringWithFormat:@"%@", movie.popularity];
-        cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评价)",movie.voting_count];
-        
-        NSNumberFormatter *numFormatter = [NSNumberFormatter new];
-        numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-        cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
-        cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
-        
-        double d = [movie.voting doubleValue];
-        cell.votingLabel.text = [NSString stringWithFormat:@"%.2g", d];
-        NSLog(@"cell数据载入");
+        [self loadTheCellData:movie];
     }
     
-    return cell;
+    return _cell;
+}
+
+//显示cell内容的方法
+- (void)loadTheCellData:(YKMovie *)movie
+{
+    _cell.titleLabel.text = movie.title;
+    _cell.images.image = movie.cellImage;
+    _cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
+    
+    _cell.release_dateLabel.text = movie.release_date;
+    _cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评价)",movie.voting_count];
+    
+    NSNumberFormatter *numFormatter = [NSNumberFormatter new];
+    numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    _cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
+    _cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
+    
+    double dVoting = [movie.voting doubleValue];
+    _cell.votingLabel.text = [NSString stringWithFormat:@"%.2g", dVoting];
+    
+    double dPopularity = [movie.popularity doubleValue];
+    if (dPopularity > 10.0f) {
+        _cell.popularityLabel.textColor = [UIColor orangeColor];
+        _cell.popularityLabel.text = [NSString stringWithFormat:@"%.4f (Hot~)", dPopularity];
+    }else{
+    _cell.popularityLabel.text = [NSString stringWithFormat:@"%.4f", dPopularity];
+    _cell.popularityLabel.textColor = [UIColor blackColor];
+    }
+    
+    NSLog(@"cell数据载入");
 }
 
 //移除单元格选中时的高亮状态的方法
@@ -328,12 +325,12 @@ bool isSearch;
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"search clicked");
     [self.searchBar resignFirstResponder];
-    
-    // 调用filterBySubstring:方法执行搜索
-//    [self filterBySubstring:searchBar.text];
 
     [self searchfromjson:searchBar.text];
     NSLog(@"%@", searchBar.text);
+    
+    // 调用filterBySubstring:方法执行搜索
+    // [self filterBySubstring:searchBar.text];
 }
 
 //点击搜索框上的 取消按钮时 调用
@@ -343,28 +340,8 @@ bool isSearch;
     isSearch = NO;
     _searchBar.text = @"";
     [_searchBar resignFirstResponder];
-    [self.tableView setContentOffset:CGPointMake(0.0,-(20.0)) animated:YES]; //cancelhou搜索栏隐藏
+    [self.tableView setContentOffset:CGPointMake(0.0f,-(20.0f)) animated:YES]; //cancelhou搜索栏隐藏
 }
-
-#pragma mark - search array method
-//以下两个方法可实现表格内搜索
-//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-//{
-//    // 调用filterBySubstring:方法执行搜索
-//    [self filterBySubstring:searchText];
-//}
-//
-//- (void)filterBySubstring:(NSString*) subString
-//{
-//    // 设置为搜索状态
-//    isSearch = YES;
-//    // 定义搜索谓词
-//    NSPredicate* pred = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@" , subString];
-//    // 使用谓词过滤NSArray
-//    _searchDataArray = [_detaildataArray filteredArrayUsingPredicate:pred];
-//    // 让表格控件重新加载数据
-//    [self.tableView reloadData];
-//}
 
 #pragma mark - Search from Json method
 //该方法可以从服务器搜索请求数据
@@ -475,3 +452,23 @@ bool isSearch;
          }];
 }
 @end
+
+#pragma mark - search array method
+//以下两个方法可实现表格内搜索
+//- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+//{
+//    // 调用filterBySubstring:方法执行搜索
+//    [self filterBySubstring:searchText];
+//}
+//
+//- (void)filterBySubstring:(NSString*) subString
+//{
+//    // 设置为搜索状态
+//    isSearch = YES;
+//    // 定义搜索谓词
+//    NSPredicate* pred = [NSPredicate predicateWithFormat:@"SELF CONTAINS[c] %@" , subString];
+//    // 使用谓词过滤NSArray
+//    _searchDataArray = [_detaildataArray filteredArrayUsingPredicate:pred];
+//    // 让表格控件重新加载数据
+//    [self.tableView reloadData];
+//}
