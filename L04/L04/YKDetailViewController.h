@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YKJsonData.h"
 @class YKMovie;
 
 @interface YKDetailViewController : UIViewController
 
 @property(nonatomic, strong) YKMovie *movie;
+@property(nonatomic, strong) YKJsonData *jsonData;
 @property(nonatomic, strong) UIScrollView *scrollView;
 
 @end

@@ -25,11 +25,15 @@
 @property (strong, nonatomic) NSString *overview;
 
 //detail独有属性
-//@property (strong, nonatomic) NSString *directors; //douban only
-//@property (strong, nonatomic) NSString *casts; //douban only
-@property (strong, nonatomic) NSNumber *runTime; //douban only
+@property (strong, nonatomic) NSString *directors;
+@property (strong, nonatomic) NSString *casts;
+@property (strong, nonatomic) NSNumber *runTime;
 @property (strong, nonatomic) NSNumber *revenue;
 @property (strong, nonatomic) NSString *tagline;
 @property (strong, nonatomic) NSNumber *budget;
+
+@property (strong, nonatomic) NSString *country;
+
+- (instancetype)initWithDictionary: (NSDictionary *) dict;
 
 @end

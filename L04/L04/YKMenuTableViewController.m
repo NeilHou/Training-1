@@ -43,13 +43,21 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    CGRect frame = self.view.bounds;
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(frame.origin.x, frame.origin.y + 90, frame.size.width, frame.size.height) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+
+    self.view.backgroundColor = [UIColor colorWithRed:0.9373 green:0.9373 blue:0.9569 alpha:1];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:YKMunuViewControllerCellReuseId];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    CGRect frame = self.tableView.frame;
+    self.tableView.frame = CGRectMake(frame.origin.x, frame.origin.y + 29, frame.size.width, frame.size.height);
 }
 
 #pragma mark - Configuring the view’s layout behavior
@@ -104,7 +112,6 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
         [self.drawer close];
     }
     else {
-        
         
         
         [self.drawer close];

@@ -90,6 +90,165 @@ bool isSearch;
     self.navigationItem.title = self.menus[0];
 }
 
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [self.tableView reloadData];
+//}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Tableview delegates
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if(isSearch)
+    {
+        // 使用searchData作为表格显示的数据
+        return _searchDataArray.count;
+    }
+    else
+    {
+        // 否则使用原始的tableData座位表格显示的数据
+        return _detaildataArray.count;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
+    
+    _cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+    // 如果处于搜索状态
+    if(isSearch)
+    {
+        // 使用searchData作为表格显示的数据
+        YKMovie *movie = _searchDataArray[indexPath.row];
+        [self loadTheCellData:movie];
+    }
+    else{
+        // 否则使用原始的tableData作为表格显示的数据
+        YKMovie *movie = _detaildataArray[indexPath.row];
+        [self loadTheCellData:movie];
+    }
+
+    return _cell;
+}
+
+#pragma mark - 显示cell内容的方法
+- (void)loadTheCellData:(YKMovie *)movie
+{
+    _cell.titleLabel.text = movie.title;
+    _cell.images.image = movie.cellImage;
+    _cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
+    
+    _cell.release_dateLabel.text = movie.release_date;
+    _cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评价)",movie.voting_count];
+    
+    NSNumberFormatter *numFormatter = [NSNumberFormatter new];
+    numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    _cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
+    _cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
+    
+    double dVoting = [movie.voting doubleValue];
+    if (dVoting < 0.5f) {
+        _cell.votingLabel.text = @"0";
+    }else{
+    _cell.votingLabel.text = [NSString stringWithFormat:@"%.2g", dVoting];
+    }
+    
+    double dPopularity = [movie.popularity doubleValue];
+    if (dPopularity > 10.0f) {
+        _cell.popularityLabel.textColor = [UIColor orangeColor];
+        _cell.popularityLabel.text = [NSString stringWithFormat:@"%.4f (Hot~)", dPopularity];
+    }else{
+    _cell.popularityLabel.text = [NSString stringWithFormat:@"%.4f", dPopularity];
+    _cell.popularityLabel.textColor = [UIColor blackColor];
+    }
+    
+    NSLog(@"cell数据载入");
+}
+
+#pragma mark - 移除单元格选中时的高亮状态的方法
+- (void)delectCell:(id)sender
+{
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    YKDetailViewController *detailViewController = [[YKDetailViewController alloc] init];
+    
+    if (isSearch){
+        
+        YKMovie *selectedMovie = _searchDataArray[indexPath.row];
+        detailViewController.movie = selectedMovie;
+        
+        [self.navigationController pushViewController:detailViewController animated:YES];
+        
+    }else{
+    
+        YKMovie *selectedMovie = _detaildataArray[indexPath.row];
+        detailViewController.movie = selectedMovie;
+    
+        [self.navigationController pushViewController:detailViewController animated:YES];
+    }
+    
+    [self performSelector:@selector(delectCell:) withObject:nil afterDelay:0.5];
+}
+
+#pragma mark - UISearchBarDelegate
+
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
+    
+    searchBar.text = @"";
+    searchBar.showsCancelButton = YES;
+    for(id cc in [searchBar subviews])
+    {
+        if([cc isKindOfClass:[UIButton class]])
+        {
+            UIButton *btn = (UIButton *)cc;
+            [btn setTitle:@"取消"  forState:UIControlStateNormal];
+        }
+    }
+    NSLog(@"2.shuould begin");
+    return YES;
+}
+
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    searchBar.text = @"";
+    NSLog(@"3.did begin");
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    NSLog(@"4.did end");
+    searchBar.showsCancelButton = NO;
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"5.search clicked");
+    [self.searchBar resignFirstResponder];
+
+    [self searchfromjson:searchBar.text];
+    NSLog(@"输入了：%@", searchBar.text);
+    
+    // 调用filterBySubstring:方法执行搜索
+    // [self filterBySubstring:searchBar.text];
+}
+
+//点击搜索框上的 取消按钮时 调用
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    NSLog(@"6.cancle clicked");
+    
+    isSearch = NO;
+    _searchBar.text = @"";
+    [_searchBar resignFirstResponder];
+    [self.tableView setContentOffset:CGPointMake(0.0f,-(20.0f)) animated:YES]; //cancelhou搜索栏隐藏
+}
+
 #pragma mark - 抓取review的json数据的方法
 - (void)loadReviews
 {
@@ -108,7 +267,7 @@ bool isSearch;
              self.jsonArray = dict[@"results"];
              
              for (NSDictionary *dict in self.jsonArray) {
-
+                 
                  YKMovie *movie = [YKMovie new];
                  
                  //获取ID值，在跳转后获取详细信息
@@ -152,7 +311,6 @@ bool isSearch;
                  NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w92%@",movie.postPath];
                  NSURL *posterURL = [NSURL URLWithString:imgURLString];
                  
-                 //异步抓取图片到imgData
                  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                      NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:posterURL];
                      
@@ -167,10 +325,10 @@ bool isSearch;
                  //异步处理detailImage
                  NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w500%@",movie.postPath];
                  NSURL *detailURL = [NSURL URLWithString:detailImgURLString];
-
+                 
                  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                      NSMutableData *imgData2 = [NSMutableData dataWithContentsOfURL:detailURL];
-
+                     
                      UIImage *image2 = [UIImage imageWithData:imgData2];
                      dispatch_async(dispatch_get_main_queue(), ^{
                          movie.detailImage = image2;
@@ -188,172 +346,13 @@ bool isSearch;
          }];
 }
 
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    [self.tableView reloadData];
-//}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Tableview delegates
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-//    return _detaildataArray.count;
-    if(isSearch)
-    {
-        // 使用searchData作为表格显示的数据
-        return _searchDataArray.count;
-    }
-    else
-    {
-        // 否则使用原始的tableData座位表格显示的数据
-        return _detaildataArray.count;
-    }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    _cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
-    
-    _cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-    // 如果处于搜索状态
-    if(isSearch)
-    {
-        // 使用searchData作为表格显示的数据
-        YKMovie *movie = _searchDataArray[indexPath.row];
-        [self loadTheCellData:movie];
-    }
-    else{
-        // 否则使用原始的tableData作为表格显示的数据
-        YKMovie *movie = _detaildataArray[indexPath.row];
-        [self loadTheCellData:movie];
-    }
-
-    return _cell;
-}
-
-//显示cell内容的方法
-- (void)loadTheCellData:(YKMovie *)movie
-{
-    _cell.titleLabel.text = movie.title;
-    _cell.images.image = movie.cellImage;
-    _cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
-    
-    _cell.release_dateLabel.text = movie.release_date;
-    _cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评价)",movie.voting_count];
-    
-    NSNumberFormatter *numFormatter = [NSNumberFormatter new];
-    numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    _cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
-    _cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
-    
-    double dVoting = [movie.voting doubleValue];
-    if (dVoting < 0.5f) {
-        _cell.votingLabel.text = @"0";
-    }else{
-    _cell.votingLabel.text = [NSString stringWithFormat:@"%.2g", dVoting];
-    }
-    
-    double dPopularity = [movie.popularity doubleValue];
-    if (dPopularity > 10.0f) {
-        _cell.popularityLabel.textColor = [UIColor orangeColor];
-        _cell.popularityLabel.text = [NSString stringWithFormat:@"%.4f (Hot~)", dPopularity];
-    }else{
-    _cell.popularityLabel.text = [NSString stringWithFormat:@"%.4f", dPopularity];
-    _cell.popularityLabel.textColor = [UIColor blackColor];
-    }
-    
-    NSLog(@"cell数据载入");
-}
-
-//移除单元格选中时的高亮状态的方法
-- (void)delectCell:(id)sender
-{
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    YKDetailViewController *detailViewController = [[YKDetailViewController alloc] init];
-    
-    if (isSearch){
-        
-        YKMovie *selectedMovie = _searchDataArray[indexPath.row];
-        detailViewController.movie = selectedMovie;
-        
-        [self.navigationController pushViewController:detailViewController animated:YES];
-        
-    }else{
-    
-        YKMovie *selectedMovie = _detaildataArray[indexPath.row];
-        detailViewController.movie = selectedMovie;
-    
-        [self.navigationController pushViewController:detailViewController animated:YES];
-    }
-    
-    [self performSelector:@selector(delectCell:) withObject:nil afterDelay:0.5];
-}
-
-#pragma mark - UISearchBarDelegate
-
-- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar {
-    
-    searchBar.showsCancelButton = YES;
-    for(id cc in [searchBar subviews])
-    {
-        if([cc isKindOfClass:[UIButton class]])
-        {
-            UIButton *btn = (UIButton *)cc;
-            [btn setTitle:@"取消"  forState:UIControlStateNormal];
-        }
-    }
-    NSLog(@"2.shuould begin");
-    return YES;
-}
-
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    searchBar.text = @"";
-    NSLog(@"3.did begin");
-}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-    NSLog(@"4.did end");
-    searchBar.showsCancelButton = NO;
-}
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"search clicked");
-    [self.searchBar resignFirstResponder];
-
-    [self searchfromjson:searchBar.text];
-    NSLog(@"%@", searchBar.text);
-    
-    // 调用filterBySubstring:方法执行搜索
-    // [self filterBySubstring:searchBar.text];
-}
-
-//点击搜索框上的 取消按钮时 调用
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"cancle clicked");
-    
-    isSearch = NO;
-    _searchBar.text = @"";
-    [_searchBar resignFirstResponder];
-    [self.tableView setContentOffset:CGPointMake(0.0f,-(20.0f)) animated:YES]; //cancelhou搜索栏隐藏
-}
-
 #pragma mark - Search from Json method
 //该方法可以从服务器搜索请求数据
 - (void)searchfromjson:(NSString *) keyString
 {
     isSearch = YES;
-    
     self.searchJsonArray = [NSArray new];
+    
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
     NSString *URL = [NSString stringWithFormat:@"http://api.themoviedb.org/3/search/movie?query=%@&api_key=e55425032d3d0f371fc776f302e7c09b", keyString];
@@ -448,7 +447,7 @@ bool isSearch;
              //             [movieCell.movieUIActivityIndicatorView stopAnimating];
              NSLog(@"搜索数据缓存成功");
              self.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", _searchBar.text, (unsigned long)_searchDataArray.count];
-
+             [self.tableView reloadSectionIndexTitles];
          }
          [self.tableView reloadData];
      }

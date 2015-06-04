@@ -10,4 +10,29 @@
 
 @implementation YKMovie
 
+- (instancetype) initWithDictionary:(NSDictionary *)dict{
+    self = [super init];
+    if (self) {
+        
+        self.movieId = dict[@"id"];
+        
+        self.postPath = dict[@"poster_path"];
+        
+        self.title = dict[@"title"];
+        self.popularity = dict[@"popularity"];
+        self.release_date = dict[@"release_date"];
+        self.voting = dict[@"vote_average"];
+        self.voting_count = dict[@"vote_count"];
+        self.overview = dict[@"overview"];
+        
+//        self.casts = dict[@"character"];
+        
+        self.revenue = dict[@"revenue"];
+        self.runTime = dict[@"runtime"];
+        self.budget = dict[@"budget"];
+        self.country = dict[@"iso_3166_1"];
+    }
+    return self;
+}
+
 @end

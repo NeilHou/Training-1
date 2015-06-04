@@ -10,7 +10,8 @@
 #import "YKMovie.h"
 #import "ViewController.h"
 #import "ClickImage.h"
-#import "AFNetworking.h"
+#import "YKAlternativeTableViewController.h"
+
 
 @interface YKDetailViewController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet ClickImage *images;
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *taglineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *budgetLabel;
 
+@property (strong, nonatomic) NSArray *alternativeArray;
 @end
 
 @implementation YKDetailViewController
@@ -42,7 +44,28 @@
     self.images.canClick = YES;
     
     [self.navigationController setNavigationBarHidden:NO];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"类似电影" style:UIBarButtonItemStylePlain target:self action:@selector(pushToAlternative)];
+    self.navigationItem.rightBarButtonItem = rightButton;
+}
 
+- (void)pushToAlternative
+{
+    YKAlternativeTableViewController *alternativeVC = [YKAlternativeTableViewController new];
+    
+    NSString *alternativeURL = [NSString stringWithFormat:@"http://api.themoviedb.org/3/movie/%@/alternative_titles?api_key=e55425032d3d0f371fc776f302e7c09b", self.movie.movieId];
+    
+    self.alternativeArray = [NSArray new];
+    
+    [YKJsonData alternativeDataWithUrl:alternativeURL success:^(id movie)
+     {
+         self.alternativeArray = movie;
+     } fail:^{
+         
+     }];
+    
+    YKMovie *alternativeMovie = self.alternativeArray[0];
+    
+    [self.navigationController pushViewController:alternativeVC animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
