@@ -26,7 +26,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *taglineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *budgetLabel;
 
-@property (strong, nonatomic) NSArray *alternativeArray;
 @end
 
 @implementation YKDetailViewController
@@ -48,25 +47,26 @@
     self.navigationItem.rightBarButtonItem = rightButton;
 }
 
-- (void)pushToAlternative
+- (NSArray *)pushToAlternative
 {
     YKAlternativeTableViewController *alternativeVC = [YKAlternativeTableViewController new];
     
     NSString *alternativeURL = [NSString stringWithFormat:@"http://api.themoviedb.org/3/movie/%@/alternative_titles?api_key=e55425032d3d0f371fc776f302e7c09b", self.movie.movieId];
     
-    self.alternativeArray = [NSArray new];
+    alternativeArray = [NSArray new];
     
     [YKJsonData alternativeDataWithUrl:alternativeURL success:^(id movie)
      {
-         self.alternativeArray = movie;
+         alternativeArray = movie;
      } fail:^{
          
      }];
     
-    YKMovie *alternativeMovie = self.alternativeArray[0];
-    
     [self.navigationController pushViewController:alternativeVC animated:YES];
+    
+    return alternativeArray;
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {

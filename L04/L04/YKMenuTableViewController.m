@@ -32,7 +32,7 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 {
 //    ViewController *vc = self.vc;
     if (!_menus) {
-        _menus = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", nil];
+        _menus = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", @"我的收藏", nil];
 //        _menus = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"menusArray" ofType:@"plist"]];
     }
     return _menus;

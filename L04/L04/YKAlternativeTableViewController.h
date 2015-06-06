@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class YKMovie;
 
 @interface YKAlternativeTableViewController : UITableViewController
-
-@property(nonatomic, strong) YKMovie *movie;
 
 @end

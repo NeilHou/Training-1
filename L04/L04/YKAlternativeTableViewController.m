@@ -8,6 +8,8 @@
 
 #import "YKAlternativeTableViewController.h"
 #import "YKJsonData.h"
+#import "YKDetailViewController.h"
+#import "YKMovie.h"
 
 static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 
@@ -52,10 +54,11 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:YKAlternativeCellReuseId];
     }
     
-    YKMovie *movie = self.movie;
+    YKDetailViewController *detailVC = [YKDetailViewController new];
+    YKMovie *movie = detailVC.alternativeArray[indexPath.row];
     
-//    cell.textLabel.text = ;
-//    cell.detailTextLabel.text =
+    cell.textLabel.text = [movie title];
+    cell.detailTextLabel.text = movie.country;
     
     return cell;
 }

@@ -47,7 +47,7 @@ bool isSearch;
     UINib *nib = [UINib nibWithNibName:@"YKMoiveCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"YKMoiveCell"];
     
-    self.menus = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", nil];
+    self.menus = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", @"我的收藏", nil];
     
 #pragma mark - 设置navigationItem相关属性
     self.navigationItem.title = self.menus[0];
@@ -163,7 +163,7 @@ bool isSearch;
     double dPopularity = [movie.popularity doubleValue];
     if (dPopularity > 10.0f) {
         _cell.popularityLabel.textColor = [UIColor orangeColor];
-        _cell.popularityLabel.text = [NSString stringWithFormat:@"%.4f (Hot~)", dPopularity];
+        _cell.popularityLabel.text = [NSString stringWithFormat:@"\ue11d%.4f", dPopularity];
     }else{
     _cell.popularityLabel.text = [NSString stringWithFormat:@"%.4f", dPopularity];
     _cell.popularityLabel.textColor = [UIColor blackColor];
