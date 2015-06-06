@@ -19,27 +19,49 @@
 
 @end
 
+NSArray* MenuArray = nil;
+void BuildMenuArray()
+{
+    MenuArray = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", @"我的收藏", nil];
+}
+
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    BuildMenuArray();
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor clearColor];
     
     ViewController *tableViewController = [[ViewController alloc] init];
     YKMenuTableViewController *menusVC = [YKMenuTableViewController new];
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:tableViewController];
     
-    DrawerController *drawer = [[DrawerController alloc] initWithLeftViewController:menusVC centerViewController:navController];
+    DrawerController *drawer = [[DrawerController alloc] initWithLeftViewController:menusVC centerViewController:tableViewController];
+    
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:drawer];
+    
+#pragma mark - 设置navigationItem相关属性
+    drawer.navigationItem.title = tableViewController.menus[0];
+    UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
+    UIImage *homeIcon = [UIImage imageNamed:@"home-25.png"];
+    
+    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithImage:homeIcon style:UIBarButtonItemStylePlain target:tableViewController  action:@selector(returnToHome)];
+    drawer.navigationItem.rightBarButtonItem = rightbutton;
+    
+    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithImage:muneIcon style:UIBarButtonItemStylePlain target:tableViewController action:@selector(openDrawer:)];
+    drawer.navigationItem.leftBarButtonItem = leftbutton;
     
 //    [drawer addChildViewController:navController];
-    self.window.rootViewController = drawer;
+    self.window.rootViewController = navController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

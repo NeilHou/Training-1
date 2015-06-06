@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIGlobal.h"
 
 @interface YKAlternativeTableViewController : UITableViewController
+
+@property (strong, nonatomic) id movies;
+
+- (void) reloadAlternativeData: (id) movies;
 
 @end

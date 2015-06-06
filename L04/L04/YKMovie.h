@@ -20,13 +20,11 @@
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSNumber *popularity;
 @property (strong, nonatomic) NSString *release_date;
-@property (assign, nonatomic) NSNumber *voting;
+@property (strong, nonatomic) NSNumber *voting;
 @property (strong, nonatomic) NSNumber *voting_count;
 @property (strong, nonatomic) NSString *overview;
 
 //detail独有属性
-@property (strong, nonatomic) NSString *directors;
-@property (strong, nonatomic) NSString *casts;
 @property (strong, nonatomic) NSNumber *runTime;
 @property (strong, nonatomic) NSNumber *revenue;
 @property (strong, nonatomic) NSString *tagline;

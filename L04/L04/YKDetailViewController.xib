@@ -25,6 +25,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tmn-pM-dkS">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
+                </scrollView>
                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ABW-GH-3KI">
                     <rect key="frame" x="0.0" y="324" width="320" height="252"/>
                     <subviews>

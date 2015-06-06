@@ -11,6 +11,7 @@
 #import "ViewController.h"
 #import "ClickImage.h"
 #import "YKAlternativeTableViewController.h"
+#import "YKJsonData.h"
 
 
 @interface YKDetailViewController ()<UIScrollViewDelegate>
@@ -26,9 +27,13 @@
 @property (weak, nonatomic) IBOutlet UITextView *taglineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *budgetLabel;
 
+//@property (nonatomic, weak) UIScrollView *scrollView;
 @end
 
+
 @implementation YKDetailViewController
+
+@synthesize alternativeArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,33 +43,39 @@
     return self;
 }
 
+//- (id)initWithScrollView:(UIScrollView *)scrollView {
+//    self = [super initWithNibName:nil bundle:nil];
+//    self.scrollView = scrollView;
+//    [_scrollView addSubview:self];
+//    
+//    return self;
+//}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.images.canClick = YES;
     
     [self.navigationController setNavigationBarHidden:NO];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"类似电影" style:UIBarButtonItemStylePlain target:self action:@selector(pushToAlternative)];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"别名" style:UIBarButtonItemStylePlain target:self action:@selector(pushToAlternative)];
     self.navigationItem.rightBarButtonItem = rightButton;
 }
 
-- (NSArray *)pushToAlternative
+- (void)pushToAlternative
 {
     YKAlternativeTableViewController *alternativeVC = [YKAlternativeTableViewController new];
     
     NSString *alternativeURL = [NSString stringWithFormat:@"http://api.themoviedb.org/3/movie/%@/alternative_titles?api_key=e55425032d3d0f371fc776f302e7c09b", self.movie.movieId];
     
-    alternativeArray = [NSArray new];
+    alternativeArray = [NSMutableArray array];
     
-    [YKJsonData alternativeDataWithUrl:alternativeURL success:^(id movie)
-     {
-         alternativeArray = movie;
-     } fail:^{
-         
-     }];
+    [YKJsonData alternativeDataWithUrl:alternativeURL success:^(id movie) {
+        alternativeArray = movie;
+        [alternativeVC reloadAlternativeData:alternativeArray];
+    } fail:^{
+        
+    }];
     
     [self.navigationController pushViewController:alternativeVC animated:YES];
-    
-    return alternativeArray;
 }
 
 

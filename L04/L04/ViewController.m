@@ -15,7 +15,6 @@
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>;
 
-@property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, retain) UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray *jsonArray;
 @property (nonatomic, strong) NSArray *searchJsonArray;
@@ -47,18 +46,18 @@ bool isSearch;
     UINib *nib = [UINib nibWithNibName:@"YKMoiveCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"YKMoiveCell"];
     
-    self.menus = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", @"我的收藏", nil];
+    self.menus = MenuArray;
     
-#pragma mark - 设置navigationItem相关属性
-    self.navigationItem.title = self.menus[0];
-    UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
-    UIImage *homeIcon = [UIImage imageNamed:@"home-25.png"];
-    
-    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithImage:homeIcon style:UIBarButtonItemStylePlain target:self action:@selector(returnToHome)];
-    self.navigationItem.rightBarButtonItem = rightbutton;
-
-    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithImage:muneIcon style:UIBarButtonItemStylePlain target:self action:@selector(openDrawer:)];
-    self.navigationItem.leftBarButtonItem = leftbutton;
+//#pragma mark - 设置navigationItem相关属性
+//    self.navigationItem.title = self.menus[0];
+//    UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
+//    UIImage *homeIcon = [UIImage imageNamed:@"home-25.png"];
+//    
+//    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithImage:homeIcon style:UIBarButtonItemStylePlain target:self action:@selector(returnToHome)];
+//    self.navigationItem.rightBarButtonItem = rightbutton;
+//
+//    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithImage:muneIcon style:UIBarButtonItemStylePlain target:self action:@selector(openDrawer:)];
+//    self.navigationItem.leftBarButtonItem = leftbutton;
     
     _detaildataArray = [NSMutableArray array];
     _searchDataArray = [NSMutableArray array];
@@ -66,7 +65,7 @@ bool isSearch;
     
     //实现搜索功能
     _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
-    _searchBar.placeholder = @"Amos请您\"输入电影名称\"";   //设置占位符
+    _searchBar.placeholder = @"Amos请您\"输入英文电影名称\"";   //设置占位符
     _searchBar.delegate = self;   //设置控件代理
     [self.searchBar sizeToFit];
 //    [self.searchBar becomeFirstResponder];
@@ -163,7 +162,7 @@ bool isSearch;
     double dPopularity = [movie.popularity doubleValue];
     if (dPopularity > 10.0f) {
         _cell.popularityLabel.textColor = [UIColor orangeColor];
-        _cell.popularityLabel.text = [NSString stringWithFormat:@"\ue11d%.4f", dPopularity];
+        _cell.popularityLabel.text = [NSString stringWithFormat:@"\U0001F525%.4f", dPopularity];
     }else{
     _cell.popularityLabel.text = [NSString stringWithFormat:@"%.4f", dPopularity];
     _cell.popularityLabel.textColor = [UIColor blackColor];
@@ -252,9 +251,14 @@ bool isSearch;
 #pragma mark - 抓取review的json数据的方法
 - (void)loadReviews
 {
+    [_detaildataArray removeAllObjects];
     self.jsonArray = [NSArray new];
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString *URL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
+
+    NSString *URL = self.menu.movieURL;
+    if (!URL) {
+        URL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
+    }
     
     [manager GET:URL parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject)
@@ -292,7 +296,7 @@ bool isSearch;
                           }
                           movie.tagline = string;
                       }
-                      [self.tableView reloadData];
+                      //[self.tableView reloadData];
                   }
                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                           NSLog(@"Detail数据抓取失败！");

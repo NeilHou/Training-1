@@ -29,6 +29,12 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 
@@ -38,12 +44,15 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return 0;
+    if (_movies==NULL)
+        return 0;
+    else
+        return [_movies count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -54,12 +63,19 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:YKAlternativeCellReuseId];
     }
     
-    YKDetailViewController *detailVC = [YKDetailViewController new];
-    YKMovie *movie = detailVC.alternativeArray[indexPath.row];
+    //self.navigationController.popoverPresentationController.presentingViewController
+    YKMovie *movie = _movies[indexPath.row];
     
     cell.textLabel.text = [movie title];
     cell.detailTextLabel.text = movie.country;
     
     return cell;
 }
+
+- (void) reloadAlternativeData:(id)movies
+{
+    _movies = movies;
+    [self.tableView reloadData];
+}
+
 @end

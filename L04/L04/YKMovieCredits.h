@@ -10,4 +10,6 @@
 
 @interface YKMovieCredits : YKMovie
 
+@property (strong, nonatomic) NSString *directors;
+@property (strong, nonatomic) NSString *casts;
 @end

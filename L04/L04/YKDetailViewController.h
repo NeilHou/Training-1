@@ -7,16 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "YKJsonData.h"
+#import "UIGlobal.h"
+
 @class YKMovie;
 
 @interface YKDetailViewController : UIViewController
-{
-    NSArray *alternativeArray;
-}
+//{
+//    NSArray *alternativeArray;
+//}
+@property(nonatomic, strong) NSMutableArray *alternativeArray;
 @property(nonatomic, strong) YKMovie *movie;
-@property(nonatomic, strong) YKJsonData *jsonData;
 @property(nonatomic, strong) UIScrollView *scrollView;
 
-- (NSArray *)alternativeArray;
+//- (NSArray *)alternativeArray;
 @end

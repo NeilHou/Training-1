@@ -9,10 +9,13 @@
 #import "YKMenuTableViewController.h"
 #import "ViewController.h"
 
+
+
 static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewControllerCellReuseId";
 
 @interface YKMenuTableViewController ()<UITabBarControllerDelegate, UITableViewDataSource>
 
+@property(nonatomic, strong) NSArray *movieURLArray;
 @property(nonatomic, assign) NSInteger previousRow;
 
 @end
@@ -32,7 +35,8 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 {
 //    ViewController *vc = self.vc;
     if (!_menus) {
-        _menus = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", @"我的收藏", nil];
+        //_menus = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", @"我的收藏", nil];
+        _menus = MenuArray;
 //        _menus = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"menusArray" ofType:@"plist"]];
     }
     return _menus;
@@ -43,12 +47,14 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    
+        CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
+    self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
-    self.view.backgroundColor = [UIColor colorWithRed:0.9373 green:0.9373 blue:0.9569 alpha:1];
+    //self.view.backgroundColor = [UIColor colorWithRed:0.9373 green:0.9373 blue:0.9569 alpha:1];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:YKMunuViewControllerCellReuseId];
 }
@@ -56,8 +62,6 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    CGRect frame = self.tableView.frame;
-    self.tableView.frame = CGRectMake(frame.origin.x, frame.origin.y + 29, frame.size.width, frame.size.height);
 }
 
 #pragma mark - Configuring the view’s layout behavior
@@ -107,16 +111,26 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.movieURLArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"movieURL" ofType:@"plist"]];
+    
+    
     if (indexPath.row == self.previousRow) {
         // Close the drawer without no further actions on the center view controller
         [self.drawer close];
     }
     else {
-        
-        
+        movieURL = self.movieURLArray[indexPath.row];
+        //强制转换成子类
+        ViewController* vc = (ViewController*)self.drawer.centerViewController;
+        [vc loadReviews];
+        //[vc.tableView reloadData];
+//        [self.VC loadReviews];
+//        [self.VC.tableView reloadData];
         [self.drawer close];
     }
     self.previousRow = indexPath.row;
 }
+
+@synthesize movieURL;
 
 @end

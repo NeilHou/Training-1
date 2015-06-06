@@ -19,6 +19,7 @@
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
              NSArray *json = responseObject[@"titles"];
              NSMutableArray *movies = [[NSMutableArray alloc]init];
+             
              for (NSDictionary *dict in json) {
                  YKMovie *movie = [[YKMovie alloc] initWithDictionary:dict];
                  [movies addObject:movie];
