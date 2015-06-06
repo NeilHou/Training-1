@@ -67,7 +67,7 @@
 /**
  @name Child controllers
  */
-
+- (void) openAndClose;
 /**
  The left view controller.
 

@@ -7,7 +7,6 @@
 //
 
 #import "YKAlternativeTableViewController.h"
-#import "YKJsonData.h"
 #import "YKDetailViewController.h"
 #import "YKMovie.h"
 
@@ -49,7 +48,7 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    if (_movies==NULL)
+    if (!_movies)
         return 0;
     else
         return [_movies count];
@@ -62,8 +61,7 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
     if (cell==nil) {
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:YKAlternativeCellReuseId];
     }
-    
-    //self.navigationController.popoverPresentationController.presentingViewController
+
     YKMovie *movie = _movies[indexPath.row];
     
     cell.textLabel.text = [movie title];

@@ -561,4 +561,14 @@ typedef NS_ENUM(NSUInteger, DrawerControllerState)
                      }];
 }
 
+- (void)openAndClose
+{
+    if (self.drawerState == DrawerControllerStateClosed) {
+        [self open];
+    }
+    else {
+        [self close];
+    }
+}
+
 @end

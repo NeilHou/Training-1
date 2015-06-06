@@ -27,7 +27,6 @@
 @property (weak, nonatomic) IBOutlet UITextView *taglineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *budgetLabel;
 
-//@property (nonatomic, weak) UIScrollView *scrollView;
 @end
 
 
@@ -42,14 +41,6 @@
     }
     return self;
 }
-
-//- (id)initWithScrollView:(UIScrollView *)scrollView {
-//    self = [super initWithNibName:nil bundle:nil];
-//    self.scrollView = scrollView;
-//    [_scrollView addSubview:self];
-//    
-//    return self;
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -12,12 +12,8 @@
 @class YKMovie;
 
 @interface YKDetailViewController : UIViewController
-//{
-//    NSArray *alternativeArray;
-//}
+
 @property(nonatomic, strong) NSMutableArray *alternativeArray;
 @property(nonatomic, strong) YKMovie *movie;
-@property(nonatomic, strong) UIScrollView *scrollView;
 
-//- (NSArray *)alternativeArray;
 @end

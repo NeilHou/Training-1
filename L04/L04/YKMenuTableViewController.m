@@ -9,8 +9,6 @@
 #import "YKMenuTableViewController.h"
 #import "ViewController.h"
 
-
-
 static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewControllerCellReuseId";
 
 @interface YKMenuTableViewController ()<UITabBarControllerDelegate, UITableViewDataSource>
@@ -35,7 +33,6 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 {
 //    ViewController *vc = self.vc;
     if (!_menus) {
-        //_menus = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", @"我的收藏", nil];
         _menus = MenuArray;
 //        _menus = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"menusArray" ofType:@"plist"]];
     }
@@ -62,6 +59,7 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.tableView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + 29, self.view.bounds.size.width, self.view.bounds.size.height);
 }
 
 #pragma mark - Configuring the view’s layout behavior
@@ -120,12 +118,11 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
     }
     else {
         movieURL = self.movieURLArray[indexPath.row];
+        
         //强制转换成子类
         ViewController* vc = (ViewController*)self.drawer.centerViewController;
         [vc loadReviews];
-        //[vc.tableView reloadData];
-//        [self.VC loadReviews];
-//        [self.VC.tableView reloadData];
+
         [self.drawer close];
     }
     self.previousRow = indexPath.row;

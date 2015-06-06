@@ -76,7 +76,7 @@ bool isSearch;
 #pragma mark - Open drawer button
 - (void)openDrawer:(id)sender
 {
-    [self.drawer open];
+    [self.drawer openAndClose];
 }
 
 - (void)returnToHome
