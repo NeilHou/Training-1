@@ -25,6 +25,7 @@ static NSString * const YKCastsCellReuseId = @"YKCastsCell";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.rowHeight = 80;
+    self.tableView.allowsSelection = NO;
     
     UINib *nib = [UINib nibWithNibName:YKCastsCellReuseId bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:YKCastsCellReuseId];

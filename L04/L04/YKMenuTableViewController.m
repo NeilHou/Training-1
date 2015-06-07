@@ -109,8 +109,9 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 
     cell.textLabel.text = _menus[indexPath.row];
     cell.backgroundColor = [UIColor whiteColor];
-    cell.textLabel.highlightedTextColor = [UIColor redColor];
-    cell.selectedBackgroundView.backgroundColor = [UIColor grayColor];
+    cell.textLabel.highlightedTextColor = [UIColor whiteColor];
+    cell.highlighted = YES;
+    
     return cell;
     
 }
@@ -119,6 +120,7 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.movieURLArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"movieURL" ofType:@"plist"]];
+    [self performSelector:@selector(selectCell:) withObject:nil];
     
     if (indexPath.row == self.previousRow) {
         // Close the drawer without no further actions on the center view controller
@@ -139,6 +141,11 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
         }
     }
     self.previousRow = indexPath.row;
+}
+
+- (void)selectCell:(id)sender
+{
+    [self.tableView selectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES scrollPosition:UITableViewScrollPositionNone];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath

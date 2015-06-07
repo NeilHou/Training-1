@@ -13,6 +13,9 @@
 static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 
 @interface YKAlternativeTableViewController ()
+{
+    YKAlternativeTableViewController *ATC;
+}
 @end
 
 @implementation YKAlternativeTableViewController
@@ -23,9 +26,9 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.allowsSelection = NO; //设置不允许点选
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:YKAlternativeCellReuseId];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -58,10 +61,9 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 {
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:YKAlternativeCellReuseId];
     
-    if (cell == nil) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                    reuseIdentifier:YKAlternativeCellReuseId];
-    }
+    //初始化cell的类型
+    cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                reuseIdentifier:YKAlternativeCellReuseId];
 
     self.navigationItem.title = [NSString stringWithFormat:@"包含%lu个结果", [_movies count]];
     
