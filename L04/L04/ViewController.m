@@ -142,6 +142,10 @@ bool isSearch;
 
 - (void)loadTheCellData:(YKMovie *)movie
 {
+    //创建一个状态栏的网络指示器
+    UIApplication *myApp = [UIApplication sharedApplication];
+    myApp.networkActivityIndicatorVisible = YES; //在开始下载数据时显示指示器
+    
     _cell.titleLabel.text = movie.title;
     
     _cell.release_dateLabel.text = movie.release_date;
@@ -181,6 +185,7 @@ bool isSearch;
     });
     if (movie.cellImage){
         [_activityIndicatorView stopAnimating];
+        myApp.networkActivityIndicatorVisible = NO;
     }
     
     _cell.images.image = movie.cellImage;

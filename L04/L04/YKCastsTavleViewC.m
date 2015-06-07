@@ -61,11 +61,12 @@ static NSString * const YKCastsCellReuseId = @"YKCastsCell";
     _cell = [tableView dequeueReusableCellWithIdentifier:YKCastsCellReuseId forIndexPath:indexPath];
     
     self.navigationItem.title = [NSString stringWithFormat:@"共%lu个主要演员", [_movies count]];
+    UIApplication *myApp = [UIApplication sharedApplication];
+    myApp.networkActivityIndicatorVisible = YES;
     
     //初始化一个状态指示器
     _activityIndicatorView = [[UIActivityIndicatorView alloc]
                               initWithFrame:CGRectMake(23.0,25.0,30.0,30.0)];
-    
     _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;  //设置样式
     _activityIndicatorView.hidesWhenStopped = YES;  //停止后自动隐藏
     [_cell addSubview:_activityIndicatorView];  //附着在当前试图
@@ -91,6 +92,7 @@ static NSString * const YKCastsCellReuseId = @"YKCastsCell";
     
     if (movie.proImage) {
         [_activityIndicatorView stopAnimating];
+        myApp.networkActivityIndicatorVisible = NO;
     }
     _cell.castsImage.image = [movie proImage];
     
