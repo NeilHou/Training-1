@@ -48,7 +48,7 @@
     [self.navigationController setNavigationBarHidden:NO];
     
     UIImage *earthIron = [UIImage imageNamed:@"globe-50@2x.png"];
-    UIImage *castsIron = [UIImage imageNamed:@"group_filled-50@2x.png"];
+    UIImage *castsIron = [UIImage imageNamed:@"frankensteins_monster-48@2x.png"];
     
     UIBarButtonItem *rightButton1 = [[UIBarButtonItem alloc] initWithImage:earthIron style:UIBarButtonItemStylePlain target:self action:@selector(pushToAlternative)];
     UIBarButtonItem *rightButton2 = [[UIBarButtonItem alloc] initWithImage:castsIron style:UIBarButtonItemStylePlain target:self action:@selector(pushToCasts)];

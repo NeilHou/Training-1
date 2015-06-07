@@ -20,6 +20,7 @@
 @property (nonatomic, strong) NSArray *searchJsonArray;
 @property (nonatomic, strong) NSDictionary *detailDict;
 @property (nonatomic, strong) YKMoiveCell *cell;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -61,6 +62,7 @@ bool isSearch;
     
     NSString *URL = nil;
     [self loadReviews: URL];
+    
 }
 
 #pragma mark - Open drawer button
@@ -112,6 +114,14 @@ bool isSearch;
     _cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
     _cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
+    //初始化一个状态指示器
+    _activityIndicatorView = [[UIActivityIndicatorView alloc]
+                              initWithFrame:CGRectMake(57.0,70.0,30.0,30.0)];
+    
+    _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;  //设置样式
+    _activityIndicatorView.hidesWhenStopped = YES;  //停止后自动隐藏
+    [_cell addSubview:_activityIndicatorView];  //附着在当前试图
+    
     // 如果处于搜索状态
     if(isSearch)
     {
@@ -155,6 +165,7 @@ bool isSearch;
     
     //获取图片内容
     //异步处理cellImage
+    [_activityIndicatorView startAnimating];
     NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w92%@",movie.postPath];
     NSURL *posterURL = [NSURL URLWithString:imgURLString];
     
@@ -168,6 +179,9 @@ bool isSearch;
         });
         [self.tableView reloadData];
     });
+    if (movie.cellImage){
+        [_activityIndicatorView stopAnimating];
+    }
     
     _cell.images.image = movie.cellImage;
     

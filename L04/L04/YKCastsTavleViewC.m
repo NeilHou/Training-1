@@ -13,6 +13,7 @@
 static NSString * const YKCastsCellReuseId = @"YKCastsCell";
 @interface YKCastsTavleViewC()
 @property (nonatomic, strong) YKCastsCell *cell;
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
 @end
 
@@ -59,14 +60,22 @@ static NSString * const YKCastsCellReuseId = @"YKCastsCell";
 {
     _cell = [tableView dequeueReusableCellWithIdentifier:YKCastsCellReuseId forIndexPath:indexPath];
     
-    
     self.navigationItem.title = [NSString stringWithFormat:@"共%lu个主要演员", [_movies count]];
+    
+    //初始化一个状态指示器
+    _activityIndicatorView = [[UIActivityIndicatorView alloc]
+                              initWithFrame:CGRectMake(23.0,25.0,30.0,30.0)];
+    
+    _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;  //设置样式
+    _activityIndicatorView.hidesWhenStopped = YES;  //停止后自动隐藏
+    [_cell addSubview:_activityIndicatorView];  //附着在当前试图
     
     YKMovie *movie = _movies[indexPath.row];
     
     _cell.castsLabel.text = [movie name];
     _cell.characterLabel.text = [movie character];
     
+    [_activityIndicatorView startAnimating];
     NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w45%@",movie.profile_path];
     NSURL *detailURL = [NSURL URLWithString:detailImgURLString];
     
@@ -80,6 +89,9 @@ static NSString * const YKCastsCellReuseId = @"YKCastsCell";
         });
     });
     
+    if (movie.proImage) {
+        [_activityIndicatorView stopAnimating];
+    }
     _cell.castsImage.image = [movie proImage];
     
     return _cell;
