@@ -75,6 +75,7 @@ static NSString * const YKCastsCellReuseId = @"YKCastsCell";
         UIImage *image = [UIImage imageWithData:imgData];
         dispatch_async(dispatch_get_main_queue(), ^{
             movie.proImage = image;
+            [self.tableView reloadData];
         });
     });
     

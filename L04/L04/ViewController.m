@@ -75,6 +75,7 @@ bool isSearch;
     _searchBar.text = @"";
     [_searchBar resignFirstResponder];
     [self.tableView setContentOffset:CGPointMake(0.0,-(20.0)) animated:YES]; //cancelhou搜索栏隐藏
+    _drawer.navigationItem.title = MenuArray[0];
     [self.tableView reloadData];
 }
 
@@ -284,6 +285,11 @@ bool isSearch;
 - (void)searchfromjson:(NSString *) keyString
 {
     isSearch = YES;
+    [_searchDataArray removeAllObjects];
+    
+    //使用该方法返回一个新的NSString，用于过滤和转换所有不合法的字符
+    keyString = [keyString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    
     NSString *searchURL = [NSString stringWithFormat:@"http://api.themoviedb.org/3/search/movie?query=%@&api_key=e55425032d3d0f371fc776f302e7c09b", keyString];
     
     [YKJsonData MovieDataWithUrl:searchURL
