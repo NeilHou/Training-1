@@ -127,14 +127,17 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
         [self.drawer close];
     }
     else {
-        _drawer.navigationItem.title = MenuArray[indexPath.row];
-        //强制转换成子类
+#pragma mark - 点选menu之后的动作
+        
+        _drawer.navigationItem.title = MenuArray[indexPath.row];  //改了title标题
         BOOL b = indexPath.row < 4.0f;
         if (b == YES) {
+            //强制转换成子类
             movieURL = self.movieURLArray[indexPath.row];
             ViewController* vc = (ViewController*)self.drawer.centerViewController;
-            [vc loadReviews:movieURL];
-            [self.drawer close];
+            [vc loadReviews:movieURL];  //执行了loadReviews方法
+            [vc.tableView reloadData];
+            [self.drawer close];  //关闭侧边栏
         }else{
         
         [self.drawer close];
