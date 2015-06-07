@@ -36,6 +36,30 @@
          }];
 }
 
++ (void)castsDataWithUrl:(NSString *)url success:(void (^)(id movie))success fail:(void (^)())fail{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager GET:url
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSArray *json = responseObject[@"cast"];
+             NSMutableArray *movies = [[NSMutableArray alloc]init];
+             
+             for (NSDictionary *dict in json) {
+                 YKMovie *movie = [[YKMovie alloc] initWithDictionary:dict];
+                 [movies addObject:movie];
+             }
+             if (success) {
+                 success(movies);
+             }
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"%@",error);
+             if (fail) {
+                 fail();
+             }
+         }];
+}
+
 + (void)MovieDataWithUrl:(NSString *)url success:(void (^)(id movie))success fail:(void (^)())fail{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url

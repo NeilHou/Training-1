@@ -12,6 +12,7 @@
 #import "ClickImage.h"
 #import "YKAlternativeTableViewController.h"
 #import "YKJsonData.h"
+#import "YKCastsTavleViewC.h"
 
 
 @interface YKDetailViewController ()<UIScrollViewDelegate>
@@ -29,10 +30,9 @@
 
 @end
 
-
 @implementation YKDetailViewController
 
-@synthesize alternativeArray;
+@synthesize alternativeArray, castsArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,8 +47,11 @@
     self.images.canClick = YES;
     
     [self.navigationController setNavigationBarHidden:NO];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"别名" style:UIBarButtonItemStylePlain target:self action:@selector(pushToAlternative)];
-    self.navigationItem.rightBarButtonItem = rightButton;
+    UIBarButtonItem *rightButton1 = [[UIBarButtonItem alloc] initWithTitle:@"别名" style:UIBarButtonItemStylePlain target:self action:@selector(pushToAlternative)];
+    UIBarButtonItem *rightButton2 = [[UIBarButtonItem alloc] initWithTitle:@"演员" style:UIBarButtonItemStylePlain target:self action:@selector(pushToCasts)];
+    
+    NSArray *rightButtons = [[NSArray alloc] initWithObjects:rightButton1, rightButton2, nil];
+    self.navigationItem.rightBarButtonItems = rightButtons;
 }
 
 - (void)pushToAlternative
@@ -69,6 +72,23 @@
     [self.navigationController pushViewController:alternativeVC animated:YES];
 }
 
+- (void)pushToCasts
+{
+    YKCastsTavleViewC *castsVC = [YKCastsTavleViewC new];
+    
+    NSString *castURL = [NSString stringWithFormat:@"http://api.themoviedb.org/3/movie/%@/credits?api_key=e55425032d3d0f371fc776f302e7c09b", self.movie.movieId];
+    
+    castsArray = [NSMutableArray array];
+    
+    [YKJsonData castsDataWithUrl:castURL success:^(id movie) {
+        castsArray = movie;
+        [castsVC reloadCastsData:castsArray];
+    } fail:^{
+        
+    }];
+    
+    [self.navigationController pushViewController:castsVC animated:YES];
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {

@@ -32,6 +32,11 @@
 
 @property (strong, nonatomic) NSString *country;
 
+@property (strong, nonatomic) NSString *character;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *profile_path;
+@property (strong, nonatomic) UIImage *proImage;
+
 - (instancetype)initWithDictionary: (NSDictionary *) dict;
 
 @end

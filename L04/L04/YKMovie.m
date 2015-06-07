@@ -31,6 +31,10 @@
         self.country = dict[@"iso_3166_1"];
 
         self.tagline = dict[@"tagline"];
+        
+        self.character = dict[@"character"];
+        self.name = dict[@"name"];
+        self.profile_path = dict[@"profile_path"];
     }
     return self;
 }

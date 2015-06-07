@@ -1,0 +1,92 @@
+//
+//  YKCastsTavleViewC.m
+//  L04
+//
+//  Created by Amos Wu on 15/6/7.
+//
+//
+
+#import "YKCastsTavleViewC.h"
+#import "YKMovie.h"
+#import "YKCastsCell.h"
+
+static NSString * const YKCastsCellReuseId = @"YKCastsCell";
+@interface YKCastsTavleViewC()
+@property (nonatomic, strong) YKCastsCell *cell;
+
+@end
+
+@implementation YKCastsTavleViewC
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.rowHeight = 80;
+    
+    UINib *nib = [UINib nibWithNibName:YKCastsCellReuseId bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:YKCastsCellReuseId];
+    
+//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:YKCastsCellReuseId];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    if (!_movies)
+        return 0;
+    else
+        return [_movies count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    _cell = [tableView dequeueReusableCellWithIdentifier:YKCastsCellReuseId forIndexPath:indexPath];
+    
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"共%lu个主要演员", [_movies count]];
+    
+    YKMovie *movie = _movies[indexPath.row];
+    
+    _cell.castsLabel.text = [movie name];
+    _cell.characterLabel.text = [movie character];
+    
+    NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w45%@",movie.profile_path];
+    NSURL *detailURL = [NSURL URLWithString:detailImgURLString];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:detailURL];
+        
+        UIImage *image = [UIImage imageWithData:imgData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            movie.proImage = image;
+        });
+    });
+    
+    _cell.castsImage.image = [movie proImage];
+    
+    return _cell;
+}
+
+
+- (void) reloadCastsData:(id)movies
+{
+    _movies = movies;
+    [self.tableView reloadData];
+}
+@end

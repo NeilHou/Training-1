@@ -27,6 +27,9 @@
 		B04A38AC1B2080BB00E8FB0D /* YKAlternativeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38AB1B2080BB00E8FB0D /* YKAlternativeTableViewController.m */; };
 		B04A38B01B228F8000E8FB0D /* YKMovieCredits.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38AF1B228F8000E8FB0D /* YKMovieCredits.m */; };
 		B04A38B21B22974400E8FB0D /* movieURL.plist in Resources */ = {isa = PBXBuildFile; fileRef = B04A38B11B22974400E8FB0D /* movieURL.plist */; };
+		B04A38BC1B24319700E8FB0D /* YKCastsTavleViewC.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38BB1B24319700E8FB0D /* YKCastsTavleViewC.m */; };
+		B04A38C61B24381500E8FB0D /* YKCastsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38C41B24381500E8FB0D /* YKCastsCell.m */; };
+		B04A38C71B24381500E8FB0D /* YKCastsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B04A38C51B24381500E8FB0D /* YKCastsCell.xib */; };
 		B0DF25181B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */; };
 		B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */; };
 		B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DF251B1B1D2FF600359E95 /* YKDetailViewController.xib */; };
@@ -83,6 +86,11 @@
 		B04A38AF1B228F8000E8FB0D /* YKMovieCredits.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKMovieCredits.m; sourceTree = "<group>"; };
 		B04A38B11B22974400E8FB0D /* movieURL.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = movieURL.plist; sourceTree = "<group>"; };
 		B04A38B31B232F2300E8FB0D /* UIGlobal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIGlobal.h; sourceTree = "<group>"; };
+		B04A38BA1B24319700E8FB0D /* YKCastsTavleViewC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCastsTavleViewC.h; sourceTree = "<group>"; };
+		B04A38BB1B24319700E8FB0D /* YKCastsTavleViewC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCastsTavleViewC.m; sourceTree = "<group>"; };
+		B04A38C31B24381500E8FB0D /* YKCastsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKCastsCell.h; sourceTree = "<group>"; };
+		B04A38C41B24381500E8FB0D /* YKCastsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKCastsCell.m; sourceTree = "<group>"; };
+		B04A38C51B24381500E8FB0D /* YKCastsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YKCastsCell.xib; sourceTree = "<group>"; };
 		B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rd_rs_8434eb3a154dd28c145289eab077ce34.jpg; sourceTree = "<group>"; };
 		B0DF25191B1D2FF600359E95 /* YKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailViewController.h; sourceTree = "<group>"; };
 		B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
@@ -121,6 +129,9 @@
 				B0DF25271B1D304500359E95 /* YKMoiveCell.h */,
 				B0DF251C1B1D2FF600359E95 /* YKMoiveCell.m */,
 				B0DF251D1B1D2FF600359E95 /* YKMoiveCell.xib */,
+				B04A38C31B24381500E8FB0D /* YKCastsCell.h */,
+				B04A38C41B24381500E8FB0D /* YKCastsCell.m */,
+				B04A38C51B24381500E8FB0D /* YKCastsCell.xib */,
 				B04A38A41B1F1DE200E8FB0D /* YKJsonData.h */,
 				B04A38A51B1F1DE200E8FB0D /* YKJsonData.m */,
 			);
@@ -240,6 +251,8 @@
 				B0DF251B1B1D2FF600359E95 /* YKDetailViewController.xib */,
 				B04A38AA1B2080BB00E8FB0D /* YKAlternativeTableViewController.h */,
 				B04A38AB1B2080BB00E8FB0D /* YKAlternativeTableViewController.m */,
+				B04A38BA1B24319700E8FB0D /* YKCastsTavleViewC.h */,
+				B04A38BB1B24319700E8FB0D /* YKCastsTavleViewC.m */,
 				B04A38B31B232F2300E8FB0D /* UIGlobal.h */,
 			);
 			name = ViewController;
@@ -351,6 +364,7 @@
 				B04A38B21B22974400E8FB0D /* movieURL.plist in Resources */,
 				027B9FBE1B0C2B9000B58B52 /* Main.storyboard in Resources */,
 				B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */,
+				B04A38C71B24381500E8FB0D /* YKCastsCell.xib in Resources */,
 				B0DF25221B1D2FF600359E95 /* YKMoiveCell.xib in Resources */,
 				B04A38A11B1F041400E8FB0D /* home-25.png in Resources */,
 				B0DF25181B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */,
@@ -408,6 +422,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				027B9FBB1B0C2B9000B58B52 /* ViewController.m in Sources */,
+				B04A38C61B24381500E8FB0D /* YKCastsCell.m in Sources */,
 				B04A38951B1E9B5200E8FB0D /* DropShadowView.m in Sources */,
 				B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */,
 				B04A38AC1B2080BB00E8FB0D /* YKAlternativeTableViewController.m in Sources */,
@@ -417,6 +432,7 @@
 				027B9FB81B0C2B9000B58B52 /* AppDelegate.m in Sources */,
 				B0DF252D1B1D822500359E95 /* ClickImage.m in Sources */,
 				B0DF25211B1D2FF600359E95 /* YKMoiveCell.m in Sources */,
+				B04A38BC1B24319700E8FB0D /* YKCastsTavleViewC.m in Sources */,
 				027B9FB51B0C2B9000B58B52 /* main.m in Sources */,
 				B04A38941B1E9B5200E8FB0D /* DrawerController.m in Sources */,
 				B04A389A1B1E9D1200E8FB0D /* YKMenuTableViewController.m in Sources */,

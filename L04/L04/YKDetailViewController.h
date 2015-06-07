@@ -14,6 +14,7 @@
 @interface YKDetailViewController : UIViewController
 
 @property(nonatomic, strong) NSMutableArray *alternativeArray;
+@property(nonatomic, strong) NSMutableArray *castsArray;
 @property(nonatomic, strong) YKMovie *movie;
 
 @end
