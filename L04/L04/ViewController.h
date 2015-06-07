@@ -18,16 +18,17 @@
 {
     NSMutableArray *_detaildataArray;
     NSMutableArray *_searchDataArray;
+    NSMutableArray *_idDataArray;
 }
 
 @property (nonatomic, weak) DrawerController *drawer;
 @property (nonatomic, strong) YKJsonData *jsonInit;
 @property (nonatomic, strong) YKMenuTableViewController *menu;
+@property (nonatomic, strong) YKMovie *movie;
 
-@property (nonatomic, strong) NSArray *menus;
 @property (nonatomic, strong) UITableView *tableView;
 
-- (void)loadReviews;
+- (void)loadReviews: (NSString *)movieURL;
 - (void)returnToHome;
 - (void)openDrawer:(id)sender;
 @end

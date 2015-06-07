@@ -49,6 +49,7 @@
              }
              if (success) {
                  success(movies);
+                 NSLog(@"Data数据到手");
              }
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -67,6 +68,7 @@
              YKMovie *movie = [[YKMovie alloc] initWithDictionary:responseObject];
              if (success) {
                  success(movie);
+                 NSLog(@"id数据到手");
              }
          } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"%@",error);

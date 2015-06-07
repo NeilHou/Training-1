@@ -82,7 +82,6 @@
     self.votingLabel.text = [NSString stringWithFormat:@"%@", movie.voting];
     self.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评价)", movie.voting_count];
     self.overviewTextView.text = movie.overview;
-    self.images.image = movie.detailImage;
     
     //满千使用逗号
     NSNumberFormatter *numFormatter = [NSNumberFormatter new];
@@ -92,6 +91,8 @@
     
     self.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
     self.taglineLabel.text = movie.tagline;
+    
+    self.images.image = movie.detailImage;
 }
 
 - (void)didReceiveMemoryWarning {

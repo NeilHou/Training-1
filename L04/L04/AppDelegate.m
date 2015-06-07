@@ -43,7 +43,7 @@ void BuildMenuArray()
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:drawer];
     
 #pragma mark - 设置navigationItem相关属性
-    drawer.navigationItem.title = tableViewController.menus[0];
+    drawer.navigationItem.title = MenuArray[0];
     UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
     UIImage *homeIcon = [UIImage imageNamed:@"home-25.png"];
     

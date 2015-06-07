@@ -51,8 +51,6 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
-    //self.view.backgroundColor = [UIColor colorWithRed:0.9373 green:0.9373 blue:0.9569 alpha:1];
-    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:YKMunuViewControllerCellReuseId];
 }
 
@@ -118,11 +116,11 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
     }
     else {
         movieURL = self.movieURLArray[indexPath.row];
-        
+        _drawer.navigationItem.title = MenuArray[indexPath.row];
         //强制转换成子类
         ViewController* vc = (ViewController*)self.drawer.centerViewController;
-        [vc loadReviews];
-
+        
+        [vc loadReviews:movieURL];
         [self.drawer close];
     }
     self.previousRow = indexPath.row;

@@ -46,23 +46,6 @@ bool isSearch;
     UINib *nib = [UINib nibWithNibName:@"YKMoiveCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"YKMoiveCell"];
     
-    self.menus = MenuArray;
-    
-//#pragma mark - 设置navigationItem相关属性
-//    self.navigationItem.title = self.menus[0];
-//    UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
-//    UIImage *homeIcon = [UIImage imageNamed:@"home-25.png"];
-//    
-//    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithImage:homeIcon style:UIBarButtonItemStylePlain target:self action:@selector(returnToHome)];
-//    self.navigationItem.rightBarButtonItem = rightbutton;
-//
-//    UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithImage:muneIcon style:UIBarButtonItemStylePlain target:self action:@selector(openDrawer:)];
-//    self.navigationItem.leftBarButtonItem = leftbutton;
-    
-    _detaildataArray = [NSMutableArray array];
-    _searchDataArray = [NSMutableArray array];
-    [self loadReviews];
-    
     //实现搜索功能
     _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
     _searchBar.placeholder = @"Amos请您\"输入英文电影名称\"";   //设置占位符
@@ -71,6 +54,14 @@ bool isSearch;
 //    [self.searchBar becomeFirstResponder];
     self.tableView.tableHeaderView = self.searchBar;
     [self.tableView setContentOffset:CGPointMake(0.0,44.0) animated:YES]; //设置启动时搜索栏隐藏
+    
+    //设置用于储存资料的数组
+    _detaildataArray = [NSMutableArray array];
+    _searchDataArray = [NSMutableArray array];
+    _idDataArray = [NSMutableArray array];
+    
+    NSString *URL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
+    [self loadReviews: URL];
 }
 
 #pragma mark - Open drawer button
@@ -86,7 +77,6 @@ bool isSearch;
     [_searchBar resignFirstResponder];
     [self.tableView setContentOffset:CGPointMake(0.0,-(20.0)) animated:YES]; //cancelhou搜索栏隐藏
     [self.tableView reloadData];
-    self.navigationItem.title = self.menus[0];
 }
 
 //- (void)viewWillAppear:(BOOL)animated {
@@ -96,7 +86,6 @@ bool isSearch;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Tableview delegates
@@ -118,7 +107,6 @@ bool isSearch;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     _cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
-    
     _cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     // 如果处于搜索状态
@@ -138,19 +126,13 @@ bool isSearch;
 }
 
 #pragma mark - 显示cell内容的方法
+
 - (void)loadTheCellData:(YKMovie *)movie
 {
     _cell.titleLabel.text = movie.title;
-    _cell.images.image = movie.cellImage;
-    _cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
     
     _cell.release_dateLabel.text = movie.release_date;
     _cell.voting_countLabel.text = [NSString stringWithFormat:@"(%@人评价)",movie.voting_count];
-    
-    NSNumberFormatter *numFormatter = [NSNumberFormatter new];
-    numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    _cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
-    _cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
     
     double dVoting = [movie.voting doubleValue];
     if (dVoting < 0.5f) {
@@ -168,7 +150,42 @@ bool isSearch;
     _cell.popularityLabel.textColor = [UIColor blackColor];
     }
     
-    NSLog(@"cell数据载入");
+    //获取图片内容
+    //异步处理cellImage
+    NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w92%@",movie.postPath];
+    NSURL *posterURL = [NSURL URLWithString:imgURLString];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:posterURL];
+        
+        //从imgData赋值到image
+        UIImage *image = [UIImage imageWithData:imgData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            movie.cellImage = image;
+        });
+        [self.tableView reloadData];
+    });
+    
+    _cell.images.image = movie.cellImage;
+    
+    //异步处理detailImage
+    NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w500%@",movie.postPath];
+    NSURL *detailURL = [NSURL URLWithString:detailImgURLString];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSMutableData *imgData2 = [NSMutableData dataWithContentsOfURL:detailURL];
+        
+        UIImage *image2 = [UIImage imageWithData:imgData2];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            movie.detailImage = image2;
+        });
+    });
+    
+    NSNumberFormatter *numFormatter = [NSNumberFormatter new];
+    numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    _cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:self.movie.budget]];
+    _cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:self.movie.revenue]];
+    _cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", self.movie.runTime];
 }
 
 #pragma mark - 移除单元格选中时的高亮状态的方法
@@ -249,105 +266,20 @@ bool isSearch;
 }
 
 #pragma mark - 抓取review的json数据的方法
-- (void)loadReviews
+- (void)loadReviews: (NSString *)movieURL
 {
-    [_detaildataArray removeAllObjects];
-    self.jsonArray = [NSArray new];
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-
-    NSString *URL = self.menu.movieURL;
-    if (!URL) {
-        URL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
-    }
+    self.jsonArray = [[NSArray alloc] init];
     
-    [manager GET:URL parameters:nil
-         success:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-         NSLog(@"首页数据抓取成功");
-         
-         if (responseObject)
-         {
-             NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
-             self.jsonArray = dict[@"results"];
-             
-             for (NSDictionary *dict in self.jsonArray) {
-                 
-                 YKMovie *movie = [YKMovie new];
-                 
-                 //获取ID值，在跳转后获取详细信息
-                 movie.movieId = dict[@"id"];
-                 
-                 NSString *URL = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@?api_key=e55425032d3d0f371fc776f302e7c09b",movie.movieId];
-                 
-                 [manager GET:URL parameters:nil
-                      success:^(AFHTTPRequestOperation *operation, id responseObject)
-                  {
-                      if (responseObject)
-                      {
-                          NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
-                          movie.revenue = dict[@"revenue"];
-                          movie.runTime = dict[@"runtime"];
-                          movie.budget = dict[@"budget"];
-                          
-                          NSDictionary *dit = dict;
-                          NSString *string = dit[@"tagline"];
-                          if ([string isEqual:[NSNull null]] || !string.length) {
-                              string = @"去看就是了，木有宣传！";
-                          }
-                          movie.tagline = string;
-                      }
-                      //[self.tableView reloadData];
-                  }
-                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          NSLog(@"Detail数据抓取失败！");
-                      }];
-                 
-                 movie.title = dict[@"title"];
-                 movie.popularity = dict[@"popularity"];
-                 movie.release_date = dict[@"release_date"];
-                 movie.voting = dict[@"vote_average"];
-                 movie.voting_count = dict[@"vote_count"];
-                 movie.overview = dict[@"overview"];
-                 
-                 //获取图片内容
-                 //异步处理cellImage
-                 movie.postPath = dict[@"poster_path"];
-                 NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w92%@",movie.postPath];
-                 NSURL *posterURL = [NSURL URLWithString:imgURLString];
-                 
-                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                     NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:posterURL];
-                     
-                     //从imgData赋值到image
-                     UIImage *image = [UIImage imageWithData:imgData];
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         movie.cellImage = image;
-                     });
-                     [self.tableView reloadData];
-                 });
-                 
-                 //异步处理detailImage
-                 NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w500%@",movie.postPath];
-                 NSURL *detailURL = [NSURL URLWithString:detailImgURLString];
-                 
-                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                     NSMutableData *imgData2 = [NSMutableData dataWithContentsOfURL:detailURL];
-                     
-                     UIImage *image2 = [UIImage imageWithData:imgData2];
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         movie.detailImage = image2;
-                     });
-                 });
-                 
-                 [_detaildataArray addObject:movie];
-             }
-             NSLog(@"首页数据缓存成功");
-         }
-         [self.tableView reloadData];
-     }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"数据抓取失败！");
-         }];
+    if (!movieURL) {
+        movieURL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
+    }
+    [YKJsonData MovieDataWithUrl:movieURL
+                       success:^(id movie) {
+                           _detaildataArray = movie;
+                           [self.tableView reloadData];
+                       } fail:^{
+                           
+                       }];
 }
 
 #pragma mark - Search from Json method
@@ -411,40 +343,6 @@ bool isSearch;
                  movie.voting = dict[@"vote_average"];
                  movie.voting_count = dict[@"vote_count"];
                  movie.overview = dict[@"overview"];
-                 
-                 //获取图片内容
-#pragma mark posterPath
-                 //异步处理cellImage
-                 movie.postPath = dict[@"poster_path"];
-                 NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w92%@",movie.postPath];
-                 NSURL *posterURL = [NSURL URLWithString:imgURLString];
-                 
-                 //异步抓取图片到imgData
-                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                     NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:posterURL];
-                     
-                     //从imgData赋值到image
-                     UIImage *image = [UIImage imageWithData:imgData];
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         movie.cellImage = image;
-                     });
-                     [self.tableView reloadData];
-                 });
-                 
-                 //异步处理detailImage
-                 NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w500%@",movie.postPath];
-                 NSURL *detailURL = [NSURL URLWithString:detailImgURLString];
-                 
-                 //异步抓取图片到imgData
-                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                     NSMutableData *imgData2 = [NSMutableData dataWithContentsOfURL:detailURL];
-                     
-                     //从imgData赋值到image
-                     UIImage *image2 = [UIImage imageWithData:imgData2];
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         movie.detailImage = image2;
-                     });
-                 });
                  
                  [_searchDataArray addObject:movie];
              }

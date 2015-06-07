@@ -31,7 +31,7 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,17 +58,22 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 {
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:YKAlternativeCellReuseId];
     
-    if (cell==nil) {
+    if (!cell) {
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:YKAlternativeCellReuseId];
     }
 
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"包含%lu个结果", [_movies count]];
+    
     YKMovie *movie = _movies[indexPath.row];
     
     cell.textLabel.text = [movie title];
-    cell.detailTextLabel.text = movie.country;
+    cell.detailTextLabel.text = [movie country];
     
     return cell;
 }
+
 
 - (void) reloadAlternativeData:(id)movies
 {
