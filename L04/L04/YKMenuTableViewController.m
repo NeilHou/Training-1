@@ -48,6 +48,7 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
         CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
     
+    self.tableView.allowsSelection = YES;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 
@@ -57,7 +58,16 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    self.tableView.frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + 29, self.view.bounds.size.width, self.view.bounds.size.height);
+}
+
+#pragma mark - 指定某一个Section的header的高度
+//指定某一个Section的header的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+        return 64.0f;
+    else
+        return 30.0f;
 }
 
 #pragma mark - Configuring the view’s layout behavior
@@ -99,7 +109,7 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 
     cell.textLabel.text = _menus[indexPath.row];
     cell.backgroundColor = [UIColor whiteColor];
-    
+    cell.textLabel.highlightedTextColor = [UIColor redColor];
     return cell;
     
 }
@@ -109,21 +119,30 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 {
     self.movieURLArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"movieURL" ofType:@"plist"]];
     
-    
     if (indexPath.row == self.previousRow) {
         // Close the drawer without no further actions on the center view controller
         [self.drawer close];
     }
     else {
-        movieURL = self.movieURLArray[indexPath.row];
         _drawer.navigationItem.title = MenuArray[indexPath.row];
         //强制转换成子类
-        ViewController* vc = (ViewController*)self.drawer.centerViewController;
+        BOOL b = indexPath.row < 4.0f;
+        if (b == YES) {
+            movieURL = self.movieURLArray[indexPath.row];
+            ViewController* vc = (ViewController*)self.drawer.centerViewController;
+            [vc loadReviews:movieURL];
+            [self.drawer close];
+        }else{
         
-        [vc loadReviews:movieURL];
         [self.drawer close];
+        }
     }
     self.previousRow = indexPath.row;
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
 }
 
 @synthesize movieURL;

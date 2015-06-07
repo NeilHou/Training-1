@@ -58,12 +58,11 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 {
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:YKAlternativeCellReuseId];
     
-    if (!cell) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:YKAlternativeCellReuseId];
+    if (cell == nil) {
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                    reuseIdentifier:YKAlternativeCellReuseId];
     }
 
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
-    
     self.navigationItem.title = [NSString stringWithFormat:@"包含%lu个结果", [_movies count]];
     
     YKMovie *movie = _movies[indexPath.row];
