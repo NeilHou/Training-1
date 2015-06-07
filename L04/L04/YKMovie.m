@@ -29,12 +29,8 @@
         self.runTime = dict[@"runtime"];
         self.budget = dict[@"budget"];
         self.country = dict[@"iso_3166_1"];
-        
-        NSString *string = dict[@"tagline"];
-        if ([string isEqual:[NSNull null]] || !string.length) {
-                string = @"去看就是了，木有宣传语！";
-        }
-        self.tagline = string;
+
+        self.tagline = dict[@"tagline"];
     }
     return self;
 }

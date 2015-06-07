@@ -58,7 +58,6 @@ bool isSearch;
     //设置用于储存资料的数组
     _detaildataArray = [NSMutableArray array];
     _searchDataArray = [NSMutableArray array];
-    _idDataArray = [NSMutableArray array];
     
     NSString *URL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
     [self loadReviews: URL];
@@ -183,9 +182,9 @@ bool isSearch;
     
     NSNumberFormatter *numFormatter = [NSNumberFormatter new];
     numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    _cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:self.movie.budget]];
-    _cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:self.movie.revenue]];
-    _cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", self.movie.runTime];
+    _cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
+    _cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
+    _cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
 }
 
 #pragma mark - 移除单元格选中时的高亮状态的方法
@@ -268,8 +267,6 @@ bool isSearch;
 #pragma mark - 抓取review的json数据的方法
 - (void)loadReviews: (NSString *)movieURL
 {
-    self.jsonArray = [[NSArray alloc] init];
-    
     if (!movieURL) {
         movieURL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
     }
@@ -287,75 +284,15 @@ bool isSearch;
 - (void)searchfromjson:(NSString *) keyString
 {
     isSearch = YES;
-    self.searchJsonArray = [NSArray new];
+    NSString *searchURL = [NSString stringWithFormat:@"http://api.themoviedb.org/3/search/movie?query=%@&api_key=e55425032d3d0f371fc776f302e7c09b", keyString];
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    
-    NSString *URL = [NSString stringWithFormat:@"http://api.themoviedb.org/3/search/movie?query=%@&api_key=e55425032d3d0f371fc776f302e7c09b", keyString];
-
-    [manager GET:URL parameters:nil
-         success:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-         NSLog(@"搜索开始抓取");
-         
-         if (responseObject)
-         {
-             
-             NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
-             self.searchJsonArray = dict[@"results"];
-             
-             for (NSDictionary *dict in self.searchJsonArray) {
-                 
-                 YKMovie *movie = [YKMovie new];
-                 
-                 //获取ID值，在跳转后获取详细信息
-                 movie.movieId = dict[@"id"];
-                 
-                 NSString *URL = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@?api_key=e55425032d3d0f371fc776f302e7c09b",movie.movieId];
-                 
-                 [manager GET:URL parameters:nil
-                      success:^(AFHTTPRequestOperation *operation, id responseObject)
-                  {
-                      if (responseObject)
-                      {
-                          NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
-                          movie.revenue = dict[@"revenue"];
-                          movie.runTime = dict[@"runtime"];
-                          movie.budget = dict[@"budget"];
-                          
-                          NSDictionary *dit = dict;
-                          NSString *string = dit[@"tagline"];
-                          if ([string isEqual:[NSNull null]] || !string.length) {
-                              string = @"这么老的片子，木有宣传！";
-                          }
-                          movie.tagline = string;
-                      }
-                      [self.tableView reloadData];
-                  }
-                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          NSLog(@"Detail数据抓取失败！");
-                      }];
-
-                 movie.title = dict[@"title"];
-                 
-                 movie.popularity = dict[@"popularity"];
-                 movie.release_date = dict[@"release_date"];
-                 movie.voting = dict[@"vote_average"];
-                 movie.voting_count = dict[@"vote_count"];
-                 movie.overview = dict[@"overview"];
-                 
-                 [_searchDataArray addObject:movie];
-             }
-             //             [movieCell.movieUIActivityIndicatorView stopAnimating];
-             NSLog(@"搜索数据缓存成功");
-             self.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", _searchBar.text, (unsigned long)_searchDataArray.count];
-             [self.tableView reloadSectionIndexTitles];
-         }
-         [self.tableView reloadData];
-     }
-         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-             NSLog(@"搜索数据抓取失败！");
-         }];
+    [YKJsonData MovieDataWithUrl:searchURL
+                         success:^(id movie) {
+                             _searchDataArray = movie;
+                             [self.tableView reloadData];
+                         } fail:^{
+                             
+                         }];
 }
 @end
 

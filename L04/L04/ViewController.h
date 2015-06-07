@@ -18,7 +18,6 @@
 {
     NSMutableArray *_detaildataArray;
     NSMutableArray *_searchDataArray;
-    NSMutableArray *_idDataArray;
 }
 
 @property (nonatomic, weak) DrawerController *drawer;

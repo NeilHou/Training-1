@@ -22,7 +22,7 @@
 NSArray* MenuArray = nil;
 void BuildMenuArray()
 {
-    MenuArray = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"评分最高", @"搜索结果", @"我的收藏", nil];
+    MenuArray = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"近期高分", @"搜索结果", @"我的收藏", nil];
 }
 
 @implementation AppDelegate

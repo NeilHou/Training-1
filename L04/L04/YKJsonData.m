@@ -45,6 +45,31 @@
              NSMutableArray *movies = [[NSMutableArray alloc]init];
              for (NSDictionary *dict in json) {
                  YKMovie *movie = [[YKMovie alloc] initWithDictionary:dict];
+                 
+                 movie.movieId = dict[@"id"];
+                 NSString *URL = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@?api_key=e55425032d3d0f371fc776f302e7c09b",movie.movieId];
+                 [manager GET:URL parameters:nil
+                      success:^(AFHTTPRequestOperation *operation, id responseObject)
+                  {
+                      if (responseObject)
+                      {
+                          NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
+                          movie.revenue = dict[@"revenue"];
+                          movie.runTime = dict[@"runtime"];
+                          movie.budget = dict[@"budget"];
+                          
+                          NSDictionary *dit = dict;
+                          NSString *string = dit[@"tagline"];
+                          if ([string isEqual:[NSNull null]] || !string.length) {
+                              string = @"这么老的片子，木有宣传！";
+                          }
+                          movie.tagline = string;
+                      }
+                  }
+                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                          NSLog(@"Detail数据抓取失败！");
+                      }];
+                 
                  [movies addObject:movie];
              }
              if (success) {
