@@ -289,9 +289,9 @@ bool isSearch;
     [YKJsonData MovieDataWithUrl:searchURL
                          success:^(id movie) {
                              _searchDataArray = movie;
+                             _drawer.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", keyString, (unsigned long)_searchDataArray.count];
                              [self.tableView reloadData];
                          } fail:^{
-                             
                          }];
 }
 @end
