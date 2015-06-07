@@ -45,10 +45,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.images.canClick = YES;
-    
     [self.navigationController setNavigationBarHidden:NO];
-    UIBarButtonItem *rightButton1 = [[UIBarButtonItem alloc] initWithTitle:@"别名" style:UIBarButtonItemStylePlain target:self action:@selector(pushToAlternative)];
-    UIBarButtonItem *rightButton2 = [[UIBarButtonItem alloc] initWithTitle:@"演员" style:UIBarButtonItemStylePlain target:self action:@selector(pushToCasts)];
+    
+    UIImage *earthIron = [UIImage imageNamed:@"globe-50@2x.png"];
+    UIImage *castsIron = [UIImage imageNamed:@"group_filled-50@2x.png"];
+    
+    UIBarButtonItem *rightButton1 = [[UIBarButtonItem alloc] initWithImage:earthIron style:UIBarButtonItemStylePlain target:self action:@selector(pushToAlternative)];
+    UIBarButtonItem *rightButton2 = [[UIBarButtonItem alloc] initWithImage:castsIron style:UIBarButtonItemStylePlain target:self action:@selector(pushToCasts)];
     
     NSArray *rightButtons = [[NSArray alloc] initWithObjects:rightButton1, rightButton2, nil];
     self.navigationItem.rightBarButtonItems = rightButtons;

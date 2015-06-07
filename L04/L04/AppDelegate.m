@@ -45,7 +45,7 @@ void BuildMenuArray()
 #pragma mark - 设置navigationItem相关属性
     drawer.navigationItem.title = MenuArray[0];
     UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
-    UIImage *homeIcon = [UIImage imageNamed:@"home-25.png"];
+    UIImage *homeIcon = [UIImage imageNamed:@"home-50@2x.png"];
     
     UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithImage:homeIcon style:UIBarButtonItemStylePlain target:tableViewController  action:@selector(returnToHome)];
     drawer.navigationItem.rightBarButtonItem = rightbutton;
