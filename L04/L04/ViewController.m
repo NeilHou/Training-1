@@ -59,7 +59,7 @@ bool isSearch;
     _detaildataArray = [NSMutableArray array];
     _searchDataArray = [NSMutableArray array];
     
-    NSString *URL = @"http://api.themoviedb.org/3/movie/now_playing?api_key=e55425032d3d0f371fc776f302e7c09b";
+    NSString *URL = nil;
     [self loadReviews: URL];
 }
 
@@ -71,6 +71,9 @@ bool isSearch;
 
 - (void)returnToHome
 {
+    NSString *URL = nil;
+    [self loadReviews: URL];
+    
     isSearch = NO;
     _searchBar.text = @"";
     [_searchBar resignFirstResponder];

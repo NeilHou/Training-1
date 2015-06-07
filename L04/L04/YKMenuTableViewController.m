@@ -110,6 +110,7 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
     cell.textLabel.text = _menus[indexPath.row];
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.highlightedTextColor = [UIColor redColor];
+    cell.selectedBackgroundView.backgroundColor = [UIColor grayColor];
     return cell;
     
 }
