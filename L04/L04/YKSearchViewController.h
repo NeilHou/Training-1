@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@class YKMovie;
 
 @interface YKSearchViewController : UIViewController
+
+@property(nonatomic, strong) YKMovie *movie;
 
 @end

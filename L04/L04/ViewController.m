@@ -26,12 +26,6 @@
 @property (nonatomic, strong) YKMoiveCell *cell;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
 
-//开始下载图像
-- (UIImage *)startDownloadImage:(NSString *)imageUrl;
-
-//从本地加载图像
-- (UIImage *)loadLocalImage:(NSString *)imageUrl;
-
 @property (nonatomic,copy) NSString * imageUrl;
 @property (nonatomic,strong) UIImage *image;
 
@@ -242,6 +236,14 @@ bool isSearch;
         }
     }
     
+    //点击后弹出模态显示搜索结果
+    YKSearchViewController *searchVC = [YKSearchViewController new];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    
+    //    nav.navigationController.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", searchBar.text, (unsigned long)_searchDataArray.count];
+    
+    [self presentViewController:nav animated:YES completion:nil];
+    
     NSLog(@"2.shuould begin");
     return YES;
 }
@@ -262,13 +264,6 @@ bool isSearch;
 
     [self searchfromjson:searchBar.text];
     NSLog(@"输入了：%@", searchBar.text);
-    
-    
-    //点击后弹出模态显示搜索结果
-    YKSearchViewController *searchVC = [YKSearchViewController new];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
-    
-    [self presentViewController:nav animated:YES completion:nil];
     
     // 调用filterBySubstring:方法执行搜索
     // [self filterBySubstring:searchBar.text];
@@ -314,7 +309,6 @@ bool isSearch;
     [YKJsonData MovieDataWithUrl:searchURL
                          success:^(id movie) {
                              _searchDataArray = movie;
-                             _drawer.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", keyString, (unsigned long)_searchDataArray.count];
                              [self.tableView reloadData];
                          } fail:^{
                          }];

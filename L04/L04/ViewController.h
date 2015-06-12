@@ -30,6 +30,7 @@
 - (void)loadReviews: (NSString *)movieURL;
 - (void)returnToHome;
 - (void)openDrawer:(id)sender;
+- (void)loadTheCellData:(YKMovie *)movie;
 
 @end
 
