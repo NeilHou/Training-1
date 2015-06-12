@@ -78,18 +78,19 @@ bool isSearch;
     [self.drawer openAndClose];
 }
 
-- (void)returnToHome
-{
-    NSString *URL = nil;
-    [self loadReviews: URL];
-    
-    isSearch = NO;
-    _searchBar.text = @"";
-    [_searchBar resignFirstResponder];
-    [self.tableView setContentOffset:CGPointMake(0.0,-(20.0)) animated:YES]; //cancelhou搜索栏隐藏
-    _drawer.navigationItem.title = MenuArray[0];
-    [self.tableView reloadData];
-}
+//- (void)returnToHome
+//{
+//    NSString *URL = nil;
+//    [self loadReviews: URL];
+//
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        isSearch = NO;
+//        _searchBar.text = @"";
+//        [_searchBar resignFirstResponder];
+//        [self.tableView setContentOffset:CGPointMake(0.0,-(20.0)) animated:YES]; //cancelhou搜索栏隐藏
+//        _drawer.navigationItem.title = MenuArray[0];
+//    }];
+//}
 
 //- (void)viewWillAppear:(BOOL)animated {
 //    [super viewWillAppear:animated];
@@ -236,37 +237,31 @@ bool isSearch;
         }
     }
     
-    //点击后弹出模态显示搜索结果
-    YKSearchViewController *searchVC = [YKSearchViewController new];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
-    
-    //    nav.navigationController.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", searchBar.text, (unsigned long)_searchDataArray.count];
-    
-    [self presentViewController:nav animated:YES completion:nil];
-    
     NSLog(@"2.shuould begin");
     return YES;
-}
-
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    searchBar.text = @"";
-    NSLog(@"3.did begin");
-}
-
-- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
-    NSLog(@"4.did end");
-    searchBar.showsCancelButton = NO;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"5.search clicked");
     [self.searchBar resignFirstResponder];
-
-    [self searchfromjson:searchBar.text];
+    [self popToSearchvc];
+    
+    
+//    [self searchfromjson:searchBar.text];
     NSLog(@"输入了：%@", searchBar.text);
     
     // 调用filterBySubstring:方法执行搜索
     // [self filterBySubstring:searchBar.text];
+}
+
+- (void)popToSearchvc
+{
+    //点击后弹出模态显示搜索结果
+    YKSearchViewController *searchVC = [YKSearchViewController new];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    
+    
+    [self presentViewController:nav animated:YES completion:nil];
 }
 
 //点击搜索框上的 取消按钮时 调用
@@ -292,26 +287,6 @@ bool isSearch;
                        } fail:^{
                            
                        }];
-}
-
-#pragma mark - Search from Json method
-//该方法可以从服务器搜索请求数据
-- (void)searchfromjson:(NSString *) keyString
-{
-    isSearch = YES;
-    [_searchDataArray removeAllObjects];
-    
-    //使用该方法返回一个新的NSString，用于过滤和转换所有不合法的字符
-    keyString = [keyString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    
-    NSString *searchURL = [NSString stringWithFormat:@"http://api.themoviedb.org/3/search/movie?query=%@&api_key=e55425032d3d0f371fc776f302e7c09b", keyString];
-    
-    [YKJsonData MovieDataWithUrl:searchURL
-                         success:^(id movie) {
-                             _searchDataArray = movie;
-                             [self.tableView reloadData];
-                         } fail:^{
-                         }];
 }
 
 

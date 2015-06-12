@@ -15,6 +15,7 @@
 		027B9FC31B0C2B9000B58B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 027B9FC11B0C2B9000B58B52 /* LaunchScreen.xib */; };
 		027B9FCF1B0C2B9000B58B52 /* L04Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FCE1B0C2B9000B58B52 /* L04Tests.m */; };
 		7AC0240DAD726C0CE1DA1C23 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 184551B1DA6E5964E391BF5E /* libPods.a */; };
+		B0410BC11B2B2F35004791BA /* search-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0410BC01B2B2F35004791BA /* search-50@2x.png */; };
 		B04A388F1B1E09A000E8FB0D /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A388E1B1E09A000E8FB0D /* NullSafe.m */; };
 		B04A38941B1E9B5200E8FB0D /* DrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38911B1E9B5200E8FB0D /* DrawerController.m */; };
 		B04A38951B1E9B5200E8FB0D /* DropShadowView.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38931B1E9B5200E8FB0D /* DropShadowView.m */; };
@@ -71,6 +72,7 @@
 		184551B1DA6E5964E391BF5E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6BA63A78668641672A2AC2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		963CE80AB0B0B20ED3E8195E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B0410BC01B2B2F35004791BA /* search-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-50@2x.png"; sourceTree = "<group>"; };
 		B04A388E1B1E09A000E8FB0D /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		B04A38901B1E9B5200E8FB0D /* DrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerController.h; sourceTree = "<group>"; };
 		B04A38911B1E9B5200E8FB0D /* DrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerController.m; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		025354561B0EDAFA00E49741 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B0410BC01B2B2F35004791BA /* search-50@2x.png */,
 				B04A389E1B1ED0A200E8FB0D /* menu-24.png */,
 				B04A38D91B249BB900E8FB0D /* home-50@2x.png */,
 				B04A38D61B249B4F00E8FB0D /* group_filled-50@2x.png */,
@@ -382,6 +385,7 @@
 				B04A38D81B249B4F00E8FB0D /* group_filled-50@2x.png in Resources */,
 				B04A38D21B24988800E8FB0D /* geography-26.png in Resources */,
 				027B9FBE1B0C2B9000B58B52 /* Main.storyboard in Resources */,
+				B0410BC11B2B2F35004791BA /* search-50@2x.png in Resources */,
 				B04A38DC1B249D8E00E8FB0D /* frankensteins_monster-48@2x.png in Resources */,
 				B04A38D41B249AF400E8FB0D /* globe-50@2x.png in Resources */,
 				B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */,

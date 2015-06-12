@@ -45,9 +45,9 @@ void BuildMenuArray()
 #pragma mark - 设置navigationItem相关属性
     drawer.navigationItem.title = MenuArray[0];
     UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
-    UIImage *homeIcon = [UIImage imageNamed:@"home-50@2x.png"];
+    UIImage *homeIcon = [UIImage imageNamed:@"search-50@2x.png"];
     
-    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithImage:homeIcon style:UIBarButtonItemStylePlain target:tableViewController  action:@selector(returnToHome)];
+    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithImage:homeIcon style:UIBarButtonItemStylePlain target:tableViewController  action:@selector(popToSearchvc)];
     drawer.navigationItem.rightBarButtonItem = rightbutton;
     
     UIBarButtonItem *leftbutton = [[UIBarButtonItem alloc] initWithImage:muneIcon style:UIBarButtonItemStylePlain target:tableViewController action:@selector(openDrawer:)];
@@ -56,12 +56,6 @@ void BuildMenuArray()
     self.window.rootViewController = navController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
-    //开启本地缓存功能
-    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:2 * 1024 * 1024  //2mb
-                                                            diskCapacity:100 * 1024 * 1024  //100mb
-                                                                diskPath:nil];
-    [NSURLCache setSharedURLCache:sharedCache];
     
     return YES;
 }

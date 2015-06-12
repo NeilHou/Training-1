@@ -28,7 +28,8 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 - (void)loadReviews: (NSString *)movieURL;
-- (void)returnToHome;
+//- (void)returnToHome;
+- (void)popToSearchvc;
 - (void)openDrawer:(id)sender;
 - (void)loadTheCellData:(YKMovie *)movie;
 

@@ -20,6 +20,9 @@
 @property (nonatomic, strong) NSMutableArray *searchDataArray;
 @property (nonatomic, strong) YKMoiveCell *cell;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic, strong) UIAlertView *alertView;
+
+-(void)closeTheSearch;
 
 @end
 
@@ -43,6 +46,9 @@
     [self.searchBar becomeFirstResponder];
     self.searchTableView.tableHeaderView = self.searchBar;
 
+//    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self  action:@selector()];
+//    self.navigationItem.rightBarButtonItem = rightbutton;
+    self.navigationItem.title = @"搜索";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,7 +76,7 @@
 }
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    searchBar.text = @"";
+//    searchBar.text = @"";
     NSLog(@"3.did begin");
 }
 
@@ -81,10 +87,11 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"5.search clicked");
-    [self.searchBar resignFirstResponder];
     
     [self searchfromjson:searchBar.text];
     NSLog(@"输入了：%@", searchBar.text);
+    
+    [self.searchBar resignFirstResponder];
     
     // 调用filterBySubstring:方法执行搜索
     // [self filterBySubstring:searchBar.text];
@@ -95,6 +102,11 @@
     NSLog(@"6.cancle clicked");
     
     _searchBar.text = @"";
+    [self closeTheSearch];
+}
+
+-(void)closeTheSearch
+{
     [_searchBar resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -113,6 +125,11 @@
     [YKJsonData MovieDataWithUrl:searchURL
                          success:^(id movie) {
                              _searchDataArray = movie;
+                             self.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", keyString, (unsigned long)_searchDataArray.count];
+                             
+                             NSString *str = [NSString stringWithFormat:@"成功返回(%lu)个结果", (unsigned long)_searchDataArray.count];
+                             _alertView = [[UIAlertView alloc] initWithTitle:str message:@"在Amos&Kathy的帮助下，看来你找到了想要的内容^_^" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                             [_alertView show];
                              [self.searchTableView reloadData];
                          } fail:^{
                          }];
@@ -127,8 +144,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
     
+    _cell = [tableView dequeueReusableCellWithIdentifier:@"YKMoiveCell" forIndexPath:indexPath];
     _cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     //初始化一个状态指示器
@@ -145,7 +162,7 @@
     
     [self loadTheCellData:movie];
     
-    return cell;
+    return _cell;
 }
 
 - (void)loadTheCellData:(YKMovie *)movie

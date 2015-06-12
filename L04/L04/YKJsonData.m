@@ -76,12 +76,19 @@
                  
                  movie.movieId = dict[@"id"];
                  NSString *URL = [NSString stringWithFormat:@"https://api.themoviedb.org/3/movie/%@?api_key=e55425032d3d0f371fc776f302e7c09b",movie.movieId];
-                 [manager GET:URL parameters:nil
-                      success:^(AFHTTPRequestOperation *operation, id responseObject)
-                  {
-                      if (responseObject)
-                      {
-                          NSDictionary *dict = [[NSDictionary alloc]initWithDictionary:responseObject];
+                 
+                 NSError *error;
+                 
+                 //加载一个NSURL对象
+                 NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:URL]];
+                 
+                 //将请求的url数据放到NSData对象中
+                 NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+                 
+                 if (response) {
+                     //IOS5自带解析类NSJSONSerialization从response中解析出数据放到字典中
+                     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+
                           movie.revenue = dict[@"revenue"];
                           movie.runTime = dict[@"runtime"];
                           movie.budget = dict[@"budget"];
@@ -92,12 +99,7 @@
                               string = @"这么老的片子，木有宣传！";
                           }
                           movie.tagline = string;
-                      }
-                  }
-                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                          NSLog(@"Detail数据抓取失败！");
-                      }];
-                 
+                 }
                  [movies addObject:movie];
              }
              if (success) {
