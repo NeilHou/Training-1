@@ -33,6 +33,8 @@
 		B04A38D81B249B4F00E8FB0D /* group_filled-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B04A38D61B249B4F00E8FB0D /* group_filled-50@2x.png */; };
 		B04A38DA1B249BB900E8FB0D /* home-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B04A38D91B249BB900E8FB0D /* home-50@2x.png */; };
 		B04A38DC1B249D8E00E8FB0D /* frankensteins_monster-48@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B04A38DB1B249D8E00E8FB0D /* frankensteins_monster-48@2x.png */; };
+		B055864C1B2AB9B00044DFAC /* YKSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B055864A1B2AB9B00044DFAC /* YKSearchViewController.m */; };
+		B055864D1B2AB9B00044DFAC /* YKSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B055864B1B2AB9B00044DFAC /* YKSearchViewController.xib */; };
 		B0DF25181B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */; };
 		B0DF251F1B1D2FF600359E95 /* YKDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */; };
 		B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DF251B1B1D2FF600359E95 /* YKDetailViewController.xib */; };
@@ -97,6 +99,9 @@
 		B04A38D61B249B4F00E8FB0D /* group_filled-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "group_filled-50@2x.png"; sourceTree = "<group>"; };
 		B04A38D91B249BB900E8FB0D /* home-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-50@2x.png"; sourceTree = "<group>"; };
 		B04A38DB1B249D8E00E8FB0D /* frankensteins_monster-48@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "frankensteins_monster-48@2x.png"; sourceTree = "<group>"; };
+		B05586491B2AB9B00044DFAC /* YKSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchViewController.h; sourceTree = "<group>"; };
+		B055864A1B2AB9B00044DFAC /* YKSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchViewController.m; sourceTree = "<group>"; };
+		B055864B1B2AB9B00044DFAC /* YKSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YKSearchViewController.xib; sourceTree = "<group>"; };
 		B0DF25171B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rd_rs_8434eb3a154dd28c145289eab077ce34.jpg; sourceTree = "<group>"; };
 		B0DF25191B1D2FF600359E95 /* YKDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKDetailViewController.h; sourceTree = "<group>"; };
 		B0DF251A1B1D2FF600359E95 /* YKDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKDetailViewController.m; sourceTree = "<group>"; };
@@ -260,6 +265,9 @@
 				B04A38AB1B2080BB00E8FB0D /* YKAlternativeTableViewController.m */,
 				B04A38BA1B24319700E8FB0D /* YKCastsTavleViewC.h */,
 				B04A38BB1B24319700E8FB0D /* YKCastsTavleViewC.m */,
+				B05586491B2AB9B00044DFAC /* YKSearchViewController.h */,
+				B055864A1B2AB9B00044DFAC /* YKSearchViewController.m */,
+				B055864B1B2AB9B00044DFAC /* YKSearchViewController.xib */,
 				B04A38B31B232F2300E8FB0D /* UIGlobal.h */,
 			);
 			name = ViewController;
@@ -379,6 +387,7 @@
 				B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */,
 				B04A38C71B24381500E8FB0D /* YKCastsCell.xib in Resources */,
 				B0DF25221B1D2FF600359E95 /* YKMoiveCell.xib in Resources */,
+				B055864D1B2AB9B00044DFAC /* YKSearchViewController.xib in Resources */,
 				B0DF25181B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */,
 				027B9FC31B0C2B9000B58B52 /* LaunchScreen.xib in Resources */,
 				B04A389F1B1ED0A200E8FB0D /* menu-24.png in Resources */,
@@ -445,6 +454,7 @@
 				B0DF252D1B1D822500359E95 /* ClickImage.m in Sources */,
 				B0DF25211B1D2FF600359E95 /* YKMoiveCell.m in Sources */,
 				B04A38BC1B24319700E8FB0D /* YKCastsTavleViewC.m in Sources */,
+				B055864C1B2AB9B00044DFAC /* YKSearchViewController.m in Sources */,
 				027B9FB51B0C2B9000B58B52 /* main.m in Sources */,
 				B04A38941B1E9B5200E8FB0D /* DrawerController.m in Sources */,
 				B04A389A1B1E9D1200E8FB0D /* YKMenuTableViewController.m in Sources */,

@@ -9,6 +9,7 @@
 #import "YKCastsTavleViewC.h"
 #import "YKMovie.h"
 #import "YKCastsCell.h"
+#import "UIImageView+WebCache.h"
 
 static NSString * const YKCastsCellReuseId = @"YKCastsCell";
 @interface YKCastsTavleViewC()
@@ -80,21 +81,13 @@ static NSString * const YKCastsCellReuseId = @"YKCastsCell";
     NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w45%@",movie.profile_path];
     NSURL *detailURL = [NSURL URLWithString:detailImgURLString];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:detailURL];
-        
-        UIImage *image = [UIImage imageWithData:imgData];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            movie.proImage = image;
-            [self.tableView reloadData];
-        });
-    });
-    
-    if (movie.proImage) {
-        [_activityIndicatorView stopAnimating];
-        myApp.networkActivityIndicatorVisible = NO;
-    }
-    _cell.castsImage.image = [movie proImage];
+    [_cell.castsImage sd_setImageWithURL:detailURL
+                   placeholderImage:nil
+                            options:SDWebImageRetryFailed
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                              [_activityIndicatorView stopAnimating];
+                              myApp.networkActivityIndicatorVisible = NO;
+                          }];
     
     return _cell;
 }

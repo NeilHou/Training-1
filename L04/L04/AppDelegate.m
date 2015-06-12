@@ -57,6 +57,12 @@ void BuildMenuArray()
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    //开启本地缓存功能
+    NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:2 * 1024 * 1024  //2mb
+                                                            diskCapacity:100 * 1024 * 1024  //100mb
+                                                                diskPath:nil];
+    [NSURLCache setSharedURLCache:sharedCache];
+    
     return YES;
 }
 

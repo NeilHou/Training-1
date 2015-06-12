@@ -36,8 +36,12 @@
          }];
 }
 
-+ (void)castsDataWithUrl:(NSString *)url success:(void (^)(id movie))success fail:(void (^)())fail{
++ (void)castsDataWithUrl:(NSString *)url
+                 success:(void (^)(id movie))success
+                    fail:(void (^)())fail{
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
     [manager GET:url
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -126,5 +130,6 @@
              }
          }];
 }
+
 
 @end

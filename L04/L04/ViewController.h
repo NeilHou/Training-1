@@ -30,5 +30,6 @@
 - (void)loadReviews: (NSString *)movieURL;
 - (void)returnToHome;
 - (void)openDrawer:(id)sender;
+
 @end
 

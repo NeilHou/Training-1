@@ -22,4 +22,5 @@
 + (void)MovieIdWithUrl:(NSString *)url success:(void (^)(id movie))success fail:(void (^)())fail;
 + (void)castsDataWithUrl:(NSString *)url success:(void (^)(id movie))success fail:(void (^)())fail;
 
+
 @end

@@ -13,6 +13,7 @@
 #import "YKAlternativeTableViewController.h"
 #import "YKJsonData.h"
 #import "YKCastsTavleViewC.h"
+#import "UIImageView+WebCache.h"
 
 
 @interface YKDetailViewController ()<UIScrollViewDelegate>
@@ -27,6 +28,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *runtimeLabel;
 @property (weak, nonatomic) IBOutlet UITextView *taglineLabel;
 @property (weak, nonatomic) IBOutlet UILabel *budgetLabel;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+@property (weak, nonatomic) IBOutlet UIView *imageBGView;
 
 @end
 
@@ -55,6 +61,15 @@
     
     NSArray *rightButtons = [[NSArray alloc] initWithObjects:rightButton1, rightButton2, nil];
     self.navigationItem.rightBarButtonItems = rightButtons;
+    
+    //初始化一个状态指示器
+    _activityIndicatorView = [[UIActivityIndicatorView alloc]
+                              initWithFrame:CGRectMake(57.0,70.0,30.0,30.0)];
+    _activityIndicatorView.center = self.imageBGView.center;
+    _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;  //设置样式
+    _activityIndicatorView.hidesWhenStopped = YES;  //停止后自动隐藏
+    [self.imageBGView addSubview:_activityIndicatorView];  //附着在当前试图
+    [_activityIndicatorView startAnimating];
 }
 
 - (void)pushToAlternative
@@ -115,7 +130,16 @@
     self.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
     self.taglineLabel.text = movie.tagline;
     
-    self.images.image = movie.detailImage;
+    //异步处理detailImage
+    NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w500%@",movie.postPath ];
+    NSURL *detailURL = [NSURL URLWithString:detailImgURLString ];
+    
+    [self.images sd_setImageWithURL:detailURL
+                   placeholderImage:nil
+                            options:SDWebImageRetryFailed
+                          completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                              [_activityIndicatorView stopAnimating];
+                          }];
 }
 
 - (void)didReceiveMemoryWarning {

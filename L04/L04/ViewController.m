@@ -12,6 +12,10 @@
 #import "AFNetworking.h"
 #import "YKMovie.h"
 #import "YKMenuTableViewController.h"
+#import "UIImageView+AFNetworking.h"
+#import "UIImageView+WebCache.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "YKSearchViewController.h"
 
 @interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>;
 
@@ -21,6 +25,15 @@
 @property (nonatomic, strong) NSDictionary *detailDict;
 @property (nonatomic, strong) YKMoiveCell *cell;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
+
+//开始下载图像
+- (UIImage *)startDownloadImage:(NSString *)imageUrl;
+
+//从本地加载图像
+- (UIImage *)loadLocalImage:(NSString *)imageUrl;
+
+@property (nonatomic,copy) NSString * imageUrl;
+@property (nonatomic,strong) UIImage *image;
 
 @end
 
@@ -121,6 +134,7 @@ bool isSearch;
     _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;  //设置样式
     _activityIndicatorView.hidesWhenStopped = YES;  //停止后自动隐藏
     [_cell addSubview:_activityIndicatorView];  //附着在当前试图
+    [_activityIndicatorView startAnimating];
     
     // 如果处于搜索状态
     if(isSearch)
@@ -168,40 +182,15 @@ bool isSearch;
     }
     
     //获取图片内容
+    
     //异步处理cellImage
-    [_activityIndicatorView startAnimating];
     NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w92%@",movie.postPath];
     NSURL *posterURL = [NSURL URLWithString:imgURLString];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableData *imgData = [NSMutableData dataWithContentsOfURL:posterURL];
-        
-        //从imgData赋值到image
-        UIImage *image = [UIImage imageWithData:imgData];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            movie.cellImage = image;
-        });
-        [self.tableView reloadData];
-    });
-    if (movie.cellImage){
-        [_activityIndicatorView stopAnimating];
+
+    [_cell.images sd_setImageWithURL:posterURL placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         myApp.networkActivityIndicatorVisible = NO;
-    }
-    
-    _cell.images.image = movie.cellImage;
-    
-    //异步处理detailImage
-    NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w500%@",movie.postPath];
-    NSURL *detailURL = [NSURL URLWithString:detailImgURLString];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSMutableData *imgData2 = [NSMutableData dataWithContentsOfURL:detailURL];
-        
-        UIImage *image2 = [UIImage imageWithData:imgData2];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            movie.detailImage = image2;
-        });
-    });
+    }];
+    [_activityIndicatorView stopAnimating];
     
     NSNumberFormatter *numFormatter = [NSNumberFormatter new];
     numFormatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -252,6 +241,7 @@ bool isSearch;
             [btn setTitle:@"取消"  forState:UIControlStateNormal];
         }
     }
+    
     NSLog(@"2.shuould begin");
     return YES;
 }
@@ -272,6 +262,13 @@ bool isSearch;
 
     [self searchfromjson:searchBar.text];
     NSLog(@"输入了：%@", searchBar.text);
+    
+    
+    //点击后弹出模态显示搜索结果
+    YKSearchViewController *searchVC = [YKSearchViewController new];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
+    
+    [self presentViewController:nav animated:YES completion:nil];
     
     // 调用filterBySubstring:方法执行搜索
     // [self filterBySubstring:searchBar.text];
@@ -322,6 +319,8 @@ bool isSearch;
                          } fail:^{
                          }];
 }
+
+
 @end
 
 #pragma mark - search array method
