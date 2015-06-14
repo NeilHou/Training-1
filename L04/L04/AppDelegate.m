@@ -11,6 +11,7 @@
 #import "YKDetailViewController.h"
 #import "DrawerController.h"
 #import "YKMenuTableViewController.h"
+#import "YKSearchViewController.h"
 
 @interface AppDelegate ()
 

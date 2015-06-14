@@ -12,11 +12,12 @@
 #import "YKMoiveCell.h"
 #import "ViewController.h"
 #import "UIImageView+WebCache.h"
+#import "YKProtocolDelegate.h"
+#import "YKDetailViewController.h"
 
 @interface YKSearchViewController ()<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
 
-@property (nonatomic, retain) UISearchBar *searchBar;
 @property (nonatomic, strong) NSMutableArray *searchDataArray;
 @property (nonatomic, strong) YKMoiveCell *cell;
 @property (nonatomic, strong) UIActivityIndicatorView *activityIndicatorView;
@@ -43,12 +44,13 @@
     _searchBar.placeholder = @"Amos请您\"输入英文电影名称\"";   //设置占位符
     _searchBar.delegate = self;   //设置控件代理
     [self.searchBar sizeToFit];
-    [self.searchBar becomeFirstResponder];
     self.searchTableView.tableHeaderView = self.searchBar;
 
 //    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self  action:@selector()];
 //    self.navigationItem.rightBarButtonItem = rightbutton;
     self.navigationItem.title = @"搜索";
+    
+    [self showTheMovies];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -86,15 +88,24 @@
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    NSLog(@"5.search clicked");
     
     [self searchfromjson:searchBar.text];
     NSLog(@"输入了：%@", searchBar.text);
     
     [self.searchBar resignFirstResponder];
+}
+
+- (void)showTheMovies
+{
+    [self.searchBar resignFirstResponder];
+    NSString *searchText;
     
-    // 调用filterBySubstring:方法执行搜索
-    // [self filterBySubstring:searchBar.text];
+    if ([_delegate respondsToSelector:@selector(textValue)])
+    {
+        searchText = [_delegate textValue];
+    }
+    
+    [self searchfromjson:searchText];
 }
 
 //点击搜索框上的 取消按钮时 调用
@@ -109,6 +120,7 @@
 {
     [_searchBar resignFirstResponder];
     [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 #pragma mark - Search from Json method
@@ -117,6 +129,7 @@
 {
     [_searchDataArray removeAllObjects];
     
+    NSString *str = keyString;
     //使用该方法返回一个新的NSString，用于过滤和转换所有不合法的字符
     keyString = [keyString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
@@ -125,10 +138,17 @@
     [YKJsonData MovieDataWithUrl:searchURL
                          success:^(id movie) {
                              _searchDataArray = movie;
-                             self.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", keyString, (unsigned long)_searchDataArray.count];
+                             self.navigationItem.title = [NSString stringWithFormat:@"\"%@\"的搜索结果(%lu)", str, (unsigned long)_searchDataArray.count];
                              
                              NSString *str = [NSString stringWithFormat:@"成功返回(%lu)个结果", (unsigned long)_searchDataArray.count];
-                             _alertView = [[UIAlertView alloc] initWithTitle:str message:@"在Amos&Kathy的帮助下，看来你找到了想要的内容^_^" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                             NSString *rightStr = @"在Amos&Kathy的帮助下，看来你找到了想要的内容^_^";
+                             NSString *wrongStr = @"Sorry，没有能找到相关的电影，换个名字试试吧~";
+                             
+                             if (_searchDataArray.count == 0){
+                                 _alertView = [[UIAlertView alloc] initWithTitle:str message:wrongStr delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                             }else{
+                                 _alertView = [[UIAlertView alloc] initWithTitle:str message:rightStr delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                             }
                              [_alertView show];
                              [self.searchTableView reloadData];
                          } fail:^{
@@ -208,6 +228,24 @@
     _cell.budgetLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.budget]];
     _cell.revenueLabel.text = [NSString stringWithFormat:@"%@",[numFormatter stringFromNumber:movie.revenue]];
     _cell.runtimeLabel.text = [NSString stringWithFormat:@"%@分钟", movie.runTime];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    YKDetailViewController *detailViewController = [[YKDetailViewController alloc] init];
+
+    YKMovie *selectedMovie = _searchDataArray[indexPath.row];
+    detailViewController.movie = selectedMovie;
+    
+    [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    [self performSelector:@selector(delectCell:) withObject:nil afterDelay:0.5];
+}
+
+#pragma mark - 移除单元格选中时的高亮状态的方法
+- (void)delectCell:(id)sender
+{
+    [self.searchTableView deselectRowAtIndexPath:[self.searchTableView indexPathForSelectedRow] animated:YES];
 }
 
 @end

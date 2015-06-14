@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YKProtocolDelegate.h"
+
 @class YKMovie;
 
 @interface YKSearchViewController : UIViewController
 
 @property(nonatomic, strong) YKMovie *movie;
+@property (nonatomic, retain) UISearchBar *searchBar;
+
+@property (nonatomic, weak) id<YKProtocolDelegate> delegate;
 
 @end

@@ -10,6 +10,7 @@
 #import "YKJsonData.h"
 #import "DrawerController.h"
 #import "UIGlobal.h"
+#import "YKProtocolDelegate.h"
 
 @class YKMenuTableViewController;
 @class DrawerController;

@@ -16,6 +16,8 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 {
     YKAlternativeTableViewController *ATC;
 }
+@property (nonatomic, strong) UITableViewCell *cell;
+
 @end
 
 @implementation YKAlternativeTableViewController
@@ -59,20 +61,20 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:YKAlternativeCellReuseId];
+    _cell=[tableView dequeueReusableCellWithIdentifier:YKAlternativeCellReuseId];
     
     //初始化cell的类型
-    cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+    _cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                 reuseIdentifier:YKAlternativeCellReuseId];
 
     self.navigationItem.title = [NSString stringWithFormat:@"包含%lu个结果", [_movies count]];
     
     YKMovie *movie = _movies[indexPath.row];
     
-    cell.textLabel.text = [movie title];
-    cell.detailTextLabel.text = [movie country];
+    _cell.textLabel.text = [movie title];
+    _cell.detailTextLabel.text = [movie country];
     
-    return cell;
+    return _cell;
 }
 
 

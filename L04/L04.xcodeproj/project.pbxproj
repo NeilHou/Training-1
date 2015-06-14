@@ -15,6 +15,10 @@
 		027B9FC31B0C2B9000B58B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 027B9FC11B0C2B9000B58B52 /* LaunchScreen.xib */; };
 		027B9FCF1B0C2B9000B58B52 /* L04Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 027B9FCE1B0C2B9000B58B52 /* L04Tests.m */; };
 		7AC0240DAD726C0CE1DA1C23 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 184551B1DA6E5964E391BF5E /* libPods.a */; };
+		B0174FF01B2D7CF800A51AE7 /* KVNProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = B0174FEF1B2D7CF800A51AE7 /* KVNProgress.m */; };
+		B0174FF51B2D7D1300A51AE7 /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B0174FF21B2D7D1300A51AE7 /* UIImage+KVNImageEffects.m */; };
+		B0174FF61B2D7D1300A51AE7 /* UIImage+KVNEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = B0174FF41B2D7D1300A51AE7 /* UIImage+KVNEmpty.m */; };
+		B0174FF91B2D7D4600A51AE7 /* KVNProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0174FF81B2D7D4600A51AE7 /* KVNProgressView.xib */; };
 		B0410BC11B2B2F35004791BA /* search-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0410BC01B2B2F35004791BA /* search-50@2x.png */; };
 		B04A388F1B1E09A000E8FB0D /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A388E1B1E09A000E8FB0D /* NullSafe.m */; };
 		B04A38941B1E9B5200E8FB0D /* DrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38911B1E9B5200E8FB0D /* DrawerController.m */; };
@@ -72,7 +76,15 @@
 		184551B1DA6E5964E391BF5E /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F6BA63A78668641672A2AC2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		963CE80AB0B0B20ED3E8195E /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B0174FEE1B2D7CF800A51AE7 /* KVNProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KVNProgress.h; sourceTree = "<group>"; };
+		B0174FEF1B2D7CF800A51AE7 /* KVNProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KVNProgress.m; sourceTree = "<group>"; };
+		B0174FF11B2D7D1300A51AE7 /* UIImage+KVNImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KVNImageEffects.h"; sourceTree = "<group>"; };
+		B0174FF21B2D7D1300A51AE7 /* UIImage+KVNImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KVNImageEffects.m"; sourceTree = "<group>"; };
+		B0174FF31B2D7D1300A51AE7 /* UIImage+KVNEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KVNEmpty.h"; sourceTree = "<group>"; };
+		B0174FF41B2D7D1300A51AE7 /* UIImage+KVNEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KVNEmpty.m"; sourceTree = "<group>"; };
+		B0174FF81B2D7D4600A51AE7 /* KVNProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVNProgressView.xib; sourceTree = "<group>"; };
 		B0410BC01B2B2F35004791BA /* search-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-50@2x.png"; sourceTree = "<group>"; };
+		B0410BC21B2B4D2A004791BA /* YKProtocolDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKProtocolDelegate.h; sourceTree = "<group>"; };
 		B04A388E1B1E09A000E8FB0D /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		B04A38901B1E9B5200E8FB0D /* DrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawerController.h; sourceTree = "<group>"; };
 		B04A38911B1E9B5200E8FB0D /* DrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawerController.m; sourceTree = "<group>"; };
@@ -205,6 +217,7 @@
 		027B9FB21B0C2B9000B58B52 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B0174FF71B2D7D1800A51AE7 /* HUB */,
 				B0DF252B1B1D822500359E95 /* ClickImage.h */,
 				B0DF252C1B1D822500359E95 /* ClickImage.m */,
 				B04A388E1B1E09A000E8FB0D /* NullSafe.m */,
@@ -241,6 +254,20 @@
 				963CE80AB0B0B20ED3E8195E /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		B0174FF71B2D7D1800A51AE7 /* HUB */ = {
+			isa = PBXGroup;
+			children = (
+				B0174FEE1B2D7CF800A51AE7 /* KVNProgress.h */,
+				B0174FEF1B2D7CF800A51AE7 /* KVNProgress.m */,
+				B0174FF11B2D7D1300A51AE7 /* UIImage+KVNImageEffects.h */,
+				B0174FF21B2D7D1300A51AE7 /* UIImage+KVNImageEffects.m */,
+				B0174FF31B2D7D1300A51AE7 /* UIImage+KVNEmpty.h */,
+				B0174FF41B2D7D1300A51AE7 /* UIImage+KVNEmpty.m */,
+				B0174FF81B2D7D4600A51AE7 /* KVNProgressView.xib */,
+			);
+			name = HUB;
 			sourceTree = "<group>";
 		};
 		B04A38961B1E9B5A00E8FB0D /* DrawerController */ = {
@@ -281,6 +308,7 @@
 			children = (
 				027B9FB61B0C2B9000B58B52 /* AppDelegate.h */,
 				027B9FB71B0C2B9000B58B52 /* AppDelegate.m */,
+				B0410BC21B2B4D2A004791BA /* YKProtocolDelegate.h */,
 				B0DF25281B1D305400359E95 /* YKMovie.h */,
 				B0DF25291B1D305400359E95 /* YKMovie.m */,
 				B04A38AE1B228F8000E8FB0D /* YKMovieCredits.h */,
@@ -380,6 +408,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0174FF91B2D7D4600A51AE7 /* KVNProgressView.xib in Resources */,
 				B04A38DA1B249BB900E8FB0D /* home-50@2x.png in Resources */,
 				B04A38B21B22974400E8FB0D /* movieURL.plist in Resources */,
 				B04A38D81B249B4F00E8FB0D /* group_filled-50@2x.png in Resources */,
@@ -460,7 +489,10 @@
 				B04A38BC1B24319700E8FB0D /* YKCastsTavleViewC.m in Sources */,
 				B055864C1B2AB9B00044DFAC /* YKSearchViewController.m in Sources */,
 				027B9FB51B0C2B9000B58B52 /* main.m in Sources */,
+				B0174FF51B2D7D1300A51AE7 /* UIImage+KVNImageEffects.m in Sources */,
+				B0174FF61B2D7D1300A51AE7 /* UIImage+KVNEmpty.m in Sources */,
 				B04A38941B1E9B5200E8FB0D /* DrawerController.m in Sources */,
+				B0174FF01B2D7CF800A51AE7 /* KVNProgress.m in Sources */,
 				B04A389A1B1E9D1200E8FB0D /* YKMenuTableViewController.m in Sources */,
 				B04A388F1B1E09A000E8FB0D /* NullSafe.m in Sources */,
 				B04A38A61B1F1DE200E8FB0D /* YKJsonData.m in Sources */,

@@ -17,7 +17,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "YKSearchViewController.h"
 
-@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>;
+@interface ViewController () <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, YKProtocolDelegate>;
 
 @property (nonatomic, retain) UISearchBar *searchBar;
 @property (nonatomic, strong) NSArray *jsonArray;
@@ -246,7 +246,6 @@ bool isSearch;
     [self.searchBar resignFirstResponder];
     [self popToSearchvc];
     
-    
 //    [self searchfromjson:searchBar.text];
     NSLog(@"输入了：%@", searchBar.text);
     
@@ -256,12 +255,16 @@ bool isSearch;
 
 - (void)popToSearchvc
 {
-    //点击后弹出模态显示搜索结果
     YKSearchViewController *searchVC = [YKSearchViewController new];
+    //点击后弹出模态显示搜索结果
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
-    
+    searchVC.delegate = self;
     
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (NSString *)textValue{
+    return _searchBar.text;
 }
 
 //点击搜索框上的 取消按钮时 调用
