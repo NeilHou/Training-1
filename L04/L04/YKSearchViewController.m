@@ -14,6 +14,7 @@
 #import "UIImageView+WebCache.h"
 #import "YKProtocolDelegate.h"
 #import "YKDetailViewController.h"
+#import "KVNProgress.h"
 
 @interface YKSearchViewController ()<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *searchTableView;
@@ -105,7 +106,9 @@
         searchText = [_delegate textValue];
     }
     
-    [self searchfromjson:searchText];
+    if (!searchText) {
+        [self searchfromjson:searchText];
+    }
 }
 
 //点击搜索框上的 取消按钮时 调用
@@ -135,6 +138,7 @@
     
     NSString *searchURL = [NSString stringWithFormat:@"http://api.themoviedb.org/3/search/movie?query=%@&api_key=e55425032d3d0f371fc776f302e7c09b", keyString];
     
+    
     [YKJsonData MovieDataWithUrl:searchURL
                          success:^(id movie) {
                              _searchDataArray = movie;
@@ -149,6 +153,7 @@
                              }else{
                                  _alertView = [[UIAlertView alloc] initWithTitle:str message:rightStr delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                              }
+                             [KVNProgress dismiss];
                              [_alertView show];
                              [self.searchTableView reloadData];
                          } fail:^{

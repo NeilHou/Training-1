@@ -241,6 +241,11 @@ bool isSearch;
     return YES;
 }
 
+- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
+    searchBar.showsCancelButton = NO;
+    return YES;
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"5.search clicked");
     [self.searchBar resignFirstResponder];
