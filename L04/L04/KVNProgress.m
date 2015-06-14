@@ -33,6 +33,7 @@ static CGFloat const KVNCheckmarkAnimationDuration = 0.5f;
 static CGFloat const KVNInfiniteLoopAnimationDuration = 1.0f;
 static CGFloat const KVNProgressAnimationDuration = 0.25f;
 static CGFloat const KVNProgressIndeterminate = CGFLOAT_MAX;
+
 static CGFloat const KVNCircleProgressViewToStatusLabelVerticalSpaceConstraintConstant = 20.0f;
 static CGFloat const KVNContentViewFullScreenModeLeadingAndTrailingSpaceConstraintConstant = 0.0f;
 static CGFloat const KVNContentViewNotFullScreenModeLeadingAndTrailingSpaceConstraintConstant = 55.0f;

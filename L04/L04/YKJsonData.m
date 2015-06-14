@@ -78,9 +78,6 @@ static NSString *HUBstrSuccess = @"搞定！";
     
     //显示HUB
     [KVNProgress showWithStatus:HUBstrLoading];
-//    dispatch_main_after(3.5f, ^{
-//        [KVNProgress showWithStatus:@"耐心点，要么数据太多，要么你网速太慢"];
-//    });
     
     [manager GET:url
       parameters:nil
@@ -121,13 +118,14 @@ static NSString *HUBstrSuccess = @"搞定！";
              if (success) {
                  success(movies);
                  NSLog(@"Data数据到手");
-                 [KVNProgress showSuccessWithStatus:HUBstrSuccess];
+                 [KVNProgress dismiss];
              }
          }
          failure:^(AFHTTPRequestOperation *operation, NSError *error) {
              NSLog(@"%@",error);
              if (fail) {
                  fail();
+                 [KVNProgress showErrorWithStatus:@"载入失败哇!"];
              }
          }];
 }
@@ -150,11 +148,11 @@ static NSString *HUBstrSuccess = @"搞定！";
          }];
 }
 
-static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
-{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        block();
-    });
-}
+//static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))
+//{
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        block();
+//    });
+//}
 
 @end

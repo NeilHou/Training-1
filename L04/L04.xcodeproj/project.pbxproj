@@ -19,6 +19,12 @@
 		B0174FF51B2D7D1300A51AE7 /* UIImage+KVNImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = B0174FF21B2D7D1300A51AE7 /* UIImage+KVNImageEffects.m */; };
 		B0174FF61B2D7D1300A51AE7 /* UIImage+KVNEmpty.m in Sources */ = {isa = PBXBuildFile; fileRef = B0174FF41B2D7D1300A51AE7 /* UIImage+KVNEmpty.m */; };
 		B0174FF91B2D7D4600A51AE7 /* KVNProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0174FF81B2D7D4600A51AE7 /* KVNProgressView.xib */; };
+		B0174FFD1B2DA79A00A51AE7 /* YKSearchHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = B0174FFB1B2DA79A00A51AE7 /* YKSearchHistoryVC.m */; };
+		B0174FFE1B2DA79A00A51AE7 /* YKSearchHistoryVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0174FFC1B2DA79A00A51AE7 /* YKSearchHistoryVC.xib */; };
+		B01750021B2DB10100A51AE7 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B01750001B2DB10100A51AE7 /* EventKit.framework */; };
+		B01750031B2DB10100A51AE7 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B01750011B2DB10100A51AE7 /* EventKitUI.framework */; };
+		B01750051B2DB35D00A51AE7 /* date_to-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B01750041B2DB35D00A51AE7 /* date_to-50@2x.png */; };
+		B01750071B2DB53000A51AE7 /* date_to-50_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B01750061B2DB53000A51AE7 /* date_to-50_selected@2x.png */; };
 		B0410BC11B2B2F35004791BA /* search-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0410BC01B2B2F35004791BA /* search-50@2x.png */; };
 		B04A388F1B1E09A000E8FB0D /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A388E1B1E09A000E8FB0D /* NullSafe.m */; };
 		B04A38941B1E9B5200E8FB0D /* DrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A38911B1E9B5200E8FB0D /* DrawerController.m */; };
@@ -83,6 +89,13 @@
 		B0174FF31B2D7D1300A51AE7 /* UIImage+KVNEmpty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KVNEmpty.h"; sourceTree = "<group>"; };
 		B0174FF41B2D7D1300A51AE7 /* UIImage+KVNEmpty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KVNEmpty.m"; sourceTree = "<group>"; };
 		B0174FF81B2D7D4600A51AE7 /* KVNProgressView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KVNProgressView.xib; sourceTree = "<group>"; };
+		B0174FFA1B2DA79A00A51AE7 /* YKSearchHistoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKSearchHistoryVC.h; sourceTree = "<group>"; };
+		B0174FFB1B2DA79A00A51AE7 /* YKSearchHistoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKSearchHistoryVC.m; sourceTree = "<group>"; };
+		B0174FFC1B2DA79A00A51AE7 /* YKSearchHistoryVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YKSearchHistoryVC.xib; sourceTree = "<group>"; };
+		B01750001B2DB10100A51AE7 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
+		B01750011B2DB10100A51AE7 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
+		B01750041B2DB35D00A51AE7 /* date_to-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_to-50@2x.png"; sourceTree = "<group>"; };
+		B01750061B2DB53000A51AE7 /* date_to-50_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_to-50_selected@2x.png"; sourceTree = "<group>"; };
 		B0410BC01B2B2F35004791BA /* search-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search-50@2x.png"; sourceTree = "<group>"; };
 		B0410BC21B2B4D2A004791BA /* YKProtocolDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKProtocolDelegate.h; sourceTree = "<group>"; };
 		B04A388E1B1E09A000E8FB0D /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
@@ -134,6 +147,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01750021B2DB10100A51AE7 /* EventKit.framework in Frameworks */,
+				B01750031B2DB10100A51AE7 /* EventKitUI.framework in Frameworks */,
 				7AC0240DAD726C0CE1DA1C23 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +181,8 @@
 		025354561B0EDAFA00E49741 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B01750041B2DB35D00A51AE7 /* date_to-50@2x.png */,
+				B01750061B2DB53000A51AE7 /* date_to-50_selected@2x.png */,
 				B0410BC01B2B2F35004791BA /* search-50@2x.png */,
 				B04A389E1B1ED0A200E8FB0D /* menu-24.png */,
 				B04A38D91B249BB900E8FB0D /* home-50@2x.png */,
@@ -221,6 +238,7 @@
 				B0DF252B1B1D822500359E95 /* ClickImage.h */,
 				B0DF252C1B1D822500359E95 /* ClickImage.m */,
 				B04A388E1B1E09A000E8FB0D /* NullSafe.m */,
+				B04A38B31B232F2300E8FB0D /* UIGlobal.h */,
 				B04A38A71B2029A800E8FB0D /* HTCopyableLabel.h */,
 				B04A38A81B2029A800E8FB0D /* HTCopyableLabel.m */,
 				027B9FB31B0C2B9000B58B52 /* Info.plist */,
@@ -270,6 +288,19 @@
 			name = HUB;
 			sourceTree = "<group>";
 		};
+		B0174FFF1B2DA7A700A51AE7 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				B05586491B2AB9B00044DFAC /* YKSearchViewController.h */,
+				B055864A1B2AB9B00044DFAC /* YKSearchViewController.m */,
+				B055864B1B2AB9B00044DFAC /* YKSearchViewController.xib */,
+				B0174FFA1B2DA79A00A51AE7 /* YKSearchHistoryVC.h */,
+				B0174FFB1B2DA79A00A51AE7 /* YKSearchHistoryVC.m */,
+				B0174FFC1B2DA79A00A51AE7 /* YKSearchHistoryVC.xib */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 		B04A38961B1E9B5A00E8FB0D /* DrawerController */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,10 +326,7 @@
 				B04A38AB1B2080BB00E8FB0D /* YKAlternativeTableViewController.m */,
 				B04A38BA1B24319700E8FB0D /* YKCastsTavleViewC.h */,
 				B04A38BB1B24319700E8FB0D /* YKCastsTavleViewC.m */,
-				B05586491B2AB9B00044DFAC /* YKSearchViewController.h */,
-				B055864A1B2AB9B00044DFAC /* YKSearchViewController.m */,
-				B055864B1B2AB9B00044DFAC /* YKSearchViewController.xib */,
-				B04A38B31B232F2300E8FB0D /* UIGlobal.h */,
+				B0174FFF1B2DA7A700A51AE7 /* Search */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -320,6 +348,8 @@
 		DB165588AC8490D65AB10952 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B01750001B2DB10100A51AE7 /* EventKit.framework */,
+				B01750011B2DB10100A51AE7 /* EventKitUI.framework */,
 				184551B1DA6E5964E391BF5E /* libPods.a */,
 			);
 			name = Frameworks;
@@ -415,10 +445,13 @@
 				B04A38D21B24988800E8FB0D /* geography-26.png in Resources */,
 				027B9FBE1B0C2B9000B58B52 /* Main.storyboard in Resources */,
 				B0410BC11B2B2F35004791BA /* search-50@2x.png in Resources */,
+				B0174FFE1B2DA79A00A51AE7 /* YKSearchHistoryVC.xib in Resources */,
 				B04A38DC1B249D8E00E8FB0D /* frankensteins_monster-48@2x.png in Resources */,
 				B04A38D41B249AF400E8FB0D /* globe-50@2x.png in Resources */,
+				B01750051B2DB35D00A51AE7 /* date_to-50@2x.png in Resources */,
 				B0DF25201B1D2FF600359E95 /* YKDetailViewController.xib in Resources */,
 				B04A38C71B24381500E8FB0D /* YKCastsCell.xib in Resources */,
+				B01750071B2DB53000A51AE7 /* date_to-50_selected@2x.png in Resources */,
 				B0DF25221B1D2FF600359E95 /* YKMoiveCell.xib in Resources */,
 				B055864D1B2AB9B00044DFAC /* YKSearchViewController.xib in Resources */,
 				B0DF25181B1D2FBD00359E95 /* rd_rs_8434eb3a154dd28c145289eab077ce34.jpg in Resources */,
@@ -490,6 +523,7 @@
 				B055864C1B2AB9B00044DFAC /* YKSearchViewController.m in Sources */,
 				027B9FB51B0C2B9000B58B52 /* main.m in Sources */,
 				B0174FF51B2D7D1300A51AE7 /* UIImage+KVNImageEffects.m in Sources */,
+				B0174FFD1B2DA79A00A51AE7 /* YKSearchHistoryVC.m in Sources */,
 				B0174FF61B2D7D1300A51AE7 /* UIImage+KVNEmpty.m in Sources */,
 				B04A38941B1E9B5200E8FB0D /* DrawerController.m in Sources */,
 				B0174FF01B2D7CF800A51AE7 /* KVNProgress.m in Sources */,

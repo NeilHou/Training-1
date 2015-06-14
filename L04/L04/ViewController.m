@@ -56,10 +56,9 @@ bool isSearch;
     
     //实现搜索功能
     _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
-    _searchBar.placeholder = @"Amos请您\"输入英文电影名称\"";   //设置占位符
+    _searchBar.placeholder = @"Amos请您\"输入电影名称\"";   //设置占位符
     _searchBar.delegate = self;   //设置控件代理
     [self.searchBar sizeToFit];
-//    [self.searchBar becomeFirstResponder];
     self.tableView.tableHeaderView = self.searchBar;
     [self.tableView setContentOffset:CGPointMake(0.0,44.0) animated:YES]; //设置启动时搜索栏隐藏
     
@@ -181,10 +180,14 @@ bool isSearch;
     //异步处理cellImage
     NSString *imgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w92%@",movie.postPath];
     NSURL *posterURL = [NSURL URLWithString:imgURLString];
-
-    [_cell.images sd_setImageWithURL:posterURL placeholderImage:nil options:SDWebImageRetryFailed completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    
+    [_cell.images sd_setImageWithURL:posterURL
+                    placeholderImage:[UIImage imageNamed:@"rd_rs_8434eb3a154dd28c145289eab077ce34.jpg"]
+                             options:SDWebImageHandleCookies completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
+    {
         myApp.networkActivityIndicatorVisible = NO;
     }];
+    
     [_activityIndicatorView stopAnimating];
     
     NSNumberFormatter *numFormatter = [NSNumberFormatter new];
@@ -228,21 +231,8 @@ bool isSearch;
     
     searchBar.text = @"";
     searchBar.showsCancelButton = YES;
-    for(id cc in [searchBar subviews])
-    {
-        if([cc isKindOfClass:[UIButton class]])
-        {
-            UIButton *btn = (UIButton *)cc;
-            [btn setTitle:@"取消"  forState:UIControlStateNormal];
-        }
-    }
     
     NSLog(@"2.shuould begin");
-    return YES;
-}
-
-- (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar{
-    searchBar.showsCancelButton = NO;
     return YES;
 }
 
@@ -276,7 +266,7 @@ bool isSearch;
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"6.cancle clicked");
     
-    isSearch = NO;
+    searchBar.showsCancelButton = NO;
     _searchBar.text = @"";
     [_searchBar resignFirstResponder];
     [self.tableView setContentOffset:CGPointMake(0.0f,-(20.0f)) animated:YES]; //cancelhou搜索栏隐藏

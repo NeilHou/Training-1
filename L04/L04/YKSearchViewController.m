@@ -36,19 +36,19 @@
     self.searchTableView.delegate = self;
     self.searchTableView.dataSource = self;
     self.searchTableView.rowHeight = 165;
+    self.searchTableView.separatorColor = [UIColor blueColor]; //设置分隔线的颜色
+    self.searchTableView.separatorStyle = UITableViewCellSeparatorStyleNone; //设置开始时隐藏分割线
     
     UINib *nib = [UINib nibWithNibName:@"YKMoiveCell" bundle:nil];
     [self.searchTableView registerNib:nib forCellReuseIdentifier:@"YKMoiveCell"];
     
     //实现搜索功能
     _searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 40)];
-    _searchBar.placeholder = @"Amos请您\"输入英文电影名称\"";   //设置占位符
+    _searchBar.placeholder = @"Amos请您\"输入电影名称\"";   //设置占位符
     _searchBar.delegate = self;   //设置控件代理
     [self.searchBar sizeToFit];
     self.searchTableView.tableHeaderView = self.searchBar;
 
-//    UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self  action:@selector()];
-//    self.navigationItem.rightBarButtonItem = rightbutton;
     self.navigationItem.title = @"搜索";
     
     [self showTheMovies];
@@ -65,14 +65,6 @@
     
     searchBar.text = @"";
     searchBar.showsCancelButton = YES;
-    for(id cc in [searchBar subviews])
-    {
-        if([cc isKindOfClass:[UIButton class]])
-        {
-            UIButton *btn = (UIButton *)cc;
-            [btn setTitle:@"取消"  forState:UIControlStateNormal];
-        }
-    }
     
     NSLog(@"2.shuould begin");
     return YES;
@@ -106,7 +98,7 @@
         searchText = [_delegate textValue];
     }
     
-    if (!searchText) {
+    if (searchText) {
         [self searchfromjson:searchText];
     }
 }
@@ -114,9 +106,10 @@
 //点击搜索框上的 取消按钮时 调用
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
     NSLog(@"6.cancle clicked");
-    
-    _searchBar.text = @"";
+
     [self closeTheSearch];
+    _searchBar.text = @"";
+    _searchBar.showsCancelButton = NO;
 }
 
 -(void)closeTheSearch
@@ -154,6 +147,7 @@
                                  _alertView = [[UIAlertView alloc] initWithTitle:str message:rightStr delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                              }
                              [KVNProgress dismiss];
+                             self.searchTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
                              [_alertView show];
                              [self.searchTableView reloadData];
                          } fail:^{

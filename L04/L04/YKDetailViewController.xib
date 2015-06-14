@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YKDetailViewController">
             <connections>
                 <outlet property="budgetLabel" destination="rVc-y9-pfY" id="4td-Ml-NSL"/>
+                <outlet property="dateSelectButton" destination="rwu-Bk-gED" id="CBy-Cr-UZ2"/>
                 <outlet property="imageBGView" destination="8OI-4n-dV8" id="Kfw-tb-Kx0"/>
                 <outlet property="images" destination="jtw-Ic-AUe" id="29E-Gf-o8W"/>
                 <outlet property="overviewTextView" destination="Kec-Hs-Egg" id="h0q-ym-jYw"/>
@@ -28,7 +29,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tmn-pM-dkS">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tmn-pM-dkS">
                     <rect key="frame" x="0.0" y="324" width="375" height="343"/>
                     <subviews>
                         <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ABW-GH-3KI">
@@ -180,7 +181,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" text="An apocalyptic story set in the furthest reaches of our planet, in a stark desert landscape where humanity is broken" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M2E-o0-auK" userLabel="overview">
-                                    <rect key="frame" x="8" y="102" width="359" height="49"/>
+                                    <rect key="frame" x="8" y="102" width="309" height="49"/>
                                     <animations/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <constraints>
@@ -189,6 +190,14 @@
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rwu-Bk-gED">
+                                    <rect key="frame" x="325" y="112" width="32" height="31"/>
+                                    <animations/>
+                                    <state key="normal" backgroundImage="date_to-50.png"/>
+                                    <connections>
+                                        <action selector="selectedTheDate:" destination="-1" eventType="touchUpInside" id="Ybb-5I-i86"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -228,7 +237,6 @@
                 <constraint firstAttribute="trailing" secondItem="Tmn-pM-dkS" secondAttribute="trailing" id="KkM-li-1RP"/>
                 <constraint firstItem="Tmn-pM-dkS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="OTi-aa-gyg"/>
                 <constraint firstItem="8OI-4n-dV8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="63" id="gJh-Tl-jrh"/>
-                <constraint firstItem="Tmn-pM-dkS" firstAttribute="top" secondItem="8OI-4n-dV8" secondAttribute="bottom" constant="-1" id="tm3-9Q-SOu"/>
                 <constraint firstAttribute="bottom" secondItem="Tmn-pM-dkS" secondAttribute="bottom" id="vty-LQ-yda"/>
                 <constraint firstItem="8OI-4n-dV8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="zuP-mw-haJ"/>
             </constraints>
@@ -238,6 +246,7 @@
         </view>
     </objects>
     <resources>
+        <image name="date_to-50.png" width="25" height="25"/>
         <image name="rd_rs_8434eb3a154dd28c145289eab077ce34.jpg" width="500" height="671"/>
     </resources>
 </document>
