@@ -20,32 +20,15 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 @end
 
 @implementation YKMenuTableViewController
-
-- (id)initWithMenus:(NSArray *)menus
-{
-    self = [super initWithStyle:UITableViewStyleGrouped];
-    if (self) {
-        _menus = menus;
-    }
-    return self;
-}
-
-- (NSArray *)menus
-{
-//    ViewController *vc = self.vc;
-    if (!_menus) {
-        _menus = MenuArray;
-//        _menus = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle]pathForResource:@"menusArray" ofType:@"plist"]];
-    }
-    return _menus;
-}
+@synthesize menus1, menus2;
 
 #pragma mark - Managing the view
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    menus1 = MenuArray1;
+    menus2 = MenuArray2;
         CGRect frame = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
     self.tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
     
@@ -68,23 +51,8 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
     if (section == 0)
         return 64.0f;
     else
-        return 30.0f;
+        return 15.0f;
 }
-
-#pragma mark - Configuring the view’s layout behavior
-//该方法可以隐藏信号栏
-
-//- (UIStatusBarStyle)preferredStatusBarStyle
-//{
-//    // Even if this view controller hides the status bar, implementing this method is still needed to match the center view controller's
-//    // status bar style to avoid a flicker when the drawer is dragged and then left to open.
-//    return UIStatusBarStyleLightContent;
-//}
-//
-//- (BOOL)prefersStatusBarHidden
-//{
-//    return YES;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -95,12 +63,23 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-    return self.menus.count;
+    switch (section) {
+        case 0:
+            return menus1
+            .count;
+            break;
+        case 1:
+            return  [menus2 count];
+            break;
+        default:
+            return 0;
+            break;
+    }
 }
 
 
@@ -108,7 +87,17 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:YKMunuViewControllerCellReuseId forIndexPath:indexPath];
 
-    cell.textLabel.text = _menus[indexPath.row];
+    switch (indexPath.section) {
+        case 0:
+            cell.textLabel.text = menus1[indexPath.row];
+            break;
+        case 1:
+            cell.textLabel.text = menus2[indexPath.row];
+            break;
+        default:
+            break;
+    }
+    
     cell.backgroundColor = [UIColor whiteColor];
     cell.textLabel.highlightedTextColor = [UIColor whiteColor];
     cell.highlighted = YES;
@@ -125,34 +114,40 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
     
 #pragma mark - 点选menu之后的动作
     
-        BOOL b = indexPath.row < 4.0f;
-    
-    //前四行的点按逻辑
-        if (b == YES) {
-            //强制转换成子类
-            _drawer.navigationItem.title = MenuArray[indexPath.row];  //首先改变title标题
+    switch (indexPath.section) {
+        case 0:
+            _drawer.navigationItem.title = MenuArray1[indexPath.row];  //首先改变title标题
             
             if (indexPath.row == self.previousRow) {
                 // Close the drawer without no further actions on the center view controller
                 [self.drawer close];
             }
             else {
-            movieURL = self.movieURLArray[indexPath.row];
-            ViewController* vc = (ViewController*)self.drawer.centerViewController;
-            [vc loadReviews:movieURL];  //执行了loadReviews方法
-            [vc.tableView reloadData];
-            [self.drawer close];  //关闭侧边栏
+                movieURL = self.movieURLArray[indexPath.row];
+                ViewController* vc = (ViewController*)self.drawer.centerViewController;
+                [vc loadReviews:movieURL];  //执行了loadReviews方法
+                [vc.tableView reloadData];
+                [self.drawer close];  //关闭侧边栏
             }
-            
-        }else if (indexPath.row == 4.0){
-            
-            YKSearchViewController *searchVC = [YKSearchViewController new];
-            searchVC.isPush = YES;
-            
-            [self.navigationController pushViewController:searchVC animated:YES];
-            
+            break;
+        case 1:
+            if (indexPath.row == 0.0){
+                
+                YKSearchViewController *searchVC = [YKSearchViewController new];
+                searchVC.isPush = YES;
+                
+                [self.navigationController pushViewController:searchVC animated:YES];
+                
+            }else if (indexPath.row == 1.0){
+                
+                
+                
+            }
             [self.drawer close];
-        }
+            break;
+        default:
+            break;
+    }
     
     self.previousRow = indexPath.row;
 }

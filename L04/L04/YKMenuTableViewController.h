@@ -16,7 +16,8 @@
 
 @property (nonatomic, weak) DrawerController *drawer;
 @property (nonatomic, weak) ViewController *VC;
-@property (nonatomic, strong) NSArray *menus;
+@property (nonatomic, strong) NSArray *menus1;
+@property (nonatomic, strong) NSArray *menus2;
 @property (nonatomic, strong) NSString *movieURL;
 
 @end

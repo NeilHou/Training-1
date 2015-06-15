@@ -146,6 +146,9 @@ static NSString *HUBstrSuccess = @"搞定！";
                  fail();
              }
          }];
+    
+    //将所有网络请求停止
+//    [manager.operationQueue cancelAllOperations];
 }
 
 //static void dispatch_main_after(NSTimeInterval delay, void (^block)(void))

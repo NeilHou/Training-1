@@ -20,10 +20,13 @@
 
 @end
 
-NSArray* MenuArray = nil;
+NSArray *MenuArray1;
+NSArray *MenuArray2;
+
 void BuildMenuArray()
 {
-    MenuArray = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"近期高分", @"搜索结果", @"我的收藏", nil];
+    MenuArray1 = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"近期高分", nil];
+    MenuArray2 = [NSArray arrayWithObjects:@"搜索结果", @"我的收藏", nil];
 }
 
 @implementation AppDelegate
@@ -44,7 +47,7 @@ void BuildMenuArray()
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:drawer];
     
 #pragma mark - 设置navigationItem相关属性
-    drawer.navigationItem.title = MenuArray[0];
+    drawer.navigationItem.title = MenuArray1[0];
     UIImage *muneIcon = [UIImage imageNamed:@"menu-24.png"];
     UIImage *homeIcon = [UIImage imageNamed:@"search-50@2x.png"];
     

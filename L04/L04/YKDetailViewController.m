@@ -196,6 +196,8 @@
     }
 }
 
+#pragma mark - 写入日程的方法
+
 -(void)accessGrantedForCalendar:(EKEventStore *)eventStore
 {
     
@@ -224,7 +226,7 @@
     if ([releseDate compare:currentDate] == NSOrderedDescending) {
         
         //添加提醒
-        [event addAlarm:[EKAlarm alarmWithRelativeOffset:60.0f * -60.0f * 4]];  //6小时前提醒
+        [event addAlarm:[EKAlarm alarmWithRelativeOffset:60.0f * -60.0f * 4]];  //4小时前提醒
         //    [event addAlarm:[EKAlarm alarmWithRelativeOffset:60.0f * -15.0f]];  //15分钟前提醒
         
         [event setCalendar:[eventStore defaultCalendarForNewEvents]];

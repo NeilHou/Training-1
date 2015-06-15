@@ -9,6 +9,7 @@
 #ifndef L04_UIGlobal_h
 #define L04_UIGlobal_h
 
-extern NSArray* MenuArray;
+extern NSArray *MenuArray1;
+extern NSArray *MenuArray2;
 
 #endif

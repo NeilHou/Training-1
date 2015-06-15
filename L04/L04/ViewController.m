@@ -77,25 +77,6 @@ bool isSearch;
     [self.drawer openAndClose];
 }
 
-//- (void)returnToHome
-//{
-//    NSString *URL = nil;
-//    [self loadReviews: URL];
-//
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        isSearch = NO;
-//        _searchBar.text = @"";
-//        [_searchBar resignFirstResponder];
-//        [self.tableView setContentOffset:CGPointMake(0.0,-(20.0)) animated:YES]; //cancelhou搜索栏隐藏
-//        _drawer.navigationItem.title = MenuArray[0];
-//    }];
-//}
-
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    [self.tableView reloadData];
-//}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
