@@ -17,5 +17,8 @@
 @property (nonatomic, retain) UISearchBar *searchBar;
 
 @property (nonatomic, weak) id<YKProtocolDelegate> delegate;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+
+@property (nonatomic) BOOL isPush;
 
 @end

@@ -254,6 +254,7 @@ bool isSearch;
     //点击后弹出模态显示搜索结果
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchVC];
     searchVC.delegate = self;
+    searchVC.isPush = NO;
     
     [self presentViewController:nav animated:YES completion:nil];
 }

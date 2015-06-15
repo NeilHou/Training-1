@@ -54,6 +54,16 @@
     [self showTheMovies];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (self.isPush == YES) {
+
+    }else{
+        UIBarButtonItem *rightbutton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self  action:@selector(cancelButton:)];
+        self.navigationItem.rightBarButtonItem = rightbutton;
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -98,7 +108,8 @@
         searchText = [_delegate textValue];
     }
     
-    if (searchText) {
+    BOOL ifSearch = [searchText isEqualToString:@""] || searchText == nil;
+    if (ifSearch == NO) {
         [self searchfromjson:searchText];
     }
 }

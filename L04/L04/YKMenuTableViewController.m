@@ -8,6 +8,7 @@
 
 #import "YKMenuTableViewController.h"
 #import "ViewController.h"
+#import "YKSearchViewController.h"
 
 static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewControllerCellReuseId";
 
@@ -122,27 +123,37 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
     self.movieURLArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"movieURL" ofType:@"plist"]];
     [self performSelector:@selector(selectCell:) withObject:nil];
     
-    if (indexPath.row == self.previousRow) {
-        // Close the drawer without no further actions on the center view controller
-        [self.drawer close];
-    }
-    else {
 #pragma mark - 点选menu之后的动作
-        
-        _drawer.navigationItem.title = MenuArray[indexPath.row];  //改了title标题
+    
         BOOL b = indexPath.row < 4.0f;
+    
+    //前四行的点按逻辑
         if (b == YES) {
             //强制转换成子类
+            _drawer.navigationItem.title = MenuArray[indexPath.row];  //首先改变title标题
+            
+            if (indexPath.row == self.previousRow) {
+                // Close the drawer without no further actions on the center view controller
+                [self.drawer close];
+            }
+            else {
             movieURL = self.movieURLArray[indexPath.row];
             ViewController* vc = (ViewController*)self.drawer.centerViewController;
             [vc loadReviews:movieURL];  //执行了loadReviews方法
             [vc.tableView reloadData];
             [self.drawer close];  //关闭侧边栏
-        }else{
-        
-        [self.drawer close];
+            }
+            
+        }else if (indexPath.row == 4.0){
+            
+            YKSearchViewController *searchVC = [YKSearchViewController new];
+            searchVC.isPush = YES;
+            
+            [self.navigationController pushViewController:searchVC animated:YES];
+            
+            [self.drawer close];
         }
-    }
+    
     self.previousRow = indexPath.row;
 }
 
