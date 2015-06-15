@@ -119,16 +119,14 @@ static NSString * const YKMunuViewControllerCellReuseId = @"YKMunuViewController
             _drawer.navigationItem.title = MenuArray1[indexPath.row];  //首先改变title标题
             
             if (indexPath.row == self.previousRow) {
-                // Close the drawer without no further actions on the center view controller
-                [self.drawer close];
             }
             else {
                 movieURL = self.movieURLArray[indexPath.row];
                 ViewController* vc = (ViewController*)self.drawer.centerViewController;
                 [vc loadReviews:movieURL];  //执行了loadReviews方法
                 [vc.tableView reloadData];
-                [self.drawer close];  //关闭侧边栏
             }
+            [self.drawer close];
             break;
         case 1:
             if (indexPath.row == 0.0){

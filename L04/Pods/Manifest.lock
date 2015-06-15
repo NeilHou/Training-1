@@ -20,16 +20,95 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - EasyIOS (2.2.2):
+    - EasyIOS/Easy (= 2.2.2)
+  - EasyIOS-Extention (1.2):
+    - EasyIOS-Extention/EasyExtention (= 1.2)
+  - EasyIOS-Extention/EasyExtention (1.2):
+    - IQKeyboardManager
+    - RegExCategories
+    - RMUniversalAlert
+    - TTTAttributedLabel
+    - UICKeyChainStore
+    - XAspect
+  - EasyIOS/Easy (2.2.2):
+    - AFNetworking
+    - FLKAutoLayout (= 0.1.1)
+    - FontIcon
+    - GCDObjC
+    - MBProgressHUD
+    - MojoDatabase
+    - ReactiveCocoa (= 2.4.4)
+    - TMCache
+    - UIActivityIndicator-for-SDWebImage
+  - FLKAutoLayout (0.1.1)
+  - FontIcon (1.0)
+  - GCDObjC (0.2.0)
+  - IQKeyboardManager (3.2.4)
+  - JDFPeekaboo (0.2)
+  - MBProgressHUD (0.9.1)
+  - MojoDatabase (1.4)
+  - ReactiveCocoa (2.4.4):
+    - ReactiveCocoa/UI (= 2.4.4)
+  - ReactiveCocoa/Core (2.4.4):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.4.4)
+  - ReactiveCocoa/UI (2.4.4):
+    - ReactiveCocoa/Core
+  - RegExCategories (1.0)
+  - RMUniversalAlert (0.7):
+    - RMUniversalAlert/Core (= 0.7)
+  - RMUniversalAlert/Core (0.7):
+    - UIActionSheet+Blocks (>= 0.9)
+    - UIAlertController+Blocks (>= 0.9)
+    - UIAlertView+Blocks (>= 0.9)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
+  - TMCache (2.1.0)
+  - TTTAttributedLabel (1.13.3)
+  - UIActionSheet+Blocks (0.9)
+  - UIActivityIndicator-for-SDWebImage (1.2):
+    - SDWebImage (~> 3.7)
+  - UIAlertController+Blocks (0.9)
+  - UIAlertView+Blocks (0.9)
+  - UICKeyChainStore (2.0.5)
+  - XAspect (1.0.4):
+    - XAspect/Core (= 1.0.4)
+    - XAspect/Macros (= 1.0.4)
+  - XAspect/Core (1.0.4):
+    - XAspect/Macros
+  - XAspect/Macros (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.5)
+  - EasyIOS (~> 2.2.2)
+  - EasyIOS-Extention (~> 1.2)
+  - JDFPeekaboo
   - SDWebImage (~> 3.7)
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  EasyIOS: 5f8c2110b4d0818aa78de068dc001c5c344de7a6
+  EasyIOS-Extention: c7e402e8b2497760955510228771512c37110aa2
+  FLKAutoLayout: 95b12c5cd9652100235140b68652f063f7437851
+  FontIcon: 24a07541244227b865e689217efd7d049ba7cc43
+  GCDObjC: adcd9941029e3628de539347d3a6777470a65998
+  IQKeyboardManager: 555b1231fefafb21b19278d7cca72986a27b748b
+  JDFPeekaboo: 3447593f899d32c2013422f9bdc23d9d92c75da0
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  MojoDatabase: 02e3eb98510b69033ab537156969d1f76b4f369e
+  ReactiveCocoa: cbe3b5eae464aa72a348a7323996b171728a9e71
+  RegExCategories: e68befacacd5bda853c88f70ec745cb2d0cfb89c
+  RMUniversalAlert: bce2ca406c24065b76665725c83e48006e8f65f8
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
+  TTTAttributedLabel: 6f3174aef8e738f44dff97c2eb7d8184f6ab6277
+  UIActionSheet+Blocks: e180b7dad0a721ab7f212ac9742af799008bb358
+  UIActivityIndicator-for-SDWebImage: 7bf7ebbf0ed1747dedc0d6e949c4603a6d0f9e0c
+  UIAlertController+Blocks: b48c673ff60726da468b32ab21bbc7683512d45b
+  UIAlertView+Blocks: a46c99c5144f6c5dbc7d62fd2a0678daceec89a3
+  UICKeyChainStore: a389515ca090d4d49780fd563fec961571caa92b
+  XAspect: abacabc6d828c2933812a966adca9b131504cfac
 
 COCOAPODS: 0.37.2

@@ -26,7 +26,7 @@ NSArray *MenuArray2;
 void BuildMenuArray()
 {
     MenuArray1 = [NSArray arrayWithObjects:@"正在上映", @"即将上映", @"最为流行", @"近期高分", nil];
-    MenuArray2 = [NSArray arrayWithObjects:@"搜索结果", @"我的收藏", nil];
+    MenuArray2 = [NSArray arrayWithObjects:@"搜索结果", @"我的收藏", @"我的设置", nil];
 }
 
 @implementation AppDelegate

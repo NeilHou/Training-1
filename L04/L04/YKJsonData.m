@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "YKMovie.h"
 #import "KVNProgress.h"
+#import "UIProgressView+AFNetworking.h"
 
 static NSString *HUBstrLoading = @"正在载入数据...";
 static NSString *HUBstrSuccess = @"搞定！";
@@ -74,14 +75,35 @@ static NSString *HUBstrSuccess = @"搞定！";
 }
 
 + (void)MovieDataWithUrl:(NSString *)url success:(void (^)(id movie))success fail:(void (^)())fail{
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    //启动网络状况监视器
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    __block NSString *str = nil;
+    
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"%@", AFStringFromNetworkReachabilityStatus(status));
+        
+        NSString *connectstr = [NSString stringWithFormat:@"%@", AFStringFromNetworkReachabilityStatus(status)];
+        NSString *newStr = [connectstr substringFromIndex:14];
+        str = newStr;
+        
+        NSLog(@"%@, %@", connectstr, str);
+    }];
     
     //显示HUB
+    if (str != nil) {
+    NSString *hubStr = [NSString stringWithFormat:@"正通过%@载入数据...", str];
+    [KVNProgress showWithStatus:hubStr];
+    }else{
     [KVNProgress showWithStatus:HUBstrLoading];
+    }
     
+    //请求和加载数据
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager GET:url
       parameters:nil
          success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             
              NSArray *json = responseObject[@"results"];
              NSMutableArray *movies = [[NSMutableArray alloc]init];
              for (NSDictionary *dict in json) {
@@ -112,12 +134,15 @@ static NSString *HUBstrSuccess = @"搞定！";
                               string = @"这么老的片子，木有宣传！";
                           }
                           movie.tagline = string;
+
                  }
                  [movies addObject:movie];
              }
              if (success) {
                  success(movies);
                  NSLog(@"Data数据到手");
+                 
+                 
                  [KVNProgress dismiss];
              }
          }
@@ -128,6 +153,7 @@ static NSString *HUBstrSuccess = @"搞定！";
                  [KVNProgress showErrorWithStatus:@"载入失败哇!"];
              }
          }];
+
 }
 
 + (void)MovieIdWithUrl:(NSString *)url success:(void (^)(id movie))success fail:(void (^)())fail{

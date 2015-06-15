@@ -16,6 +16,7 @@
 #import "YKJsonData.h"
 #import "YKCastsTavleViewC.h"
 #import "UIImageView+WebCache.h"
+#import "UIActivityIndicatorView+AFNetworking.h"
 
 
 @interface YKDetailViewController ()<UIScrollViewDelegate, UIAlertViewDelegate>

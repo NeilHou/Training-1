@@ -66,18 +66,18 @@ static NSString * const YKCastsCellReuseId = @"YKCastsCell";
     myApp.networkActivityIndicatorVisible = YES;
     
     //初始化一个状态指示器
-//    _activityIndicatorView = [[UIActivityIndicatorView alloc]
-//                              initWithFrame:CGRectMake(23.0,25.0,30.0,30.0)];
-//    _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;  //设置样式
-//    _activityIndicatorView.hidesWhenStopped = YES;  //停止后自动隐藏
-//    [_cell addSubview:_activityIndicatorView];  //附着在当前试图
+    _activityIndicatorView = [[UIActivityIndicatorView alloc]
+                              initWithFrame:CGRectMake(23.0,25.0,30.0,30.0)];
+    _activityIndicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;  //设置样式
+    _activityIndicatorView.hidesWhenStopped = YES;  //停止后自动隐藏
+    [_cell addSubview:_activityIndicatorView];  //附着在当前试图
+//    [_activityIndicatorView startAnimating];
     
     YKMovie *movie = _movies[indexPath.row];
     
     _cell.castsLabel.text = [movie name];
     _cell.characterLabel.text = [movie character];
     
-//    [_activityIndicatorView startAnimating];
     NSString *detailImgURLString = [NSString stringWithFormat:@"http://image.tmdb.org/t/p/w45%@",movie.profile_path];
     NSURL *detailURL = [NSURL URLWithString:detailImgURLString];
     
@@ -85,7 +85,6 @@ static NSString * const YKCastsCellReuseId = @"YKCastsCell";
                    placeholderImage:nil
                             options:SDWebImageRetryFailed
                           completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-//                              [_activityIndicatorView stopAnimating];
                               myApp.networkActivityIndicatorVisible = NO;
                           }];
     

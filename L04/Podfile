@@ -1,3 +1,6 @@
 platform :ios, '6.1'
 pod 'SDWebImage', '~>3.7'
 pod 'AFNetworking', '~> 2.5'
+pod "JDFPeekaboo"
+pod 'EasyIOS', '~> 2.2.2'
+pod 'EasyIOS-Extention', '~> 1.2'

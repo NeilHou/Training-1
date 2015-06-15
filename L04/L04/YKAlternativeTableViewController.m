@@ -67,7 +67,7 @@ static NSString * const YKAlternativeCellReuseId = @"YKAlternativeCellReuseId";
     _cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                 reuseIdentifier:YKAlternativeCellReuseId];
 
-    self.navigationItem.title = [NSString stringWithFormat:@"包含%lu个结果", [_movies count]];
+    self.navigationItem.title = [NSString stringWithFormat:@"在%lu个国家上映", ([_movies count] + 1)];
     
     YKMovie *movie = _movies[indexPath.row];
     
